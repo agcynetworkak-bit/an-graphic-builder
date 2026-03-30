@@ -576,6 +576,7 @@ async function handleSubmit(e) {
       height: 1080,
       scale: 1,
       useCORS: true,
+      allowTaint: true,
       backgroundColor: null
     });
 
@@ -624,7 +625,7 @@ async function handleSubmit(e) {
       bullet6: document.getElementById('bullet6').value,
       callDate: document.getElementById('callDate').value,
       callTime: document.getElementById('callTime').value,
-      graphic_image: pngDataUrl
+      graphic_image: canvas.toDataURL('image/jpeg', 0.5)
     };
 
     await emailjs.send('service_jtz9hvb', 'template_10fh73b', templateParams);
