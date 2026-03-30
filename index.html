@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agency Solutions LIVE — Graphic Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+:root {
+  --red: #B0251E;
+  --dark-red: #8F1E18;
+  --black: #111111;
+  --soft-black: #1A1A1A;
+  --white: #FFFFFF;
+  --off-white: #F7F7F7;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: linear-gradient(135deg, #0D0D0D 0%, #1A1A1A 60%, #2A0A08 100%);
+  min-height: 100vh;
+  color: var(--white);
+}
+
+/* App Header */
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 28px;
+  background: var(--soft-black);
+  border-bottom: 3px solid var(--red);
+}
+.app-header h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--white);
+}
+.app-header h1 span { color: var(--red); }
+
+/* Layout */
+.main-grid {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 32px;
+  padding: 32px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+@media (max-width: 900px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    gap: 20px;
+  }
+}
+
+/* Form Panel */
+.form-panel {
+  background: rgba(26,26,26,0.95);
+  border: 1px solid rgba(176,37,30,0.25);
+  border-radius: 12px;
+  padding: 28px;
+  height: fit-content;
+}
+.form-panel h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: var(--off-white);
+}
+.form-section { margin-bottom: 16px; }
+.form-section label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #888;
+  margin-bottom: 5px;
+}
+.form-section input[type="text"],
+.form-section input[type="file"] {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--black);
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: var(--white);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+.form-section input[type="text"]:focus {
+  outline: none;
+  border-color: var(--red);
+}
+.form-section input[type="file"] {
+  padding: 8px;
+  cursor: pointer;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.form-divider {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 18px 0;
+}
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+  background: var(--red);
+  color: var(--white);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-submit:hover { background: var(--dark-red); }
+.btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+.status-msg {
+  margin-top: 12px;
+  font-size: 13px;
+  text-align: center;
+  min-height: 20px;
+}
+.status-msg.success { color: #4caf50; }
+.status-msg.error { color: #ff5252; }
+
+/* Preview Panel */
+.preview-panel { position: relative; }
+.preview-panel h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: var(--off-white);
+}
+.preview-wrapper {
+  width: 100%;
+  max-width: 540px;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(176,37,30,0.2);
+  position: relative;
+}
+#graphic-preview {
+  width: 1080px;
+  height: 1080px;
+  transform: scale(0.5);
+  transform-origin: top left;
+  background: linear-gradient(135deg, #0D0D0D 0%, #1A1A1A 60%, #2A0A08 100%);
+  position: relative;
+  overflow: hidden;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Graphic: Red glow overlay */
+#graphic-preview::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top right, rgba(176,37,30,0.22) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Section A: Banner */
+.gfx-banner {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 90px;
+  background: var(--soft-black);
+  border-bottom: 3px solid var(--red);
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  gap: 18px;
+  z-index: 10;
+}
+.gfx-banner-divider {
+  width: 2px;
+  height: 48px;
+  background: var(--red);
+}
+.gfx-banner-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.gfx-banner-network {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #ccc;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+.gfx-banner-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 28px;
+  color: var(--white);
+}
+.gfx-banner-title span { color: var(--red); }
+
+/* Section F: Date badge */
+.gfx-date-badge {
+  position: absolute;
+  top: 100px;
+  right: 32px;
+  background: var(--red);
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--white);
+  text-transform: uppercase;
+  white-space: pre-line;
+  text-align: center;
+  z-index: 10;
+  display: none;
+}
+
+/* Section B: Speaker Name */
+.gfx-speaker-name {
+  position: absolute;
+  top: 260px;
+  left: 48px;
+  right: 500px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 80px;
+  color: var(--white);
+  text-transform: uppercase;
+  line-height: 0.9;
+  z-index: 10;
+  word-break: break-word;
+}
+
+/* Section C: Role */
+.gfx-speaker-role {
+  position: absolute;
+  top: 480px;
+  left: 48px;
+  right: 500px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: #888;
+  z-index: 10;
+}
+
+/* Red rule */
+.gfx-red-rule {
+  position: absolute;
+  top: 530px;
+  left: 48px;
+  width: 80px;
+  height: 3px;
+  background: var(--red);
+  z-index: 10;
+}
+
+/* Section D: Topic */
+.gfx-topic {
+  position: absolute;
+  top: 555px;
+  left: 48px;
+  right: 500px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  font-style: italic;
+  color: var(--red);
+  z-index: 10;
+}
+
+/* Section E: Bullets */
+.gfx-bullets {
+  position: absolute;
+  top: 620px;
+  left: 48px;
+  right: 500px;
+  list-style: none;
+  z-index: 10;
+}
+.gfx-bullets li {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--white);
+}
+.gfx-bullets li.visible { display: flex; }
+.gfx-bullets li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--red);
+}
+
+/* Section G: Photo */
+.gfx-photo {
+  position: absolute;
+  bottom: -40px;
+  right: -60px;
+  width: 480px;
+  z-index: 5;
+  display: none;
+}
+.gfx-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Footer */
+.gfx-footer {
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #444;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  z-index: 10;
+}
+</style>
+</head>
+<body>
+
+<!-- App Header -->
+<header class="app-header">
+  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="40" height="40" rx="6" fill="#B0251E"/>
+    <text x="20" y="28" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="900" font-size="20" fill="white">AN</text>
+  </svg>
+  <h1>Agency <span>Solutions</span> LIVE &mdash; Graphic Builder</h1>
+</header>
+
+<div class="main-grid">
+  <!-- Form Panel -->
+  <div class="form-panel">
+    <h2>Speaker Details</h2>
+    <form id="speakerForm" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-section">
+          <label for="speakerFirst">First Name</label>
+          <input type="text" id="speakerFirst" autocomplete="off" oninput="updatePreview()">
+        </div>
+        <div class="form-section">
+          <label for="speakerLast">Last Name</label>
+          <input type="text" id="speakerLast" autocomplete="off" oninput="updatePreview()">
+        </div>
+      </div>
+
+      <div class="form-section">
+        <label for="speakerRole">Role / Subtitle</label>
+        <input type="text" id="speakerRole" autocomplete="off" oninput="updatePreview()">
+      </div>
+
+      <hr class="form-divider">
+
+      <div class="form-section">
+        <label for="topicTitle">Topic Title</label>
+        <input type="text" id="topicTitle" autocomplete="off" oninput="updatePreview()">
+      </div>
+
+      <div class="form-section">
+        <label>Bullet Points</label>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <input type="text" id="bullet1" autocomplete="off" placeholder="Bullet 1" oninput="updatePreview()">
+          <input type="text" id="bullet2" autocomplete="off" placeholder="Bullet 2" oninput="updatePreview()">
+          <input type="text" id="bullet3" autocomplete="off" placeholder="Bullet 3" oninput="updatePreview()">
+          <input type="text" id="bullet4" autocomplete="off" placeholder="Bullet 4" oninput="updatePreview()">
+          <input type="text" id="bullet5" autocomplete="off" placeholder="Bullet 5" oninput="updatePreview()">
+          <input type="text" id="bullet6" autocomplete="off" placeholder="Bullet 6" oninput="updatePreview()">
+        </div>
+      </div>
+
+      <hr class="form-divider">
+
+      <div class="form-row">
+        <div class="form-section">
+          <label for="callDate">Date</label>
+          <input type="text" id="callDate" autocomplete="off" placeholder="e.g. April 2, 2026" oninput="updatePreview()">
+        </div>
+        <div class="form-section">
+          <label for="callTime">Time</label>
+          <input type="text" id="callTime" autocomplete="off" placeholder="e.g. 2:00 PM EST" oninput="updatePreview()">
+        </div>
+      </div>
+
+      <div class="form-section">
+        <label for="speakerPhoto">Speaker Photo</label>
+        <input type="file" id="speakerPhoto" accept="image/*" onchange="handlePhoto(this)">
+      </div>
+
+      <hr class="form-divider">
+      <button type="submit" class="btn-submit" id="submitBtn">Generate &amp; Send</button>
+      <div class="status-msg" id="statusMsg"></div>
+    </form>
+  </div>
+
+  <!-- Preview Panel -->
+  <div class="preview-panel">
+    <h2>Live Preview</h2>
+    <div class="preview-wrapper">
+      <div id="graphic-preview">
+        <!-- A: Banner -->
+        <div class="gfx-banner">
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="72" height="72" rx="10" fill="#B0251E"/>
+            <text x="36" y="48" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="900" font-size="36" fill="white">AN</text>
+          </svg>
+          <div class="gfx-banner-divider"></div>
+          <div class="gfx-banner-text">
+            <div class="gfx-banner-network">Agency Network</div>
+            <div class="gfx-banner-title">Agency <span>Solutions</span> Live</div>
+          </div>
+        </div>
+
+        <!-- F: Date Badge -->
+        <div class="gfx-date-badge" id="gfxDateBadge"></div>
+
+        <!-- B: Speaker Name -->
+        <div class="gfx-speaker-name" id="gfxSpeakerName"></div>
+
+        <!-- C: Speaker Role -->
+        <div class="gfx-speaker-role" id="gfxSpeakerRole"></div>
+
+        <!-- Red Rule -->
+        <div class="gfx-red-rule"></div>
+
+        <!-- D: Topic -->
+        <div class="gfx-topic" id="gfxTopic"></div>
+
+        <!-- E: Bullets -->
+        <ul class="gfx-bullets" id="gfxBullets">
+          <li id="gfxB1"></li>
+          <li id="gfxB2"></li>
+          <li id="gfxB3"></li>
+          <li id="gfxB4"></li>
+          <li id="gfxB5"></li>
+          <li id="gfxB6"></li>
+        </ul>
+
+        <!-- G: Photo -->
+        <div class="gfx-photo" id="gfxPhoto">
+          <img id="gfxPhotoImg" src="" alt="">
+        </div>
+
+        <!-- Footer -->
+        <div class="gfx-footer">Connecting Agents &ndash; Inspiring Greatness</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Init EmailJS
+emailjs.init('ROtCAR5H-4gIYN3s5');
+
+function updatePreview() {
+  const first = document.getElementById('speakerFirst').value.trim();
+  const last = document.getElementById('speakerLast').value.trim();
+  const role = document.getElementById('speakerRole').value.trim();
+  const topic = document.getElementById('topicTitle').value.trim();
+  const date = document.getElementById('callDate').value.trim();
+  const time = document.getElementById('callTime').value.trim();
+
+  // B: Speaker name
+  document.getElementById('gfxSpeakerName').textContent = [first, last].filter(Boolean).join(' ');
+
+  // C: Role
+  document.getElementById('gfxSpeakerRole').textContent = role;
+
+  // D: Topic
+  document.getElementById('gfxTopic').textContent = topic;
+
+  // F: Date badge
+  const badge = document.getElementById('gfxDateBadge');
+  if (date || time) {
+    badge.textContent = [date, time].filter(Boolean).join('\n');
+    badge.style.display = 'block';
+  } else {
+    badge.style.display = 'none';
+  }
+
+  // E: Bullets
+  for (let i = 1; i <= 6; i++) {
+    const val = document.getElementById('bullet' + i).value.trim();
+    const li = document.getElementById('gfxB' + i);
+    if (val) {
+      li.textContent = val;
+      li.classList.add('visible');
+    } else {
+      li.textContent = '';
+      li.classList.remove('visible');
+    }
+  }
+}
+
+function handlePhoto(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = document.getElementById('gfxPhotoImg');
+    img.src = e.target.result;
+    document.getElementById('gfxPhoto').style.display = 'block';
+  };
+  reader.readAsDataURL(file);
+}
+
+function setMobileScale() {
+  const wrapper = document.querySelector('.preview-wrapper');
+  if (!wrapper) return;
+  const size = wrapper.offsetWidth;
+  document.getElementById('graphic-preview').style.transform = 'scale(' + (size / 1080) + ')';
+}
+
+function checkMobile() {
+  if (window.innerWidth <= 900) {
+    setMobileScale();
+  } else {
+    document.getElementById('graphic-preview').style.transform = 'scale(0.5)';
+  }
+}
+
+window.addEventListener('resize', checkMobile);
+window.addEventListener('load', checkMobile);
+
+async function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const status = document.getElementById('statusMsg');
+  btn.disabled = true;
+  status.className = 'status-msg';
+  status.textContent = 'Generating...';
+
+  const graphic = document.getElementById('graphic-preview');
+  const origTransform = graphic.style.transform;
+
+  try {
+    // Temporarily remove scale for capture
+    graphic.style.transform = 'none';
+
+    const canvas = await html2canvas(graphic, {
+      width: 1080,
+      height: 1080,
+      scale: 1,
+      useCORS: true,
+      backgroundColor: null
+    });
+
+    // Restore transform
+    graphic.style.transform = origTransform;
+    checkMobile();
+
+    const pngDataUrl = canvas.toDataURL('image/png');
+
+    // Download PNG
+    const pngLink = document.createElement('a');
+    const firstName = document.getElementById('speakerFirst').value.trim() || 'speaker';
+    const lastName = document.getElementById('speakerLast').value.trim() || 'graphic';
+    const filename = firstName + '_' + lastName + '_AgencySolutionsLive';
+    pngLink.download = filename + '.png';
+    pngLink.href = pngDataUrl;
+    pngLink.click();
+
+    status.textContent = 'PNG downloaded. Generating PDF...';
+
+    // Wait 500ms then generate PDF
+    await new Promise(r => setTimeout(r, 500));
+
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({
+      orientation: 'portrait',
+      unit: 'px',
+      format: [1080, 1080]
+    });
+    pdf.addImage(pngDataUrl, 'PNG', 0, 0, 1080, 1080);
+    pdf.save(filename + '.pdf');
+
+    status.textContent = 'PDF downloaded. Sending email...';
+
+    // Send EmailJS
+    const templateParams = {
+      speakerFirst: document.getElementById('speakerFirst').value,
+      speakerLast: document.getElementById('speakerLast').value,
+      speakerRole: document.getElementById('speakerRole').value,
+      topicTitle: document.getElementById('topicTitle').value,
+      bullet1: document.getElementById('bullet1').value,
+      bullet2: document.getElementById('bullet2').value,
+      bullet3: document.getElementById('bullet3').value,
+      bullet4: document.getElementById('bullet4').value,
+      bullet5: document.getElementById('bullet5').value,
+      bullet6: document.getElementById('bullet6').value,
+      callDate: document.getElementById('callDate').value,
+      callTime: document.getElementById('callTime').value,
+      graphic_image: pngDataUrl
+    };
+
+    await emailjs.send('service_jtz9hvb', 'template_10fh73b', templateParams);
+
+    status.className = 'status-msg success';
+    status.textContent = 'Done! PNG + PDF downloaded and email sent to andrew@agcynetwork.com';
+
+  } catch (err) {
+    graphic.style.transform = origTransform;
+    checkMobile();
+    status.className = 'status-msg error';
+    status.textContent = 'Error: ' + err.message + ' (PNG/PDF may still have downloaded)';
+  } finally {
+    btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>
