@@ -49,11 +49,12 @@ body {
 /* Layout */
 .main-grid {
   display: grid;
-  grid-template-columns: 420px 1fr;
+  grid-template-columns: minmax(0, 420px) 1fr;
   gap: 32px;
   padding: 32px;
   max-width: 1600px;
   margin: 0 auto;
+  width: 100%;
 }
 @media (max-width: 900px) {
   .main-grid {
@@ -70,6 +71,9 @@ body {
   border-radius: 12px;
   padding: 28px;
   height: fit-content;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
 }
 .form-panel h2 {
   font-family: 'Montserrat', sans-serif;
@@ -495,7 +499,7 @@ body {
   <div class="form-panel">
     <h2>Speaker Details</h2>
     <div class="form-notice">
-      <strong>Important:</strong> Fill in all fields below, then check the <strong>Live Preview</strong> on the right to make sure the graphic looks exactly how you want it before clicking Generate &amp; Send.
+      <strong>Important:</strong> Fill in all fields below, then check the <strong>Live Preview</strong> to make sure the graphic looks exactly how you want it before clicking Generate &amp; Send.
     </div>
     <form id="speakerForm">
 
