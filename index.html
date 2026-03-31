@@ -797,6 +797,19 @@ async function handleSubmit(e) {
 
   status.textContent = 'PDF downloaded. Sending email...';
 
+  // Create smaller JPEG version of graphic for email (540x540, quality 0.6)
+  var emailImageData = '';
+  try {
+    var emailCanvas = document.createElement('canvas');
+    emailCanvas.width = 540;
+    emailCanvas.height = 540;
+    var emailCtx = emailCanvas.getContext('2d');
+    emailCtx.drawImage(canvas, 0, 0, 540, 540);
+    emailImageData = emailCanvas.toDataURL('image/jpeg', 0.6);
+  } catch (imgErr) {
+    console.log('Could not create email image:', imgErr);
+  }
+
   // Send email via Google Apps Script
   try {
     var emailData = {
@@ -813,6 +826,9 @@ async function handleSubmit(e) {
       callDate: formatDate(document.getElementById('callDate').value),
       callTime: formatTime(document.getElementById('callTime').value)
     };
+    if (emailImageData) {
+      emailData.graphic_image = emailImageData;
+    }
 
     // Method 1: sendBeacon (fire-and-forget, works on all modern browsers)
     var beaconSent = false;
