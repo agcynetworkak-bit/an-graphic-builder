@@ -11,6 +11,8 @@
 <script type="module">
 import imglyRemoveBackground from 'https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/+esm';
 window.imglyRemoveBackground = imglyRemoveBackground;
+window._bgRemovalReady = true;
+console.log('Background removal library loaded');
 </script>
 <style>
 :root {
@@ -456,7 +458,7 @@ body {
           <input type="date" id="callDate" autocomplete="off" onchange="updatePreview()">
         </div>
         <div class="form-section">
-          <label for="callTime">Time</label>
+          <label for="callTime">Time <span style="font-weight:400;color:#666;text-transform:none;letter-spacing:0;">(will display as EST)</span></label>
           <input type="time" id="callTime" autocomplete="off" onchange="updatePreview()">
         </div>
       </div>
@@ -617,22 +619,41 @@ async function handlePhoto(input) {
     document.getElementById('gfxPhoto').style.display = 'block';
   }
 
-  if (shouldRemoveBg && window.imglyRemoveBackground) {
-    status.className = 'status-msg';
-    status.textContent = 'Removing background... (this may take a moment)';
-    try {
-      const blob = await window.imglyRemoveBackground(file);
-      showPhoto(URL.createObjectURL(blob));
-      status.className = 'status-msg success';
-      status.textContent = 'Background removed!';
-      setTimeout(() => { status.textContent = ''; status.className = 'status-msg'; }, 3000);
-    } catch (err) {
+  if (shouldRemoveBg) {
+    if (!window.imglyRemoveBackground) {
+      status.className = 'status-msg';
+      status.textContent = 'Loading background removal AI model... please wait';
+      // Wait up to 30 seconds for the library to load
+      for (let i = 0; i < 60; i++) {
+        await new Promise(r => setTimeout(r, 500));
+        if (window.imglyRemoveBackground) break;
+      }
+    }
+    if (window.imglyRemoveBackground) {
+      status.className = 'status-msg';
+      status.textContent = 'Removing background... (first time may take 30-60s to download AI model)';
+      try {
+        const blob = await window.imglyRemoveBackground(file, { output: { format: 'image/png' } });
+        showPhoto(URL.createObjectURL(blob));
+        status.className = 'status-msg success';
+        status.textContent = 'Background removed!';
+        setTimeout(() => { status.textContent = ''; status.className = 'status-msg'; }, 4000);
+      } catch (err) {
+        console.error('BG removal error:', err);
+        const reader = new FileReader();
+        reader.onload = function(e) { showPhoto(e.target.result); };
+        reader.readAsDataURL(file);
+        status.className = 'status-msg error';
+        status.textContent = 'Background removal failed: ' + err.message;
+        setTimeout(() => { status.textContent = ''; status.className = 'status-msg'; }, 5000);
+      }
+    } else {
       const reader = new FileReader();
       reader.onload = function(e) { showPhoto(e.target.result); };
       reader.readAsDataURL(file);
       status.className = 'status-msg error';
-      status.textContent = 'Background removal failed — photo loaded as-is.';
-      setTimeout(() => { status.textContent = ''; status.className = 'status-msg'; }, 3000);
+      status.textContent = 'Background removal library failed to load. Photo loaded as-is.';
+      setTimeout(() => { status.textContent = ''; status.className = 'status-msg'; }, 5000);
     }
   } else {
     const reader = new FileReader();
@@ -737,7 +758,13 @@ async function handleSubmit(e) {
       bullet6: document.getElementById('bullet6').value,
       callDate: formatDate(document.getElementById('callDate').value),
       callTime: formatTime(document.getElementById('callTime').value),
-      graphic_image: canvas.toDataURL('image/jpeg', 0.5)
+      graphic_image: (function() {
+        var small = document.createElement('canvas');
+        small.width = 540;
+        small.height = 540;
+        small.getContext('2d').drawImage(canvas, 0, 0, 540, 540);
+        return small.toDataURL('image/jpeg', 0.4);
+      })()
     };
 
     await emailjs.send('service_jtz9hvb', 'template_10fh73b', templateParams);
