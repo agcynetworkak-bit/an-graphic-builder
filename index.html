@@ -7,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700;800;900&family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script type="module">
 import { removeBackground } from 'https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/+esm';
 window.imglyRemoveBackground = removeBackground;
@@ -537,8 +536,8 @@ body {
 </div>
 
 <script>
-// Init EmailJS
-emailjs.init('ROtCAR5H-4gIYN3s5');
+// Google Apps Script Web App URL for email
+var GAS_URL = 'https://script.google.com/macros/s/AKfycbyohJrvsw5REXixZbzSuCoSk1aEb5S1zPJylmWFoX9UgQXZ2X1D-oHYxghjoy-assuWyg/exec';
 
 function formatDate(val) {
   if (!val) return '';
@@ -798,15 +797,15 @@ async function handleSubmit(e) {
 
   status.textContent = 'PDF downloaded. Sending email...';
 
-  // Send EmailJS (separate try/catch so download still works if email fails)
+  // Send email via Google Apps Script
   try {
     var small = document.createElement('canvas');
-    small.width = 300;
-    small.height = 300;
-    small.getContext('2d').drawImage(canvas, 0, 0, 300, 300);
-    var emailImage = small.toDataURL('image/jpeg', 0.3);
+    small.width = 540;
+    small.height = 540;
+    small.getContext('2d').drawImage(canvas, 0, 0, 540, 540);
+    var emailImage = small.toDataURL('image/png');
 
-    var templateParams = {
+    var emailData = {
       speakerFirst: document.getElementById('speakerFirst').value,
       speakerLast: document.getElementById('speakerLast').value,
       speakerRole: document.getElementById('speakerRole').value,
@@ -822,35 +821,21 @@ async function handleSubmit(e) {
       graphic_image: emailImage
     };
 
-    await emailjs.send('service_jtz9hvb', 'template_10fh73b', templateParams);
-    status.className = 'status-msg success';
-    status.textContent = 'Done! PNG + PDF downloaded and email sent to andrew@agcynetwork.com';
-  } catch (err) {
-    console.error('EmailJS error:', err);
-    // Retry without image if it failed
-    try {
-      var templateParams2 = {
-        speakerFirst: document.getElementById('speakerFirst').value,
-        speakerLast: document.getElementById('speakerLast').value,
-        speakerRole: document.getElementById('speakerRole').value,
-        topicTitle: document.getElementById('topicTitle').value,
-        bullet1: document.getElementById('bullet1').value,
-        bullet2: document.getElementById('bullet2').value,
-        bullet3: document.getElementById('bullet3').value,
-        bullet4: document.getElementById('bullet4').value,
-        bullet5: document.getElementById('bullet5').value,
-        bullet6: document.getElementById('bullet6').value,
-        callDate: formatDate(document.getElementById('callDate').value),
-        callTime: formatTime(document.getElementById('callTime').value),
-        graphic_image: ''
-      };
-      await emailjs.send('service_jtz9hvb', 'template_10fh73b', templateParams2);
+    var resp = await fetch(GAS_URL, {
+      method: 'POST',
+      body: JSON.stringify(emailData)
+    });
+    var result = await resp.json();
+    if (result.success) {
       status.className = 'status-msg success';
-      status.textContent = 'Done! PNG + PDF downloaded and email sent (without image preview).';
-    } catch (err2) {
-      status.className = 'status-msg error';
-      status.textContent = 'PNG + PDF downloaded but email failed: ' + err2.message;
+      status.textContent = 'Done! PNG + PDF downloaded and email sent to andrew@agcynetwork.com';
+    } else {
+      throw new Error(result.error || 'Unknown error');
     }
+  } catch (err) {
+    console.error('Email error:', err);
+    status.className = 'status-msg error';
+    status.textContent = 'PNG + PDF downloaded but email failed: ' + err.message;
   }
   btn.disabled = false;
 }
