@@ -8,6 +8,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="module">
+import imglyRemoveBackground from 'https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/+esm';
+window.imglyRemoveBackground = imglyRemoveBackground;
+</script>
 <style>
 :root {
   --red: #B0251E;
@@ -85,6 +89,8 @@ body {
   margin-bottom: 5px;
 }
 .form-section input[type="text"],
+.form-section input[type="date"],
+.form-section input[type="time"],
 .form-section input[type="file"] {
   width: 100%;
   padding: 10px 14px;
@@ -96,9 +102,15 @@ body {
   font-size: 14px;
   transition: border-color 0.2s;
 }
-.form-section input[type="text"]:focus {
+.form-section input[type="text"]:focus,
+.form-section input[type="date"]:focus,
+.form-section input[type="time"]:focus {
   outline: none;
   border-color: var(--red);
+}
+.form-section input[type="date"],
+.form-section input[type="time"] {
+  color-scheme: dark;
 }
 .form-section input[type="file"] {
   padding: 8px;
@@ -323,9 +335,9 @@ body {
 /* Section G: Photo */
 .gfx-photo {
   position: absolute;
-  bottom: -40px;
-  right: -60px;
-  width: 480px;
+  bottom: -20px;
+  right: -40px;
+  width: 600px;
   z-index: 5;
   display: none;
 }
@@ -408,11 +420,11 @@ body {
       <div class="form-row">
         <div class="form-section">
           <label for="callDate">Date</label>
-          <input type="text" id="callDate" autocomplete="off" placeholder="e.g. April 2, 2026" oninput="updatePreview()">
+          <input type="date" id="callDate" autocomplete="off" onchange="updatePreview()">
         </div>
         <div class="form-section">
           <label for="callTime">Time</label>
-          <input type="text" id="callTime" autocomplete="off" placeholder="e.g. 2:00 PM EST" oninput="updatePreview()">
+          <input type="time" id="callTime" autocomplete="off" onchange="updatePreview()">
         </div>
       </div>
 
@@ -485,13 +497,30 @@ body {
 // Init EmailJS
 emailjs.init('ROtCAR5H-4gIYN3s5');
 
+function formatDate(val) {
+  if (!val) return '';
+  const [y, m, d] = val.split('-').map(Number);
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  return months[m - 1] + ' ' + d + ', ' + y;
+}
+
+function formatTime(val) {
+  if (!val) return '';
+  let [h, m] = val.split(':').map(Number);
+  const ampm = h >= 12 ? 'PM' : 'AM';
+  h = h % 12 || 12;
+  return h + ':' + String(m).padStart(2, '0') + ' ' + ampm + ' EST';
+}
+
 function updatePreview() {
   const first = document.getElementById('speakerFirst').value.trim();
   const last = document.getElementById('speakerLast').value.trim();
   const role = document.getElementById('speakerRole').value.trim();
   const topic = document.getElementById('topicTitle').value.trim();
-  const date = document.getElementById('callDate').value.trim();
-  const time = document.getElementById('callTime').value.trim();
+  const dateRaw = document.getElementById('callDate').value;
+  const timeRaw = document.getElementById('callTime').value;
+  const date = formatDate(dateRaw);
+  const time = formatTime(timeRaw);
 
   // B: Speaker name
   const nameEl = document.getElementById('gfxSpeakerName');
@@ -534,16 +563,49 @@ function updatePreview() {
   }
 }
 
-function handlePhoto(input) {
+async function handlePhoto(input) {
   const file = input.files[0];
   if (!file) return;
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const img = document.getElementById('gfxPhotoImg');
-    img.src = e.target.result;
-    document.getElementById('gfxPhoto').style.display = 'block';
-  };
-  reader.readAsDataURL(file);
+  const status = document.getElementById('statusMsg');
+  status.className = 'status-msg';
+  status.textContent = 'Removing background...';
+
+  try {
+    if (window.imglyRemoveBackground) {
+      const blob = await window.imglyRemoveBackground(file);
+      const url = URL.createObjectURL(blob);
+      const img = document.getElementById('gfxPhotoImg');
+      img.src = url;
+      document.getElementById('gfxPhoto').style.display = 'block';
+      status.className = 'status-msg success';
+      status.textContent = 'Background removed!';
+      setTimeout(() => { status.textContent = ''; status.className = 'status-msg'; }, 3000);
+    } else {
+      // Fallback if bg removal library not loaded yet
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = document.getElementById('gfxPhotoImg');
+        img.src = e.target.result;
+        document.getElementById('gfxPhoto').style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+      status.className = 'status-msg error';
+      status.textContent = 'Background removal not available — photo loaded as-is.';
+      setTimeout(() => { status.textContent = ''; status.className = 'status-msg'; }, 3000);
+    }
+  } catch (err) {
+    // If bg removal fails, still show original photo
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const img = document.getElementById('gfxPhotoImg');
+      img.src = e.target.result;
+      document.getElementById('gfxPhoto').style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+    status.className = 'status-msg error';
+    status.textContent = 'Background removal failed — photo loaded as-is.';
+    setTimeout(() => { status.textContent = ''; status.className = 'status-msg'; }, 3000);
+  }
 }
 
 function setMobileScale() {
@@ -631,8 +693,8 @@ async function handleSubmit(e) {
       bullet4: document.getElementById('bullet4').value,
       bullet5: document.getElementById('bullet5').value,
       bullet6: document.getElementById('bullet6').value,
-      callDate: document.getElementById('callDate').value,
-      callTime: document.getElementById('callTime').value,
+      callDate: formatDate(document.getElementById('callDate').value),
+      callTime: formatTime(document.getElementById('callTime').value),
       graphic_image: canvas.toDataURL('image/jpeg', 0.5)
     };
 
