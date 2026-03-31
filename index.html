@@ -814,26 +814,30 @@ async function handleSubmit(e) {
       callTime: formatTime(document.getElementById('callTime').value)
     };
 
-    // Try to include a small graphic (200x200) if possible
-    try {
-      var small = document.createElement('canvas');
-      small.width = 200;
-      small.height = 200;
-      small.getContext('2d').drawImage(canvas, 0, 0, 200, 200);
-      emailData.graphic_image = small.toDataURL('image/jpeg', 0.5);
-    } catch (imgErr) {
-      console.warn('Could not generate email image:', imgErr);
-    }
+    // Submit via hidden form + iframe (works on all browsers including mobile Safari)
+    var iframe = document.createElement('iframe');
+    iframe.name = 'gas-submit-' + Date.now();
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
 
-    var formBody = new URLSearchParams();
+    var form = document.createElement('form');
+    form.method = 'POST';
+    form.action = GAS_URL;
+    form.target = iframe.name;
+
     for (var key in emailData) {
-      formBody.append(key, emailData[key]);
+      var input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = emailData[key];
+      form.appendChild(input);
     }
 
-    await fetch(GAS_URL, {
-      method: 'POST',
-      body: formBody
-    });
+    document.body.appendChild(form);
+    form.submit();
+    form.remove();
+    setTimeout(function() { iframe.remove(); }, 10000);
+
     status.className = 'status-msg success';
     status.textContent = 'Done! PNG + PDF downloaded and email sent to andrew@agcynetwork.com';
   } catch (err) {
