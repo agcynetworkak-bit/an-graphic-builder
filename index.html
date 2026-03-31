@@ -214,19 +214,19 @@ body {
 .gfx-banner-an {
   font-family: 'Playfair Display', serif;
   font-weight: 900;
-  font-size: 72px;
+  font-size: 78px;
   color: var(--red);
-  line-height: 0.85;
-  letter-spacing: -0.02em;
+  line-height: 0.8;
+  letter-spacing: -0.08em;
 }
 .gfx-banner-network {
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
-  font-size: 11px;
+  font-size: 10.5px;
   color: #ccc;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  margin-top: -6px;
+  margin-top: -4px;
 }
 .gfx-banner-divider {
   width: 2px;
@@ -455,6 +455,14 @@ body {
       <div class="form-section">
         <label for="speakerPhoto">Speaker Photo</label>
         <input type="file" id="speakerPhoto" accept="image/*" onchange="handlePhoto(this)">
+        <div style="display:flex;gap:16px;margin-top:8px;">
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:#aaa;cursor:pointer;text-transform:none;letter-spacing:0;">
+            <input type="checkbox" id="removeBg" checked> Remove Background
+          </label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:#aaa;cursor:pointer;text-transform:none;letter-spacing:0;">
+            <input type="checkbox" id="flipPhoto" onchange="toggleFlip()"> Flip Image
+          </label>
+        </div>
       </div>
 
       <hr class="form-divider">
@@ -592,44 +600,44 @@ async function handlePhoto(input) {
   const file = input.files[0];
   if (!file) return;
   const status = document.getElementById('statusMsg');
-  status.className = 'status-msg';
-  status.textContent = 'Removing background...';
+  const shouldRemoveBg = document.getElementById('removeBg').checked;
 
-  try {
-    if (window.imglyRemoveBackground) {
+  function showPhoto(src) {
+    const img = document.getElementById('gfxPhotoImg');
+    img.src = src;
+    document.getElementById('gfxPhoto').style.display = 'block';
+  }
+
+  if (shouldRemoveBg && window.imglyRemoveBackground) {
+    status.className = 'status-msg';
+    status.textContent = 'Removing background... (this may take a moment)';
+    try {
       const blob = await window.imglyRemoveBackground(file);
-      const url = URL.createObjectURL(blob);
-      const img = document.getElementById('gfxPhotoImg');
-      img.src = url;
-      document.getElementById('gfxPhoto').style.display = 'block';
+      showPhoto(URL.createObjectURL(blob));
       status.className = 'status-msg success';
       status.textContent = 'Background removed!';
       setTimeout(() => { status.textContent = ''; status.className = 'status-msg'; }, 3000);
-    } else {
-      // Fallback if bg removal library not loaded yet
+    } catch (err) {
       const reader = new FileReader();
-      reader.onload = function(e) {
-        const img = document.getElementById('gfxPhotoImg');
-        img.src = e.target.result;
-        document.getElementById('gfxPhoto').style.display = 'block';
-      };
+      reader.onload = function(e) { showPhoto(e.target.result); };
       reader.readAsDataURL(file);
       status.className = 'status-msg error';
-      status.textContent = 'Background removal not available — photo loaded as-is.';
+      status.textContent = 'Background removal failed — photo loaded as-is.';
       setTimeout(() => { status.textContent = ''; status.className = 'status-msg'; }, 3000);
     }
-  } catch (err) {
-    // If bg removal fails, still show original photo
+  } else {
     const reader = new FileReader();
-    reader.onload = function(e) {
-      const img = document.getElementById('gfxPhotoImg');
-      img.src = e.target.result;
-      document.getElementById('gfxPhoto').style.display = 'block';
-    };
+    reader.onload = function(e) { showPhoto(e.target.result); };
     reader.readAsDataURL(file);
-    status.className = 'status-msg error';
-    status.textContent = 'Background removal failed — photo loaded as-is.';
-    setTimeout(() => { status.textContent = ''; status.className = 'status-msg'; }, 3000);
+  }
+}
+
+function toggleFlip() {
+  const img = document.getElementById('gfxPhotoImg');
+  if (document.getElementById('flipPhoto').checked) {
+    img.style.transform = 'scaleX(-1)';
+  } else {
+    img.style.transform = 'none';
   }
 }
 
