@@ -799,12 +799,6 @@ async function handleSubmit(e) {
 
   // Send email via Google Apps Script
   try {
-    var small = document.createElement('canvas');
-    small.width = 540;
-    small.height = 540;
-    small.getContext('2d').drawImage(canvas, 0, 0, 540, 540);
-    var emailImage = small.toDataURL('image/png');
-
     var emailData = {
       speakerFirst: document.getElementById('speakerFirst').value,
       speakerLast: document.getElementById('speakerLast').value,
@@ -817,14 +811,28 @@ async function handleSubmit(e) {
       bullet5: document.getElementById('bullet5').value,
       bullet6: document.getElementById('bullet6').value,
       callDate: formatDate(document.getElementById('callDate').value),
-      callTime: formatTime(document.getElementById('callTime').value),
-      graphic_image: emailImage
+      callTime: formatTime(document.getElementById('callTime').value)
     };
+
+    // Try to include a small graphic (200x200) if possible
+    try {
+      var small = document.createElement('canvas');
+      small.width = 200;
+      small.height = 200;
+      small.getContext('2d').drawImage(canvas, 0, 0, 200, 200);
+      emailData.graphic_image = small.toDataURL('image/jpeg', 0.5);
+    } catch (imgErr) {
+      console.warn('Could not generate email image:', imgErr);
+    }
+
+    var formBody = new URLSearchParams();
+    for (var key in emailData) {
+      formBody.append(key, emailData[key]);
+    }
 
     await fetch(GAS_URL, {
       method: 'POST',
-      mode: 'no-cors',
-      body: JSON.stringify(emailData)
+      body: formBody
     });
     status.className = 'status-msg success';
     status.textContent = 'Done! PNG + PDF downloaded and email sent to andrew@agcynetwork.com';
