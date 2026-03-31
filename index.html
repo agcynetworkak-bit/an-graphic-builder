@@ -718,63 +718,95 @@ function checkMobile() {
 window.addEventListener('resize', checkMobile);
 window.addEventListener('load', checkMobile);
 
+// Convert any blob/object URL image to data URL so canvas won't be tainted
+function ensureDataUrl(imgEl) {
+  return new Promise(function(resolve) {
+    if (!imgEl.src || imgEl.src.startsWith('data:')) { resolve(); return; }
+    var c = document.createElement('canvas');
+    c.width = imgEl.naturalWidth || imgEl.width;
+    c.height = imgEl.naturalHeight || imgEl.height;
+    c.getContext('2d').drawImage(imgEl, 0, 0);
+    try {
+      imgEl.src = c.toDataURL('image/png');
+    } catch(e) { /* if it fails, continue anyway */ }
+    resolve();
+  });
+}
+
 async function handleSubmit(e) {
   e.preventDefault();
   const btn = document.getElementById('submitBtn');
   const status = document.getElementById('statusMsg');
   btn.disabled = true;
   status.className = 'status-msg';
-  status.textContent = 'Generating...';
+  status.textContent = 'Preparing graphic...';
 
   const graphic = document.getElementById('graphic-preview');
   const origTransform = graphic.style.transform;
 
-  try {
-    // Temporarily remove scale for capture
-    graphic.style.transform = 'none';
+  // Convert photo to data URL first to avoid tainted canvas
+  var photoImg = document.getElementById('gfxPhotoImg');
+  if (photoImg.src && !photoImg.src.startsWith('data:')) {
+    await ensureDataUrl(photoImg);
+    await new Promise(r => setTimeout(r, 200));
+  }
 
-    const canvas = await html2canvas(graphic, {
+  var pngDataUrl, canvas;
+  try {
+    graphic.style.transform = 'none';
+    canvas = await html2canvas(graphic, {
       width: 1080,
       height: 1080,
       scale: 1,
       useCORS: true,
-      allowTaint: true,
+      allowTaint: false,
       backgroundColor: null
     });
-
-    // Restore transform
     graphic.style.transform = origTransform;
     checkMobile();
+    pngDataUrl = canvas.toDataURL('image/png');
+  } catch (err) {
+    graphic.style.transform = origTransform;
+    checkMobile();
+    status.className = 'status-msg error';
+    status.textContent = 'Error generating graphic: ' + err.message;
+    btn.disabled = false;
+    return;
+  }
 
-    const pngDataUrl = canvas.toDataURL('image/png');
+  // Download PNG
+  var firstName = document.getElementById('speakerFirst').value.trim() || 'speaker';
+  var lastName = document.getElementById('speakerLast').value.trim() || 'graphic';
+  var filename = firstName + '_' + lastName + '_AgencySolutionsLive';
+  var pngLink = document.createElement('a');
+  pngLink.download = filename + '.png';
+  pngLink.href = pngDataUrl;
+  pngLink.click();
+  status.textContent = 'PNG downloaded. Generating PDF...';
 
-    // Download PNG
-    const pngLink = document.createElement('a');
-    const firstName = document.getElementById('speakerFirst').value.trim() || 'speaker';
-    const lastName = document.getElementById('speakerLast').value.trim() || 'graphic';
-    const filename = firstName + '_' + lastName + '_AgencySolutionsLive';
-    pngLink.download = filename + '.png';
-    pngLink.href = pngDataUrl;
-    pngLink.click();
+  await new Promise(r => setTimeout(r, 500));
 
-    status.textContent = 'PNG downloaded. Generating PDF...';
-
-    // Wait 500ms then generate PDF
-    await new Promise(r => setTimeout(r, 500));
-
-    const { jsPDF } = window.jspdf;
-    const pdf = new jsPDF({
-      orientation: 'portrait',
-      unit: 'px',
-      format: [1080, 1080]
-    });
+  // Generate PDF
+  try {
+    var { jsPDF } = window.jspdf;
+    var pdf = new jsPDF({ orientation: 'portrait', unit: 'px', format: [1080, 1080] });
     pdf.addImage(pngDataUrl, 'PNG', 0, 0, 1080, 1080);
     pdf.save(filename + '.pdf');
+  } catch (err) {
+    console.error('PDF error:', err);
+  }
 
-    status.textContent = 'PDF downloaded. Sending email...';
+  status.textContent = 'PDF downloaded. Sending email...';
 
-    // Send EmailJS
-    const templateParams = {
+  // Send EmailJS (separate try/catch so download still works if email fails)
+  try {
+    var small = document.createElement('canvas');
+    small.width = 300;
+    small.height = 300;
+    small.getContext('2d').drawImage(canvas, 0, 0, 300, 300);
+    var emailImage = small.toDataURL('image/jpeg', 0.3);
+
+    var templateParams = {
       speakerFirst: document.getElementById('speakerFirst').value,
       speakerLast: document.getElementById('speakerLast').value,
       speakerRole: document.getElementById('speakerRole').value,
@@ -787,28 +819,40 @@ async function handleSubmit(e) {
       bullet6: document.getElementById('bullet6').value,
       callDate: formatDate(document.getElementById('callDate').value),
       callTime: formatTime(document.getElementById('callTime').value),
-      graphic_image: (function() {
-        var small = document.createElement('canvas');
-        small.width = 540;
-        small.height = 540;
-        small.getContext('2d').drawImage(canvas, 0, 0, 540, 540);
-        return small.toDataURL('image/jpeg', 0.4);
-      })()
+      graphic_image: emailImage
     };
 
     await emailjs.send('service_jtz9hvb', 'template_10fh73b', templateParams);
-
     status.className = 'status-msg success';
     status.textContent = 'Done! PNG + PDF downloaded and email sent to andrew@agcynetwork.com';
-
   } catch (err) {
-    graphic.style.transform = origTransform;
-    checkMobile();
-    status.className = 'status-msg error';
-    status.textContent = 'Error: ' + err.message + ' (PNG/PDF may still have downloaded)';
-  } finally {
-    btn.disabled = false;
+    console.error('EmailJS error:', err);
+    // Retry without image if it failed
+    try {
+      var templateParams2 = {
+        speakerFirst: document.getElementById('speakerFirst').value,
+        speakerLast: document.getElementById('speakerLast').value,
+        speakerRole: document.getElementById('speakerRole').value,
+        topicTitle: document.getElementById('topicTitle').value,
+        bullet1: document.getElementById('bullet1').value,
+        bullet2: document.getElementById('bullet2').value,
+        bullet3: document.getElementById('bullet3').value,
+        bullet4: document.getElementById('bullet4').value,
+        bullet5: document.getElementById('bullet5').value,
+        bullet6: document.getElementById('bullet6').value,
+        callDate: formatDate(document.getElementById('callDate').value),
+        callTime: formatTime(document.getElementById('callTime').value),
+        graphic_image: ''
+      };
+      await emailjs.send('service_jtz9hvb', 'template_10fh73b', templateParams2);
+      status.className = 'status-msg success';
+      status.textContent = 'Done! PNG + PDF downloaded and email sent (without image preview).';
+    } catch (err2) {
+      status.className = 'status-msg error';
+      status.textContent = 'PNG + PDF downloaded but email failed: ' + err2.message;
+    }
   }
+  btn.disabled = false;
 }
 </script>
 </body>
