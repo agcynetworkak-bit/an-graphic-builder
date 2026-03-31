@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agency Solutions LIVE — Graphic Builder</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -195,45 +195,72 @@ body {
 .gfx-banner {
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 90px;
+  height: 110px;
   background: var(--soft-black);
   border-bottom: 3px solid var(--red);
   display: flex;
   align-items: center;
   padding: 0 32px;
-  gap: 18px;
+  gap: 22px;
   z-index: 10;
 }
-.gfx-banner-divider {
-  width: 2px;
-  height: 48px;
-  background: var(--red);
-}
-.gfx-banner-text {
+.gfx-banner-logo {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  align-items: center;
+  flex-shrink: 0;
+}
+.gfx-banner-an {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 72px;
+  color: var(--red);
+  line-height: 0.85;
+  letter-spacing: -0.02em;
 }
 .gfx-banner-network {
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 11px;
   color: #ccc;
   letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-top: -6px;
+}
+.gfx-banner-divider {
+  width: 2px;
+  height: 60px;
+  background: var(--red);
+  flex-shrink: 0;
+}
+.gfx-banner-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.gfx-banner-agency {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #999;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
 }
 .gfx-banner-title {
   font-family: 'Montserrat', sans-serif;
   font-weight: 900;
-  font-size: 28px;
+  font-size: 42px;
   color: var(--white);
+  line-height: 1;
+  text-transform: uppercase;
 }
 .gfx-banner-title span { color: var(--red); }
 
 /* Section F: Date badge */
 .gfx-date-badge {
   position: absolute;
-  top: 100px;
+  top: 120px;
   right: 32px;
   background: var(--red);
   padding: 12px 20px;
@@ -368,10 +395,7 @@ body {
 
 <!-- App Header -->
 <header class="app-header">
-  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="40" height="40" rx="6" fill="#B0251E"/>
-    <text x="20" y="28" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="900" font-size="20" fill="white">AN</text>
-  </svg>
+  <span style="font-family:'Playfair Display',serif;font-weight:900;font-size:32px;color:#B0251E;line-height:1;letter-spacing:-0.02em;">AN</span>
   <h1>Agency <span>Solutions</span> LIVE &mdash; Graphic Builder</h1>
 </header>
 
@@ -446,13 +470,14 @@ body {
       <div id="graphic-preview">
         <!-- A: Banner -->
         <div class="gfx-banner">
-          <div style="width:72px;height:72px;background:#B0251E;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <span style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:36px;color:white;letter-spacing:0.02em;">AN</span>
+          <div class="gfx-banner-logo">
+            <span class="gfx-banner-an">AN</span>
+            <span class="gfx-banner-network">AGENCY NETWORK</span>
           </div>
           <div class="gfx-banner-divider"></div>
           <div class="gfx-banner-text">
-            <div class="gfx-banner-network">Agency Network</div>
-            <div class="gfx-banner-title">Agency <span>Solutions</span> Live</div>
+            <div class="gfx-banner-agency">AGENCY</div>
+            <div class="gfx-banner-title">SOLUTIONS <span>LIVE</span></div>
           </div>
         </div>
 
