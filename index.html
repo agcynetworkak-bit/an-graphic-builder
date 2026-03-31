@@ -556,6 +556,15 @@ function formatTime(val) {
   return h + ':' + String(m).padStart(2, '0') + ' ' + ampm + ' EST';
 }
 
+function titleCase(str) {
+  if (!str) return '';
+  const lower = ['of','the','and','in','on','at','to','for','a','an','by','with','from','as','or','nor','but','is'];
+  return str.split(' ').map(function(word, i) {
+    if (i > 0 && lower.indexOf(word.toLowerCase()) !== -1) return word.toLowerCase();
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  }).join(' ');
+}
+
 function updatePreview() {
   const first = document.getElementById('speakerFirst').value.trim();
   const last = document.getElementById('speakerLast').value.trim();
@@ -578,11 +587,11 @@ function updatePreview() {
     rule.style.width = '80px';
   }
 
-  // C: Role
-  document.getElementById('gfxSpeakerRole').textContent = role;
+  // C: Role (title case)
+  document.getElementById('gfxSpeakerRole').textContent = titleCase(role);
 
-  // D: Topic
-  document.getElementById('gfxTopic').textContent = topic;
+  // D: Topic (ALL CAPS)
+  document.getElementById('gfxTopic').textContent = topic.toUpperCase();
 
   // F: Date badge
   const badge = document.getElementById('gfxDateBadge');
@@ -619,11 +628,28 @@ async function handlePhoto(input) {
     document.getElementById('gfxPhoto').style.display = 'block';
   }
 
+  // Helper: resize image to max dimension before bg removal to save memory
+  function resizeForProcessing(file, maxSize) {
+    return new Promise(function(resolve) {
+      var img = new Image();
+      img.onload = function() {
+        var w = img.width, h = img.height;
+        if (w <= maxSize && h <= maxSize) { resolve(file); return; }
+        var scale = maxSize / Math.max(w, h);
+        var c = document.createElement('canvas');
+        c.width = Math.round(w * scale);
+        c.height = Math.round(h * scale);
+        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+        c.toBlob(function(blob) { resolve(blob); }, 'image/png');
+      };
+      img.src = URL.createObjectURL(file);
+    });
+  }
+
   if (shouldRemoveBg) {
     if (!window.imglyRemoveBackground) {
       status.className = 'status-msg';
       status.textContent = 'Loading background removal AI model... please wait';
-      // Wait up to 30 seconds for the library to load
       for (let i = 0; i < 60; i++) {
         await new Promise(r => setTimeout(r, 500));
         if (window.imglyRemoveBackground) break;
@@ -633,14 +659,18 @@ async function handlePhoto(input) {
       status.className = 'status-msg';
       status.textContent = 'Removing background... (first time may take 30-60s to download AI model)';
       try {
-        const blob = await window.imglyRemoveBackground(file, { output: { format: 'image/png' } });
+        var resized = await resizeForProcessing(file, 1024);
+        const blob = await window.imglyRemoveBackground(resized, {
+          model: 'small',
+          output: { format: 'image/png', quality: 0.8 }
+        });
         showPhoto(URL.createObjectURL(blob));
         status.className = 'status-msg success';
         status.textContent = 'Background removed!';
         setTimeout(() => { status.textContent = ''; status.className = 'status-msg'; }, 4000);
       } catch (err) {
         console.error('BG removal error:', err);
-        const reader = new FileReader();
+        var reader = new FileReader();
         reader.onload = function(e) { showPhoto(e.target.result); };
         reader.readAsDataURL(file);
         status.className = 'status-msg error';
@@ -648,7 +678,7 @@ async function handlePhoto(input) {
         setTimeout(() => { status.textContent = ''; status.className = 'status-msg'; }, 5000);
       }
     } else {
-      const reader = new FileReader();
+      var reader = new FileReader();
       reader.onload = function(e) { showPhoto(e.target.result); };
       reader.readAsDataURL(file);
       status.className = 'status-msg error';
@@ -656,7 +686,7 @@ async function handlePhoto(input) {
       setTimeout(() => { status.textContent = ''; status.className = 'status-msg'; }, 5000);
     }
   } else {
-    const reader = new FileReader();
+    var reader = new FileReader();
     reader.onload = function(e) { showPhoto(e.target.result); };
     reader.readAsDataURL(file);
   }
