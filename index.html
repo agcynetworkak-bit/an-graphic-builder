@@ -814,29 +814,37 @@ async function handleSubmit(e) {
       callTime: formatTime(document.getElementById('callTime').value)
     };
 
-    // Submit via hidden form + iframe (works on all browsers including mobile Safari)
-    var iframe = document.createElement('iframe');
-    iframe.name = 'gas-submit-' + Date.now();
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-
-    var form = document.createElement('form');
-    form.method = 'POST';
-    form.action = GAS_URL;
-    form.target = iframe.name;
-
-    for (var key in emailData) {
-      var input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = key;
-      input.value = emailData[key];
-      form.appendChild(input);
+    // Method 1: sendBeacon (fire-and-forget, works on all modern browsers)
+    var beaconSent = false;
+    if (navigator.sendBeacon) {
+      var formData = new FormData();
+      for (var key in emailData) {
+        formData.append(key, emailData[key]);
+      }
+      beaconSent = navigator.sendBeacon(GAS_URL, formData);
+      console.log('sendBeacon result:', beaconSent);
     }
 
-    document.body.appendChild(form);
-    form.submit();
-    form.remove();
-    setTimeout(function() { iframe.remove(); }, 10000);
+    // Method 2: hidden form + static iframe (backup, uses pre-existing iframe)
+    if (!beaconSent) {
+      var form = document.createElement('form');
+      form.method = 'POST';
+      form.action = GAS_URL;
+      form.target = 'gas-email-frame';
+      form.style.display = 'none';
+
+      for (var key in emailData) {
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = emailData[key];
+        form.appendChild(input);
+      }
+
+      document.body.appendChild(form);
+      form.submit();
+      setTimeout(function() { form.remove(); }, 5000);
+    }
 
     status.className = 'status-msg success';
     status.textContent = 'Done! PNG + PDF downloaded and email sent to andrew@agcynetwork.com';
@@ -848,5 +856,6 @@ async function handleSubmit(e) {
   btn.disabled = false;
 }
 </script>
+<iframe name="gas-email-frame" id="gas-email-frame" style="display:none" src="about:blank"></iframe>
 </body>
 </html>
