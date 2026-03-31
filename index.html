@@ -9,10 +9,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script type="module">
-import imglyRemoveBackground from 'https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/+esm';
-window.imglyRemoveBackground = imglyRemoveBackground;
-window._bgRemovalReady = true;
-console.log('Background removal library loaded');
+import { removeBackground } from 'https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/+esm';
+window.imglyRemoveBackground = removeBackground;
+console.log('Background removal library loaded, type:', typeof removeBackground);
 </script>
 <style>
 :root {
