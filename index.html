@@ -267,14 +267,14 @@ body {
 }
 
 /* Red rule */
-.gfx-red-rule {
+#gfxRedRule {
   position: absolute;
   top: 530px;
   left: 48px;
-  width: 80px;
   height: 3px;
   background: var(--red);
   z-index: 10;
+  transition: width 0.2s;
 }
 
 /* Section D: Topic */
@@ -294,7 +294,7 @@ body {
 /* Section E: Bullets */
 .gfx-bullets {
   position: absolute;
-  top: 620px;
+  top: 650px;
   left: 48px;
   right: 500px;
   list-style: none;
@@ -434,10 +434,9 @@ body {
       <div id="graphic-preview">
         <!-- A: Banner -->
         <div class="gfx-banner">
-          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="72" height="72" rx="10" fill="#B0251E"/>
-            <text x="36" y="48" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="900" font-size="36" fill="white">AN</text>
-          </svg>
+          <div style="width:72px;height:72px;background:#B0251E;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:36px;color:white;letter-spacing:0.02em;">AN</span>
+          </div>
           <div class="gfx-banner-divider"></div>
           <div class="gfx-banner-text">
             <div class="gfx-banner-network">Agency Network</div>
@@ -455,7 +454,7 @@ body {
         <div class="gfx-speaker-role" id="gfxSpeakerRole"></div>
 
         <!-- Red Rule -->
-        <div class="gfx-red-rule"></div>
+        <div id="gfxRedRule" style="width:80px;"></div>
 
         <!-- D: Topic -->
         <div class="gfx-topic" id="gfxTopic"></div>
@@ -495,7 +494,16 @@ function updatePreview() {
   const time = document.getElementById('callTime').value.trim();
 
   // B: Speaker name
-  document.getElementById('gfxSpeakerName').textContent = [first, last].filter(Boolean).join(' ');
+  const nameEl = document.getElementById('gfxSpeakerName');
+  nameEl.textContent = [first, last].filter(Boolean).join(' ');
+
+  // Red rule matches speaker name width
+  const rule = document.getElementById('gfxRedRule');
+  if (nameEl.textContent) {
+    rule.style.width = Math.min(nameEl.scrollWidth, 580) + 'px';
+  } else {
+    rule.style.width = '80px';
+  }
 
   // C: Role
   document.getElementById('gfxSpeakerRole').textContent = role;
