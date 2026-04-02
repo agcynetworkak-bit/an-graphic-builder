@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agency Network//Agency Solutions LIVE//EN
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+DTSTART:20260414T170000Z
+DTEND:20260414T180000Z
+DTSTAMP:20260402T120000Z
+UID:asl-lindsay-vastola-20260414@agcynetwork.com
+ORGANIZER;CN=Agency Network:mailto:agcynetworkak@gmail.com
+SUMMARY:Agency Solutions LIVE — Lindsay Vastola: Hold Your Standards and Empower Team Excellence
+DESCRIPTION:You're invited to Agency Solutions LIVE featuring Lindsay Vastola.\n\n"How to Leverage Emotional Intelligence to Ignite Accountability\, Ownership\, and a High-Performing Team"\n\nTuesday\, April 14\, 2026 at 1:00 PM EST\n\nJoin via Microsoft Teams:\nhttps://teams.microsoft.com/meet/24984529608416?p=64jsNPGSejvKq30qW9\n\nMeeting ID: 249 845 296 084 16\nPasscode: GP7po6Mr\n\nAN Members Only
+LOCATION:Microsoft Teams - https://teams.microsoft.com/meet/24984529608416?p=64jsNPGSejvKq30qW9
+STATUS:CONFIRMED
+SEQUENCE:0
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Agency Solutions LIVE starts in 30 minutes
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Agency Solutions LIVE is tomorrow at 1:00 PM EST
+END:VALARM
+END:VEVENT
+END:VCALENDAR
