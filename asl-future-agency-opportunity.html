@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agency Solutions LIVE — The Future Agency Opportunity | May 20</title>
+<meta name="description" content="Add to your calendar: The Future Agency Opportunity — Agency Solutions LIVE panel with 5 Presidents Club agents. Wednesday, May 20 at 3:00 PM ET.">
+<meta property="og:title" content="Agency Solutions LIVE — The Future Agency Opportunity">
+<meta property="og:description" content="Wednesday, May 20 · 3:00 PM Eastern · 5 Presidents Club agents. Add to your calendar.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #B0251E;
+    --dark-red: #8F1E18;
+    --black: #111111;
+    --soft-black: #1A1A1A;
+    --hero-bg: #0D0D0D;
+    --hero-glow-end: #2A0A08;
+    --white: #FFFFFF;
+    --off-white: #F7F7F7;
+    --gray: #E8E8E8;
+    --body-gray: #555555;
+    --line: rgba(255,255,255,0.08);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'Open Sans', system-ui, sans-serif;
+    background: var(--off-white);
+    color: var(--black);
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+
+  /* Top red accent bar */
+  .accent-bar {
+    height: 4px;
+    background: linear-gradient(to right, var(--dark-red), var(--red), var(--dark-red));
+  }
+
+  /* App header */
+  .app-header {
+    background: var(--soft-black);
+    border-bottom: 3px solid var(--red);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .monogram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--red);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    letter-spacing: 1px;
+    border-radius: 4px;
+  }
+  .app-header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+  .app-header h1 span { color: var(--red); }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 85% 15%, rgba(176,37,30,0.28), transparent 55%),
+      linear-gradient(135deg, var(--hero-bg) 0%, var(--soft-black) 55%, var(--hero-glow-end) 100%);
+    color: var(--white);
+    padding: 56px 24px 48px;
+  }
+  .hero-inner { max-width: 760px; margin: 0 auto; }
+  .series-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .series-label span { color: var(--white); margin: 0 6px; opacity: 0.4; }
+  .hero h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(28px, 5.5vw, 44px);
+    line-height: 1.08;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+  .hero h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: clamp(16px, 2.4vw, 20px);
+    color: var(--gray);
+    margin-bottom: 28px;
+  }
+  .date-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border: 1px solid rgba(176,37,30,0.55);
+    border-radius: 999px;
+    background: rgba(176,37,30,0.10);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .date-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
+
+  /* Main */
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 24px 24px;
+  }
+  .description {
+    font-size: 17px;
+    color: var(--black);
+    margin-bottom: 24px;
+  }
+  .description p + p { margin-top: 14px; }
+
+  .panel-card {
+    background: var(--white);
+    border: 1px solid var(--gray);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 24px;
+    margin: 24px 0 32px;
+  }
+  .panel-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .panel-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 8px 20px;
+  }
+  .panel-list li {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--black);
+    padding-left: 16px;
+    position: relative;
+  }
+  .panel-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    background: var(--red);
+    border-radius: 50%;
+  }
+
+  /* Calendar section */
+  .cal-section {
+    background: var(--white);
+    border: 1px solid var(--gray);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 28px 24px;
+    margin-bottom: 32px;
+  }
+  .cal-section h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--black);
+    margin-bottom: 6px;
+    text-align: center;
+  }
+  .cal-section .sub {
+    text-align: center;
+    color: var(--body-gray);
+    font-size: 14px;
+    margin-bottom: 22px;
+  }
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  @media (min-width: 560px) {
+    .cal-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  .cal-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 18px 12px;
+    border: 1px solid var(--gray);
+    border-radius: 8px;
+    background: var(--white);
+    color: var(--black);
+    text-decoration: none;
+    transition: transform 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+  .cal-btn:hover {
+    border-color: var(--red);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(176,37,30,0.18);
+  }
+  .cal-btn svg { width: 28px; height: 28px; }
+
+  /* Join section */
+  .join-section {
+    background: var(--soft-black);
+    color: var(--white);
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .join-section .label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .join-section a.join-link {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--white);
+    background: var(--red);
+    border: 1px solid var(--dark-red);
+    border-radius: 6px;
+    padding: 12px 22px;
+    text-decoration: none;
+    transition: background 0.12s ease;
+  }
+  .join-section a.join-link:hover { background: var(--dark-red); }
+  .meeting-meta {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+  .meeting-meta span { color: rgba(255,255,255,0.5); margin-right: 4px; }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 32px 24px 48px;
+    border-top: 1px solid var(--gray);
+    background: var(--white);
+  }
+  .tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--red);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .footer-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    color: var(--body-gray);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 480px) {
+    .hero { padding: 40px 20px 36px; }
+    main { padding: 28px 18px 18px; }
+    .cal-section, .panel-card, .join-section { padding: 20px 16px; }
+  }
+</style>
+</head>
+<body>
+  <div class="accent-bar"></div>
+
+  <header class="app-header">
+    <div class="monogram">AN</div>
+    <h1>Agency <span>Network</span></h1>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="series-label">Agency Solutions LIVE <span>·</span> Live-Only Event</div>
+      <h2>The Future Agency Opportunity</h2>
+      <h3>What Top Agents Are Doing Next</h3>
+      <div class="date-pill">
+        <span class="dot"></span>
+        Wed · May 20 · 3:00 PM Eastern
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="description">
+      <p>The landscape is shifting. The agents who win the next five years won't be the ones who wait to see how things settle — they'll be the ones already moving.</p>
+      <p>Five Presidents Club agents go live for an unfiltered conversation about what's actually changing, what it means for your book, and the moves they're making right now.</p>
+      <p><strong>LIVE ONLY. No recording. No replay.</strong></p>
+    </div>
+
+    <div class="panel-card">
+      <div class="panel-label">On the Panel</div>
+      <ul class="panel-list">
+        <li>Al Shattuck</li>
+        <li>David Peterson</li>
+        <li>Karen Burtis</li>
+        <li>Jeff Burtis</li>
+        <li>Hayk Tadevosyan</li>
+      </ul>
+    </div>
+
+    <div class="cal-section">
+      <h4>Add to your calendar</h4>
+      <div class="sub">Pick whichever calendar you use.</div>
+      <div class="cal-grid">
+        <a id="cal-google" class="cal-btn" target="_blank" rel="noopener noreferrer" href="#">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="17" rx="2.5" stroke="#B0251E" stroke-width="2"/>
+            <path d="M8 2v4M16 2v4M3 9h18" stroke="#B0251E" stroke-width="2" stroke-linecap="round"/>
+            <text x="12" y="17" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="800" font-size="7" fill="#B0251E">G</text>
+          </svg>
+          Google
+        </a>
+        <a id="cal-outlook" class="cal-btn" target="_blank" rel="noopener noreferrer" href="#">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="17" rx="2.5" stroke="#B0251E" stroke-width="2"/>
+            <path d="M8 2v4M16 2v4M3 9h18" stroke="#B0251E" stroke-width="2" stroke-linecap="round"/>
+            <text x="12" y="17" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="800" font-size="7" fill="#B0251E">O</text>
+          </svg>
+          Outlook
+        </a>
+        <a id="cal-apple" class="cal-btn" href="asl-future-agency-opportunity.ics" download>
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="17" rx="2.5" stroke="#B0251E" stroke-width="2"/>
+            <path d="M8 2v4M16 2v4M3 9h18" stroke="#B0251E" stroke-width="2" stroke-linecap="round"/>
+            <text x="12" y="17" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="800" font-size="7" fill="#B0251E">A</text>
+          </svg>
+          Apple / Other
+        </a>
+        <a id="cal-yahoo" class="cal-btn" target="_blank" rel="noopener noreferrer" href="#">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="17" rx="2.5" stroke="#B0251E" stroke-width="2"/>
+            <path d="M8 2v4M16 2v4M3 9h18" stroke="#B0251E" stroke-width="2" stroke-linecap="round"/>
+            <text x="12" y="17" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="800" font-size="7" fill="#B0251E">Y</text>
+          </svg>
+          Yahoo
+        </a>
+      </div>
+    </div>
+
+    <div class="join-section">
+      <div class="label">Day Of · Join Directly</div>
+      <a class="join-link" href="https://teams.microsoft.com/meet/287597241544189?p=rEVXyWaT9Ufl74Eq4W" target="_blank" rel="noopener noreferrer">Join Microsoft Teams Call</a>
+      <div class="meeting-meta">
+        <div><span>Meeting ID:</span> 287 597 241 544 189</div>
+        <div><span>Passcode:</span> pG66ts6u</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="tagline">Connecting Agents – Inspiring Greatness</div>
+    <div class="footer-name">Agency Network</div>
+  </footer>
+
+<script>
+(function () {
+  const cfg = {
+    title: "Agency Solutions LIVE - The Future Agency Opportunity: What Top Agents Are Doing Next",
+    startUTC: "20260520T190000Z",
+    endUTC:   "20260520T203000Z",
+    startISO: "2026-05-20T19:00:00+00:00",
+    endISO:   "2026-05-20T20:30:00+00:00",
+    location: "Microsoft Teams - https://teams.microsoft.com/meet/287597241544189?p=rEVXyWaT9Ufl74Eq4W",
+    body: [
+      "THE FUTURE AGENCY OPPORTUNITY: What Top Agents Are Doing Next",
+      "",
+      "Agency Solutions LIVE | Wednesday, May 20, 2026 | 3:00 PM Eastern",
+      "",
+      "Five Presidents Club agents - Al Shattuck, David Peterson, Karen Burtis, Jeff Burtis, Hayk Tadevosyan - for an unfiltered, live-only conversation about what's actually changing, what it means for your book, and the moves they're making right now.",
+      "",
+      "LIVE ONLY. No recording. No replay.",
+      "",
+      "Join Microsoft Teams:",
+      "https://teams.microsoft.com/meet/287597241544189?p=rEVXyWaT9Ufl74Eq4W",
+      "",
+      "Meeting ID: 287 597 241 544 189",
+      "Passcode: pG66ts6u",
+      "",
+      "Connecting Agents - Inspiring Greatness",
+      "Agency Network"
+    ].join("\n")
+  };
+
+  const e = encodeURIComponent;
+
+  const google =
+    "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+    "&text=" + e(cfg.title) +
+    "&dates=" + cfg.startUTC + "/" + cfg.endUTC +
+    "&details=" + e(cfg.body) +
+    "&location=" + e(cfg.location);
+
+  const outlook =
+    "https://outlook.office.com/calendar/0/deeplink/compose?path=%2Fcalendar%2Faction%2Fcompose&rru=addevent" +
+    "&subject=" + e(cfg.title) +
+    "&startdt=" + e(cfg.startISO) +
+    "&enddt=" + e(cfg.endISO) +
+    "&location=" + e(cfg.location) +
+    "&body=" + e(cfg.body);
+
+  const yahoo =
+    "https://calendar.yahoo.com/?v=60&view=d&type=20" +
+    "&title=" + e(cfg.title) +
+    "&st=" + cfg.startUTC +
+    "&et=" + cfg.endUTC +
+    "&desc=" + e(cfg.body) +
+    "&in_loc=" + e(cfg.location);
+
+  document.getElementById("cal-google").href  = google;
+  document.getElementById("cal-outlook").href = outlook;
+  document.getElementById("cal-yahoo").href   = yahoo;
+})();
+</script>
+</body>
+</html>
