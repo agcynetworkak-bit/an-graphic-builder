@@ -249,70 +249,94 @@
     font-size: 14px;
     margin-bottom: 22px;
   }
-  .cal-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-  @media (min-width: 560px) {
-    .cal-grid { grid-template-columns: repeat(3, 1fr); }
-  }
-  .cal-fallback {
-    margin-top: 18px;
+  /* Primary "Add to Calendar" button — works inside Facebook in-app browser */
+  .cal-primary {
+    display: block;
+    width: 100%;
     text-align: center;
-    font-size: 13px;
-    color: var(--body-gray);
-  }
-  .cal-fallback a {
-    color: var(--red);
-    font-weight: 700;
-    text-decoration: underline;
-  }
-  /* In-app browser warning */
-  .iab-warning {
-    background: #FEF3C7;
-    border-bottom: 3px solid #D97706;
-    color: #78350F;
-    padding: 14px 20px;
-    font-size: 14px;
-    text-align: center;
-    font-family: 'Open Sans', sans-serif;
-  }
-  .iab-warning strong { color: #78350F; }
-  .iab-warning .menu-icon {
-    display: inline-block;
-    background: #78350F;
-    color: #FEF3C7;
-    border-radius: 4px;
-    padding: 1px 6px;
-    font-weight: 800;
-    margin: 0 2px;
-  }
-  .cal-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 18px 12px;
-    border: 1px solid var(--gray);
-    border-radius: 8px;
-    background: var(--white);
-    color: var(--black);
+    background: var(--red);
+    color: var(--white);
     text-decoration: none;
-    transition: transform 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    padding: 20px 24px;
+    border-radius: 8px;
+    border: 1px solid var(--dark-red);
+    box-shadow: 0 4px 14px rgba(176,37,30,0.25);
+    transition: transform 0.12s ease, background 0.12s ease;
+  }
+  .cal-primary:hover, .cal-primary:focus { background: var(--dark-red); transform: translateY(-1px); }
+  .cal-primary-note {
+    text-align: center;
+    color: var(--body-gray);
+    font-size: 13px;
+    margin-top: 10px;
+  }
+  /* Expandable "other calendar" options */
+  details.cal-alt {
+    margin-top: 22px;
+    border-top: 1px solid var(--gray);
+    padding-top: 16px;
+  }
+  details.cal-alt summary {
+    cursor: pointer;
+    text-align: center;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 13px;
-    letter-spacing: 0.5px;
+    color: var(--body-gray);
+    list-style: none;
+    padding: 6px;
+  }
+  details.cal-alt summary::-webkit-details-marker { display: none; }
+  details.cal-alt summary::after { content: " ▾"; color: var(--red); }
+  details.cal-alt[open] summary::after { content: " ▴"; }
+  .cal-alt-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  @media (min-width: 480px) {
+    .cal-alt-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .cal-alt-grid a, .cal-alt-grid button {
+    display: block;
     text-align: center;
+    background: var(--white);
+    color: var(--black);
+    border: 1px solid var(--gray);
+    border-radius: 6px;
+    padding: 12px 14px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    transition: border-color 0.12s ease;
   }
-  .cal-btn:hover {
-    border-color: var(--red);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 14px rgba(176,37,30,0.18);
+  .cal-alt-grid a:hover, .cal-alt-grid button:hover { border-color: var(--red); color: var(--red); }
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--soft-black);
+    color: var(--white);
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 100;
   }
-  .cal-btn svg { width: 28px; height: 28px; }
+  .toast.show { opacity: 1; }
 
   /* Join section */
   .join-section {
@@ -390,10 +414,6 @@
 <body>
   <div class="accent-bar"></div>
 
-  <div id="iab-warning" class="iab-warning" hidden>
-    <strong>Heads up — you're inside Facebook's browser.</strong> Calendar buttons may not work here. Tap the <span class="menu-icon">•••</span> menu in the top corner and choose <strong>"Open in browser"</strong> first.
-  </div>
-
   <header class="app-header">
     <div class="banner-logo">
       <span class="banner-an">AN</span>
@@ -439,35 +459,22 @@
     <div class="cal-section">
       <h4>Add to your calendar</h4>
       <div class="sub">Pick whichever calendar you use.</div>
-      <div class="cal-grid">
-        <a id="cal-apple" class="cal-btn" href="webcal://agcynetworkak-bit.github.io/an-graphic-builder/asl-future-agency-opportunity.ics">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="3" y="4" width="18" height="17" rx="2.5" stroke="#B0251E" stroke-width="2"/>
-            <path d="M8 2v4M16 2v4M3 9h18" stroke="#B0251E" stroke-width="2" stroke-linecap="round"/>
-            <text x="12" y="17" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="800" font-size="7" fill="#B0251E">i</text>
-          </svg>
-          iPhone / iPad
-        </a>
-        <a id="cal-google" class="cal-btn" target="_blank" rel="noopener noreferrer" href="#">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="3" y="4" width="18" height="17" rx="2.5" stroke="#B0251E" stroke-width="2"/>
-            <path d="M8 2v4M16 2v4M3 9h18" stroke="#B0251E" stroke-width="2" stroke-linecap="round"/>
-            <text x="12" y="17" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="800" font-size="7" fill="#B0251E">G</text>
-          </svg>
-          Google
-        </a>
-        <a id="cal-outlook" class="cal-btn" href="asl-future-agency-opportunity.ics" download>
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="3" y="4" width="18" height="17" rx="2.5" stroke="#B0251E" stroke-width="2"/>
-            <path d="M8 2v4M16 2v4M3 9h18" stroke="#B0251E" stroke-width="2" stroke-linecap="round"/>
-            <text x="12" y="17" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="800" font-size="7" fill="#B0251E">O</text>
-          </svg>
-          Outlook / Other
-        </a>
-      </div>
-      <div class="cal-fallback">
-        Trouble? <a href="asl-future-agency-opportunity.ics" download>Download the invite file directly</a> and open it in your calendar app.
-      </div>
+      <a id="cal-primary" class="cal-primary" href="#" target="_blank" rel="noopener noreferrer">
+        📅 Add to Calendar
+      </a>
+      <p class="cal-primary-note">One tap — works inside the Facebook app. Opens Google Calendar with the event filled in.</p>
+
+      <details class="cal-alt">
+        <summary>Don't use Google Calendar? Other options</summary>
+        <div class="cal-alt-grid">
+          <a id="cal-outlook-personal" target="_blank" rel="noopener noreferrer" href="#">Outlook (Hotmail / Personal)</a>
+          <a id="cal-outlook-work" target="_blank" rel="noopener noreferrer" href="#">Outlook (Work / Office 365)</a>
+          <a id="cal-apple" href="webcal://agcynetworkak-bit.github.io/an-graphic-builder/asl-future-agency-opportunity.ics">Apple Calendar (Subscribe)</a>
+          <a id="cal-ics-download" href="asl-future-agency-opportunity.ics" download>Download .ics File</a>
+          <a id="cal-email" href="#">Email the Invite to Myself</a>
+          <button id="cal-copy" type="button">Copy Meeting Details</button>
+        </div>
+      </details>
     </div>
 
     <div class="join-section">
@@ -480,6 +487,8 @@
     </div>
   </main>
 
+  <div id="toast" class="toast">Copied!</div>
+
   <footer>
     <div class="tagline">Connecting Agents – Inspiring Greatness</div>
     <div class="footer-name">Agency Network</div>
@@ -487,43 +496,36 @@
 
 <script>
 (function () {
-  // Detect Facebook / Instagram / TikTok in-app browser and warn the user.
-  // These browsers commonly block target=_blank, webcal://, and silent downloads.
-  var ua = (navigator.userAgent || '') + ' ' + (navigator.vendor || '');
-  var iab = /\bFBAN\b|\bFBAV\b|\bFB_IAB\b|Instagram|Twitter|TikTok|Snapchat|Line\//i.test(ua);
-  if (iab) {
-    var w = document.getElementById('iab-warning');
-    if (w) w.hidden = false;
-  }
-
-  // Build the Google Calendar deep link (only the Google button needs constructed URL;
-  // iPhone uses webcal://, Outlook/Other downloads the .ics directly).
+  // Meeting config — single source of truth for every button URL on this page.
   var cfg = {
-    title: "Agency Solutions LIVE - The Future Agency Opportunity: What Top Agents Are Doing Next",
+    title: "Agency Solutions LIVE - The Future Agency Opportunity",
     startUTC: "20260520T190000Z",
     endUTC:   "20260520T203000Z",
-    location: "Microsoft Teams - https://teams.microsoft.com/meet/287597241544189?p=rEVXyWaT9Ufl74Eq4W",
-    body: [
-      "THE FUTURE AGENCY OPPORTUNITY: What Top Agents Are Doing Next",
-      "",
-      "Agency Solutions LIVE | Wednesday, May 20, 2026 | 3:00 PM Eastern",
-      "",
-      "Five Presidents Club agents - Al Shattuck, David Peterson, Karen Burtis, Jeff Burtis, Hayk Tadevosyan - for an unfiltered, live-only conversation about what's actually changing, what it means for your book, and the moves they're making right now.",
-      "",
-      "LIVE ONLY. No recording. No replay.",
-      "",
-      "Join Microsoft Teams:",
-      "https://teams.microsoft.com/meet/287597241544189?p=rEVXyWaT9Ufl74Eq4W",
-      "",
-      "Meeting ID: 287 597 241 544 189",
-      "Passcode: pG66ts6u",
-      "",
-      "Connecting Agents - Inspiring Greatness",
-      "Agency Network"
-    ].join("\n")
+    startISO: "2026-05-20T19:00:00+00:00",
+    endISO:   "2026-05-20T20:30:00+00:00",
+    teamsURL: "https://teams.microsoft.com/meet/287597241544189?p=rEVXyWaT9Ufl74Eq4W",
+    meetingID: "287 597 241 544 189",
+    passcode: "pG66ts6u",
+    location: "Microsoft Teams - https://teams.microsoft.com/meet/287597241544189?p=rEVXyWaT9Ufl74Eq4W"
   };
 
+  // Compact body — short enough to survive any URL length limit in any in-app browser.
+  cfg.body = [
+    "Agency Solutions LIVE | Wed, May 20, 2026 | 3:00 PM ET",
+    "",
+    "Panel: Al Shattuck, David Peterson, Karen Burtis, Jeff Burtis, Hayk Tadevosyan",
+    "",
+    "LIVE ONLY. No recording. No replay.",
+    "",
+    "Join Teams: " + cfg.teamsURL,
+    "Meeting ID: " + cfg.meetingID,
+    "Passcode: " + cfg.passcode
+  ].join("\n");
+
   var e = encodeURIComponent;
+
+  // PRIMARY: Google Calendar render URL — works in Facebook in-app browser,
+  // works on every device, works for everyone with a Google account.
   var google =
     "https://calendar.google.com/calendar/render?action=TEMPLATE" +
     "&text=" + e(cfg.title) +
@@ -531,8 +533,64 @@
     "&details=" + e(cfg.body) +
     "&location=" + e(cfg.location);
 
-  var gBtn = document.getElementById("cal-google");
-  if (gBtn) gBtn.href = google;
+  // SECONDARY: Outlook deep links — two flavors because work and personal
+  // Microsoft accounts use different hosts.
+  function outlookURL(host) {
+    return "https://" + host + "/calendar/0/deeplink/compose?path=%2Fcalendar%2Faction%2Fcompose&rru=addevent" +
+      "&subject=" + e(cfg.title) +
+      "&startdt=" + e(cfg.startISO) +
+      "&enddt=" + e(cfg.endISO) +
+      "&location=" + e(cfg.location) +
+      "&body=" + e(cfg.body);
+  }
+
+  // SECONDARY: mailto: — opens the user's default email app OUTSIDE Facebook IAB,
+  // breaking them out of the in-app browser trap. Self-email with all the details.
+  var mailto = "mailto:?subject=" + e("Add to calendar: " + cfg.title) +
+    "&body=" + e(cfg.body +
+      "\n\nAdd to your calendar in one tap:\n" + window.location.href);
+
+  // Wire everything up.
+  function setHref(id, url) {
+    var el = document.getElementById(id);
+    if (el) el.setAttribute("href", url);
+  }
+  setHref("cal-primary",          google);
+  setHref("cal-outlook-personal", outlookURL("outlook.live.com"));
+  setHref("cal-outlook-work",     outlookURL("outlook.office.com"));
+  setHref("cal-email",            mailto);
+
+  // Copy-to-clipboard fallback for users with none of the above (works everywhere).
+  var copyText = cfg.title + "\n" + cfg.body;
+  var copyBtn = document.getElementById("cal-copy");
+  var toast = document.getElementById("toast");
+  function showToast(msg) {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add("show");
+    setTimeout(function () { toast.classList.remove("show"); }, 1800);
+  }
+  if (copyBtn) {
+    copyBtn.addEventListener("click", function () {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(copyText).then(
+          function () { showToast("Copied to clipboard"); },
+          function () { fallbackCopy(); }
+        );
+      } else { fallbackCopy(); }
+    });
+  }
+  function fallbackCopy() {
+    var ta = document.createElement("textarea");
+    ta.value = copyText;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    try { document.execCommand("copy"); showToast("Copied to clipboard"); }
+    catch (err) { showToast("Press and hold to copy"); }
+    document.body.removeChild(ta);
+  }
 })();
 </script>
 </body>
