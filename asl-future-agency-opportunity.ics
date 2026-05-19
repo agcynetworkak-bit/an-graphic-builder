@@ -2,18 +2,18 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Agency Network//Agency Solutions LIVE//EN
 CALSCALE:GREGORIAN
-METHOD:REQUEST
+METHOD:PUBLISH
 BEGIN:VEVENT
 DTSTART:20260520T190000Z
 DTEND:20260520T203000Z
 DTSTAMP:20260517T120000Z
 UID:asl-future-agency-opportunity-20260520@agcynetwork.com
 ORGANIZER;CN=Agency Network:mailto:agcynetworkak@gmail.com
-SUMMARY:Agency Solutions LIVE — The Future Agency Opportunity: What Top Agents Are Doing Next
-DESCRIPTION:THE FUTURE AGENCY OPPORTUNITY: What Top Agents Are Doing Next\n\nAgency Solutions LIVE | Wednesday\, May 20\, 2026 | 3:00 PM Eastern\n\nThe landscape is shifting. The agents who win the next five years won't be the ones who wait to see how things settle. They'll be the ones already moving.\n\nFive Presidents Club agents — Al Shattuck\, David Peterson\, Karen Burtis\, Jeff Burtis\, and Hayk Tadevosyan — for an unfiltered\, live-only conversation about what's actually changing\, what it means for your book\, and the moves they're making right now.\n\nWhat you'll walk away with:\n• Live reactions from 5 Presidents Club agents\n• What the changes actually mean financially\n• Where top agents see the real opportunity\n• Operational pivots you can make NOW\n• Q&A with agents already preparing for what's next\n\nLIVE ONLY. No recording. No replay. You must be there.\n\nJoin via Microsoft Teams:\nhttps://teams.microsoft.com/meet/287597241544189?p=rEVXyWaT9Ufl74Eq4W\n\nMeeting ID: 287 597 241 544 189\nPasscode: pG66ts6u\n\nConnecting Agents – Inspiring Greatness\nAgency Network
+SUMMARY:Agency Solutions LIVE - The Future Agency Opportunity: What Top Agents Are Doing Next
+DESCRIPTION:THE FUTURE AGENCY OPPORTUNITY: What Top Agents Are Doing Next\n\nAgency Solutions LIVE | Wednesday\, May 20\, 2026 | 3:00 PM Eastern\n\nFive Presidents Club agents - Al Shattuck\, David Peterson\, Karen Burtis\, Jeff Burtis\, Hayk Tadevosyan - for an unfiltered\, live-only conversation about what's actually changing\, what it means for your book\, and the moves they're making right now.\n\nLIVE ONLY. No recording. No replay.\n\nJoin via Microsoft Teams:\nhttps://teams.microsoft.com/meet/287597241544189?p=rEVXyWaT9Ufl74Eq4W\n\nMeeting ID: 287 597 241 544 189\nPasscode: pG66ts6u\n\nConnecting Agents - Inspiring Greatness\nAgency Network
 LOCATION:Microsoft Teams - https://teams.microsoft.com/meet/287597241544189?p=rEVXyWaT9Ufl74Eq4W
 STATUS:CONFIRMED
-SEQUENCE:0
+SEQUENCE:1
 BEGIN:VALARM
 TRIGGER:-PT30M
 ACTION:DISPLAY
