@@ -1,3 +1,5 @@
 # .ics files must use CRLF per RFC 5545.
 # Outlook desktop rejects LF-only .ics files.
-*.ics text eol=crlf
+# `binary` (not `text eol=crlf`) is required so Git stores bytes verbatim and
+# GitHub serves the file unchanged — `text eol=crlf` only affects local checkout.
+*.ics binary
