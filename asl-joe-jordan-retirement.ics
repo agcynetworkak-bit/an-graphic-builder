@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agency Network//Agency Solutions LIVE//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART:20260526T170000Z
+DTEND:20260526T183000Z
+DTSTAMP:20260519T180000Z
+UID:asl-joe-jordan-retirement-20260526@agcynetwork.com
+ORGANIZER;CN=Agency Network:mailto:agcynetworkak@gmail.com
+SUMMARY:Agency Solutions LIVE - Purpose-Driven Retirement Planning (Joe Jordan)
+DESCRIPTION:PURPOSE-DRIVEN RETIREMENT PLANNING with Joe Jordan\n\nAgency Solutions LIVE | Tuesday\, May 26\, 2026 | 1:00 PM Eastern\n\nJoe Jordan - former senior VP at MetLife\, presenter to 400\,000+ financial professionals\, author of Living a Life of Significance - joins Agency Network for an exclusive members-only conversation.\n\nHis presentation explains why financial planning is becoming more like life coaching\, the defining issue of the 21st century\, and the six retirement risks clients need help addressing: longevity\, market volatility\, safe withdrawal rate\, sequence of returns\, inflation\, and health.\n\nFree for Agency Network members. Hosted live on Microsoft Teams.\n\nJoin via Microsoft Teams:\nhttps://teams.microsoft.com/meet/220283480698470?p=888ZyluWc3sU2SW4R5\n\nMeeting ID: 220 283 480 698 470\nPasscode: Ec7nZ3Yd\n\nConnecting Agents - Inspiring Greatness\nAgency Network
+LOCATION:Microsoft Teams - https://teams.microsoft.com/meet/220283480698470?p=888ZyluWc3sU2SW4R5
+STATUS:CONFIRMED
+SEQUENCE:0
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Agency Solutions LIVE starts in 30 minutes
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Agency Solutions LIVE with Joe Jordan is tomorrow at 1:00 PM EDT
+END:VALARM
+END:VEVENT
+END:VCALENDAR
