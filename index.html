@@ -316,7 +316,7 @@ body {
   text-transform: uppercase;
   line-height: 0.9;
   z-index: 10;
-  word-break: break-word;
+  white-space: nowrap;
 }
 
 /* Section C: Role */
@@ -709,9 +709,19 @@ function updatePreview() {
   const date = formatDate(dateRaw);
   const time = formatTime(timeRaw);
 
-  // B: Speaker name
+  // B: Speaker name — first name on its own line, last name stacked below.
+  // Each line stays intact (no word break); auto-shrink so the widest line fits.
   const nameEl = document.getElementById('gfxSpeakerName');
-  nameEl.textContent = [first, last].filter(Boolean).join(' ');
+  nameEl.innerHTML = '';
+  if (first) nameEl.appendChild(document.createTextNode(first));
+  if (first && last) nameEl.appendChild(document.createElement('br'));
+  if (last) nameEl.appendChild(document.createTextNode(last));
+  let nameSize = 80;
+  nameEl.style.fontSize = nameSize + 'px';
+  while (nameEl.scrollWidth > nameEl.clientWidth && nameSize > 20) {
+    nameSize -= 2;
+    nameEl.style.fontSize = nameSize + 'px';
+  }
 
   // Red rule matches speaker name width
   const rule = document.getElementById('gfxRedRule');
