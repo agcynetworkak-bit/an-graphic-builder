@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agency Network//Agency Solutions LIVE//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART:20260609T170000Z
+DTEND:20260609T183000Z
+DTSTAMP:20260529T180000Z
+UID:asl-mike-michalowicz-profit-first-20260609@agcynetwork.com
+ORGANIZER;CN=Agency Network:mailto:agcynetworkak@gmail.com
+SUMMARY:Agency Solutions LIVE - How to Make Your Agency Permanently Profitable (Mike Michalowicz)
+DESCRIPTION:HOW TO MAKE YOUR AGENCY PERMANENTLY PROFITABLE with Mike Michalowicz\n\nAgency Solutions LIVE | Tuesday\, June 9\, 2026 | 1:00 PM - 2:30 PM Eastern\n\nMike Michalowicz - best-selling author of Profit First - shows you the simple methods and strategies to make your agency permanently profitable\, straight from the author himself. Accumulate cash and kiss stress goodbye.\n\nThis is a LIVE workshop on HOW TO IMPLEMENT PROFIT FIRST. You'll also hear from Danielle Mulvey - Mike's go-to partner for following his keynotes with the workshop.\n\nFree for Agency Network members. Hosted live on Microsoft Teams.\n\nJoin via Microsoft Teams:\nhttps://teams.microsoft.com/l/meetup-join/19%3ameeting_YzlhNGRmNTctNWE4OS00YjIzLWI5OGItZmRjMTA1MjVhMjEw%40thread.v2/0?context=%7b%22Tid%22%3a%22282c8ab1-ffde-41d2-b8a3-e5e0807a8226%22%2c%22Oid%22%3a%223f08b1b4-2100-4171-a7d2-850316f36cc7%22%7d\n\nConnecting Agents - Inspiring Greatness\nAgency Network
+LOCATION:Microsoft Teams
+STATUS:CONFIRMED
+SEQUENCE:0
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Agency Solutions LIVE starts in 30 minutes
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Agency Solutions LIVE with Mike Michalowicz is tomorrow at 1:00 PM Eastern
+END:VALARM
+END:VEVENT
+END:VCALENDAR
