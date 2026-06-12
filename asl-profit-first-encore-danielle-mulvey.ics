@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agency Network//Agency Solutions LIVE//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART:20260618T170000Z
+DTEND:20260618T183000Z
+DTSTAMP:20260612T180000Z
+UID:asl-profit-first-encore-danielle-mulvey-20260618@agcynetwork.com
+ORGANIZER;CN=Agency Network:mailto:agcynetworkak@gmail.com
+SUMMARY:Agency Solutions LIVE ENCORE - Profit First Workshop with Danielle Mulvey
+DESCRIPTION:PROFIT FIRST WORKSHOP - ENCORE EVENT with Danielle Mulvey\n\nAgency Solutions LIVE | Thursday\, June 18\, 2026 | 1:00 PM Eastern\n\nMissed our last Agency Solutions call with Mike Michalowicz - HOW TO MAKE YOUR AGENCY PERMANENTLY PROFITABLE - or just want more? Join us for a full one-hour PROFIT FIRST workshop.\n\nDanielle Mulvey delivers a hands-on workshop on how to implement the Profit First concepts. Danielle has built multiple businesses generating over $50 million in annual revenue by rejecting the hope-and-pray approach to cash flow. As host of PROFIT FIRST NATION - the official Profit First podcast - she is Mike's go-to partner for turning his keynotes into actionable workshops.\n\nLet's get ready to IMPLEMENT Profit First.\n\nFree for Agency Network members. Hosted live on Microsoft Teams.\n\nJoin via Microsoft Teams:\nhttps://teams.microsoft.com/meet/263545131017449?p=SElFGWgvxdamtncnn2\n\nMeeting ID: 263 545 131 017 449\nPasscode: Jm6Gz3t7\n\nConnecting Agents - Inspiring Greatness\nAgency Network
+LOCATION:Microsoft Teams - https://teams.microsoft.com/meet/263545131017449?p=SElFGWgvxdamtncnn2
+STATUS:CONFIRMED
+SEQUENCE:0
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Profit First Workshop ENCORE starts in 30 minutes
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Profit First Workshop ENCORE with Danielle Mulvey is tomorrow at 1:00 PM Eastern
+END:VALARM
+END:VEVENT
+END:VCALENDAR

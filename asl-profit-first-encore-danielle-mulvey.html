@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agency Solutions LIVE ENCORE — Profit First Workshop with Danielle Mulvey | June 18</title>
+<meta name="description" content="Add to your calendar: ENCORE — a full one-hour Profit First workshop with Danielle Mulvey. Agency Solutions LIVE, Thursday June 18 at 1:00 PM ET. Members only.">
+<meta property="og:title" content="Agency Solutions LIVE ENCORE — Profit First Workshop with Danielle Mulvey">
+<meta property="og:description" content="Thursday, June 18, 2026 · 1:00 PM Eastern · a full one-hour Profit First implementation workshop. Add to your calendar.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700;800;900&family=Montserrat:wght@600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #B0251E;
+    --dark-red: #8F1E18;
+    --black: #111111;
+    --soft-black: #1A1A1A;
+    --hero-bg: #0D0D0D;
+    --hero-glow-end: #2A0A08;
+    --white: #FFFFFF;
+    --off-white: #F7F7F7;
+    --gray: #E8E8E8;
+    --body-gray: #555555;
+    --line: rgba(255,255,255,0.08);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'Open Sans', system-ui, sans-serif;
+    background: var(--off-white);
+    color: var(--black);
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+
+  /* Top red accent bar */
+  .accent-bar {
+    height: 4px;
+    background: linear-gradient(to right, var(--dark-red), var(--red), var(--dark-red));
+  }
+
+  /* App header — matches ASL graphic builder banner style */
+  .app-header {
+    background: var(--soft-black);
+    border-bottom: 3px solid var(--red);
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    min-height: 96px;
+  }
+  .banner-logo {
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .banner-an {
+    font-family: 'Bodoni Moda', serif;
+    font-weight: 900;
+    font-size: 64px;
+    color: var(--red);
+    line-height: 1;
+    letter-spacing: -0.08em;
+  }
+  .banner-network {
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 8px;
+    color: #ccc;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-align: center;
+    padding-left: 0.6em;
+  }
+  .banner-divider {
+    width: 2px;
+    height: 52px;
+    background: var(--red);
+    flex-shrink: 0;
+  }
+  .banner-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+  .banner-agency {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: #999;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+  .banner-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 30px;
+    color: var(--white);
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .banner-title span { color: var(--red); }
+  @media (max-width: 480px) {
+    .app-header { padding: 14px 18px; gap: 16px; min-height: 80px; }
+    .banner-an { font-size: 50px; }
+    .banner-network { font-size: 7px; }
+    .banner-divider { height: 44px; }
+    .banner-agency { font-size: 10px; letter-spacing: 0.25em; }
+    .banner-title { font-size: 22px; }
+  }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 85% 15%, rgba(176,37,30,0.28), transparent 55%),
+      linear-gradient(135deg, var(--hero-bg) 0%, var(--soft-black) 55%, var(--hero-glow-end) 100%);
+    color: var(--white);
+    padding: 56px 24px 48px;
+  }
+  .hero-inner { max-width: 760px; margin: 0 auto; }
+  .encore-badge {
+    display: inline-block;
+    background: var(--red);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: 4px;
+    margin-bottom: 18px;
+    box-shadow: 0 3px 12px rgba(176,37,30,0.35);
+  }
+  .series-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .series-label span { color: var(--white); margin: 0 6px; opacity: 0.4; }
+  .hero h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(28px, 5.5vw, 44px);
+    line-height: 1.08;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+  .hero h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: clamp(16px, 2.4vw, 20px);
+    color: var(--gray);
+    margin-bottom: 28px;
+  }
+  .date-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border: 1px solid rgba(176,37,30,0.55);
+    border-radius: 999px;
+    background: rgba(176,37,30,0.10);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .date-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
+
+  /* Main */
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 24px 24px;
+  }
+  .description {
+    font-size: 17px;
+    color: var(--black);
+    margin-bottom: 24px;
+  }
+  .description p + p { margin-top: 14px; }
+
+  .panel-card {
+    background: var(--white);
+    border: 1px solid var(--gray);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 24px;
+    margin: 24px 0 32px;
+  }
+  .panel-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .panel-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px 20px;
+  }
+  .panel-list li {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--black);
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .panel-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    background: var(--red);
+    border-radius: 50%;
+  }
+
+  /* Calendar section */
+  .cal-section {
+    background: var(--white);
+    border: 1px solid var(--gray);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 28px 24px;
+    margin-bottom: 32px;
+  }
+  .cal-section h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--black);
+    margin-bottom: 6px;
+    text-align: center;
+  }
+  .cal-section .sub {
+    text-align: center;
+    color: var(--body-gray);
+    font-size: 14px;
+    margin-bottom: 22px;
+  }
+  /* Primary "Add to Calendar" button — works inside Facebook in-app browser */
+  .cal-primary {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: var(--red);
+    color: var(--white);
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    padding: 20px 24px;
+    border-radius: 8px;
+    border: 1px solid var(--dark-red);
+    box-shadow: 0 4px 14px rgba(176,37,30,0.25);
+    transition: transform 0.12s ease, background 0.12s ease;
+  }
+  .cal-primary:hover, .cal-primary:focus { background: var(--dark-red); transform: translateY(-1px); }
+  .cal-primary-note {
+    text-align: center;
+    color: var(--body-gray);
+    font-size: 13px;
+    margin-top: 10px;
+  }
+  /* Expandable "other calendar" options */
+  details.cal-alt {
+    margin-top: 22px;
+    border-top: 1px solid var(--gray);
+    padding-top: 16px;
+  }
+  details.cal-alt summary {
+    cursor: pointer;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--body-gray);
+    list-style: none;
+    padding: 6px;
+  }
+  details.cal-alt summary::-webkit-details-marker { display: none; }
+  details.cal-alt summary::after { content: " ▾"; color: var(--red); }
+  details.cal-alt[open] summary::after { content: " ▴"; }
+  .cal-alt-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  @media (min-width: 480px) {
+    .cal-alt-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .cal-alt-grid a, .cal-alt-grid button {
+    display: block;
+    text-align: center;
+    background: var(--white);
+    color: var(--black);
+    border: 1px solid var(--gray);
+    border-radius: 6px;
+    padding: 12px 14px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    transition: border-color 0.12s ease;
+  }
+  .cal-alt-grid a:hover, .cal-alt-grid button:hover { border-color: var(--red); color: var(--red); }
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--soft-black);
+    color: var(--white);
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 100;
+  }
+  .toast.show { opacity: 1; }
+
+  /* Join section */
+  .join-section {
+    background: var(--soft-black);
+    color: var(--white);
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .join-section .label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .join-section a.join-link {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--white);
+    background: var(--red);
+    border: 1px solid var(--dark-red);
+    border-radius: 6px;
+    padding: 12px 22px;
+    text-decoration: none;
+    transition: background 0.12s ease;
+  }
+  .join-section a.join-link:hover { background: var(--dark-red); }
+  .meeting-meta {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+  .meeting-meta span { color: rgba(255,255,255,0.5); margin-right: 4px; }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 32px 24px 48px;
+    border-top: 1px solid var(--gray);
+    background: var(--white);
+  }
+  .tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--red);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .footer-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    color: var(--body-gray);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 480px) {
+    .hero { padding: 40px 20px 36px; }
+    main { padding: 28px 18px 18px; }
+    .cal-section, .panel-card, .join-section { padding: 20px 16px; }
+  }
+</style>
+</head>
+<body>
+  <div class="accent-bar"></div>
+
+  <header class="app-header">
+    <div class="banner-logo">
+      <span class="banner-an">AN</span>
+      <span class="banner-network">AGENCY NETWORK</span>
+    </div>
+    <div class="banner-divider"></div>
+    <div class="banner-text">
+      <div class="banner-agency">AGENCY</div>
+      <div class="banner-title">SOLUTIONS <span>LIVE</span></div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="encore-badge">★ Encore Event</div>
+      <div class="series-label">Agency Solutions LIVE <span>·</span> Live-Only Event</div>
+      <h2>Profit First Workshop — Encore</h2>
+      <h3>A full one-hour implementation workshop with Danielle Mulvey</h3>
+      <div class="date-pill">
+        <span class="dot"></span>
+        Thu · June 18 · 1:00–2:30 PM Eastern
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="description">
+      <!-- DESC FILLED — Profit First Encore, Danielle Mulvey, June 18, 2026 -->
+      <p>Missed our last Agency Solutions call with <strong>Mike Michalowicz — "How to Make Your Agency Permanently Profitable"</strong> — or just want more? Join us for a full one-hour <strong>Profit First workshop</strong>.</p>
+      <p>Danielle Mulvey delivers a hands-on workshop on how to implement the Profit First concepts. Danielle has built multiple businesses generating over <strong>$50 million in annual revenue</strong> — and she did it by rejecting the "hope-and-pray" approach to cash flow that keeps most owners stressed, underpaid, and guessing. By putting Profit First, she transformed chaos into clarity, cash flow into confidence, and profit into a permanent habit.</p>
+      <p>As host of <em>Profit First Nation</em>, the official Profit First podcast, Danielle is Mike's go-to partner for following his keynotes with the workshop. Let's get ready to <strong>IMPLEMENT Profit First!</strong></p>
+      <p><strong>Free for Agency Network members. Hosted live on Microsoft Teams.</strong></p>
+      <!-- DESC END -->
+    </div>
+
+    <div class="panel-card">
+      <div class="panel-label">What You'll Get</div>
+      <ul class="panel-list">
+        <!-- PANEL FILLED -->
+        <li>A full one-hour LIVE workshop on how to implement Profit First</li>
+        <li>Turn the Profit First concepts into a permanent habit, not an accident</li>
+        <li>Trade the "hope-and-pray" cash-flow approach for clarity and confidence</li>
+        <li>Led by Danielle Mulvey — host of Profit First Nation &amp; Mike's go-to workshop partner</li>
+        <!-- /PANEL -->
+      </ul>
+    </div>
+
+    <div class="cal-section">
+      <h4>Add to your calendar</h4>
+      <div class="sub">Pick whichever calendar you use.</div>
+      <a id="cal-primary" class="cal-primary" href="#" target="_blank" rel="noopener noreferrer">
+        📅 Add to Calendar
+      </a>
+      <p class="cal-primary-note">One tap — works inside the Facebook app. Opens Google Calendar with the event filled in.</p>
+
+      <details class="cal-alt">
+        <summary>Don't use Google Calendar? Other options</summary>
+        <div class="cal-alt-grid">
+          <a id="cal-outlook-personal" target="_blank" rel="noopener noreferrer" href="#">Outlook (Hotmail / Personal)</a>
+          <a id="cal-outlook-work" target="_blank" rel="noopener noreferrer" href="#">Outlook (Work / Office 365)</a>
+          <a id="cal-apple" href="webcal://agcynetworkak-bit.github.io/an-graphic-builder/asl-profit-first-encore-danielle-mulvey.ics">Apple Calendar (Subscribe)</a>
+          <a id="cal-ics-download" href="asl-profit-first-encore-danielle-mulvey.ics" download>Download .ics File</a>
+          <a id="cal-email" href="#">Email the Invite to Myself</a>
+          <button id="cal-copy" type="button">Copy Meeting Details</button>
+        </div>
+      </details>
+    </div>
+
+    <div class="join-section">
+      <div class="label">Day Of · Join Directly</div>
+      <a class="join-link" href="https://teams.microsoft.com/meet/263545131017449?p=SElFGWgvxdamtncnn2" target="_blank" rel="noopener noreferrer">Join Microsoft Teams Call</a>
+      <div class="meeting-meta">
+        <div><span>Meeting ID:</span> 263 545 131 017 449</div>
+        <div><span>Passcode:</span> Jm6Gz3t7</div>
+      </div>
+    </div>
+  </main>
+
+  <div id="toast" class="toast">Copied!</div>
+
+  <footer>
+    <div class="tagline">Connecting Agents – Inspiring Greatness</div>
+    <div class="footer-name">Agency Network</div>
+  </footer>
+
+<script>
+(function () {
+  // Meeting config — single source of truth for every button URL on this page.
+  var cfg = {
+    title: "Agency Solutions LIVE ENCORE - Profit First Workshop with Danielle Mulvey",
+    startUTC: "20260618T170000Z",
+    endUTC:   "20260618T183000Z",
+    startISO: "2026-06-18T17:00:00+00:00",
+    endISO:   "2026-06-18T18:30:00+00:00",
+    teamsURL: "https://teams.microsoft.com/meet/263545131017449?p=SElFGWgvxdamtncnn2",
+    meetingID: "263 545 131 017 449",
+    passcode: "Jm6Gz3t7",
+    location: "Microsoft Teams - https://teams.microsoft.com/meet/263545131017449?p=SElFGWgvxdamtncnn2"
+  };
+
+  // Compact body — short enough to survive any URL length limit in any in-app browser.
+  cfg.body = [
+    "Agency Solutions LIVE ENCORE | Thursday, June 18, 2026 | 1:00 - 2:30 PM ET",
+    "",
+    "A full one-hour Profit First implementation workshop with Danielle Mulvey,",
+    "host of Profit First Nation and Mike Michalowicz's go-to workshop partner.",
+    "",
+    "Free for Agency Network members. Hosted live on Microsoft Teams.",
+    "",
+    "Join Teams: " + cfg.teamsURL,
+    "Meeting ID: " + cfg.meetingID,
+    "Passcode: " + cfg.passcode
+  ].join("\n");
+
+  var e = encodeURIComponent;
+
+  // PRIMARY: Google Calendar render URL — works in Facebook in-app browser,
+  // works on every device, works for everyone with a Google account.
+  var google =
+    "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+    "&text=" + e(cfg.title) +
+    "&dates=" + cfg.startUTC + "/" + cfg.endUTC +
+    "&details=" + e(cfg.body) +
+    "&location=" + e(cfg.location);
+
+  // SECONDARY: Outlook deep links — two flavors because work and personal
+  // Microsoft accounts use different hosts.
+  function outlookURL(host) {
+    return "https://" + host + "/calendar/0/deeplink/compose?path=%2Fcalendar%2Faction%2Fcompose&rru=addevent" +
+      "&subject=" + e(cfg.title) +
+      "&startdt=" + e(cfg.startISO) +
+      "&enddt=" + e(cfg.endISO) +
+      "&location=" + e(cfg.location) +
+      "&body=" + e(cfg.body);
+  }
+
+  // SECONDARY: mailto: — opens the user's default email app OUTSIDE Facebook IAB,
+  // breaking them out of the in-app browser trap. Self-email with all the details.
+  var mailto = "mailto:?subject=" + e("Add to calendar: " + cfg.title) +
+    "&body=" + e(cfg.body +
+      "\n\nAdd to your calendar in one tap:\n" + window.location.href);
+
+  // Wire everything up.
+  function setHref(id, url) {
+    var el = document.getElementById(id);
+    if (el) el.setAttribute("href", url);
+  }
+  setHref("cal-primary",          google);
+  setHref("cal-outlook-personal", outlookURL("outlook.live.com"));
+  setHref("cal-outlook-work",     outlookURL("outlook.office.com"));
+  setHref("cal-email",            mailto);
+
+  // Copy-to-clipboard fallback for users with none of the above (works everywhere).
+  var copyText = cfg.title + "\n" + cfg.body;
+  var copyBtn = document.getElementById("cal-copy");
+  var toast = document.getElementById("toast");
+  function showToast(msg) {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add("show");
+    setTimeout(function () { toast.classList.remove("show"); }, 1800);
+  }
+  if (copyBtn) {
+    copyBtn.addEventListener("click", function () {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(copyText).then(
+          function () { showToast("Copied to clipboard"); },
+          function () { fallbackCopy(); }
+        );
+      } else { fallbackCopy(); }
+    });
+  }
+  function fallbackCopy() {
+    var ta = document.createElement("textarea");
+    ta.value = copyText;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    try { document.execCommand("copy"); showToast("Copied to clipboard"); }
+    catch (err) { showToast("Press and hold to copy"); }
+    document.body.removeChild(ta);
+  }
+})();
+</script>
+</body>
+</html>
