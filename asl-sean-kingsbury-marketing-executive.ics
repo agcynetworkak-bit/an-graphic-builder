@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agency Network//Agency Solutions LIVE//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART:20260714T170000Z
+DTEND:20260714T183000Z
+DTSTAMP:20260708T180000Z
+UID:asl-sean-kingsbury-marketing-executive-20260714@agcynetwork.com
+ORGANIZER;CN=Agency Network:mailto:agcynetworkak@gmail.com
+SUMMARY:Agency Solutions LIVE - A Conversation with a Marketing Executive (Sean Kingsbury)
+DESCRIPTION:A CONVERSATION WITH A MARKETING EXECUTIVE with Sean Kingsbury\n\nAgency Solutions LIVE | Tuesday\, July 14\, 2026 | 1:00 PM Eastern\n\nWe're back with another Agency Solutions LIVE call after a short break for travel. Sean Kingsbury\, Marketing Executive for State Farm\, shares perspective on what they're seeing in consumer behavior and the implications for the company and for us as agents.\n\nWhat we'll cover:\n\n1) CUSTOMER BEHAVIOR HAS CHANGED - Customers discover\, research\, and choose brands differently. Search\, social\, reviews\, local content\, and digital presence all influence whether an agency is visible before the customer ever contacts State Farm.\n\n2) STATE FARM IS CONNECTING THE ECOSYSTEM - Agent Tagged Media\, search\, ILPs\, social\, campaign integration\, and reporting are being connected more intentionally. The goal is a stronger agent-local digital presence that supports production.\n\n3) IMPLICATIONS FOR AGENT DECISIONS - The winning agency uses marketing as part of a growth system: show up consistently\, understand where leads come from\, follow up quickly\, use reporting\, and align marketing activity to production gaps.\n\nSean wants to address agent questions during the call\, so please have your questions ready.\n\nFree for Agency Network members. Hosted live on Microsoft Teams.\n\nJoin via Microsoft Teams:\nhttps://teams.microsoft.com/meet/258592225517963?p=bOkZKFMohSEFYrbedZ\n\nMeeting ID: 258 592 225 517 963\nPasscode: 9L7BJ6UU\n\nConnecting Agents - Inspiring Greatness\nAgency Network
+LOCATION:Microsoft Teams - https://teams.microsoft.com/meet/258592225517963?p=bOkZKFMohSEFYrbedZ
+STATUS:CONFIRMED
+SEQUENCE:0
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Agency Solutions LIVE starts in 30 minutes
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Agency Solutions LIVE with Sean Kingsbury is tomorrow at 1:00 PM Eastern
+END:VALARM
+END:VEVENT
+END:VCALENDAR
