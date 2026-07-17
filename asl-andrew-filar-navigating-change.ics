@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agency Network//Agency Solutions LIVE//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART:20260721T170000Z
+DTEND:20260721T183000Z
+DTSTAMP:20260714T180000Z
+UID:asl-andrew-filar-navigating-change-20260721@agcynetwork.com
+ORGANIZER;CN=Agency Network:mailto:agcynetworkak@gmail.com
+SUMMARY:Agency Solutions LIVE - Navigating Change and Achieving Scale (Andrew Filar)
+DESCRIPTION:NAVIGATING CHANGE AND ACHIEVING SCALE with Andrew Filar\n\nAgency Solutions LIVE | Tuesday\, July 21\, 2026 | 1:00 PM Eastern\n\nAndrew Filar\, CEO & Co-founder of Next Call Club\, joins Agency Network to talk through navigating change and building the systems that let your agency scale.\n\nWhat we'll cover:\n\n1) Navigating Comp Change as a Captive Agent\n\n2) Systems and Processes for Scaling Your Business\n\nFree for Agency Network members. Hosted live on Microsoft Teams.\n\nJoin via Microsoft Teams:\nhttps://teams.microsoft.com/meet/286973516681566?p=AxcZPlHfUdct94HDox\n\nMeeting ID: 286 973 516 681 566\nPasscode: KQ7SW9TR\n\nConnecting Agents - Inspiring Greatness\nAgency Network
+LOCATION:Microsoft Teams - https://teams.microsoft.com/meet/286973516681566?p=AxcZPlHfUdct94HDox
+STATUS:CONFIRMED
+SEQUENCE:0
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Agency Solutions LIVE starts in 30 minutes
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Agency Solutions LIVE with Andrew Filar is tomorrow at 1:00 PM Eastern
+END:VALARM
+END:VEVENT
+END:VCALENDAR
