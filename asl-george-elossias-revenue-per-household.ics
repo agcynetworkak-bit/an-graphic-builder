@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agency Network//Agency Solutions LIVE//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART:20260728T170000Z
+DTEND:20260728T183000Z
+DTSTAMP:20260721T180000Z
+UID:asl-george-elossias-revenue-per-household-20260728@agcynetwork.com
+ORGANIZER;CN=Agency Network:mailto:agcynetworkak@gmail.com
+SUMMARY:Agency Solutions LIVE - Write 30% More Revenue Per Household in 60 Days (George Elossias)
+DESCRIPTION:WRITE 30% MORE REVENUE PER HOUSEHOLD IN 60 DAYS with George Elossias\n\nAgency Solutions LIVE | Tuesday\, July 28\, 2026 | 1:00 PM Eastern\n\nGeorge Elossias\, Founder & CEO of Trainwell\, shows you how to get your team writing 30% more revenue per household in 60 days.\n\nWhat we'll cover:\n\n1) Consistently convert single-line conversations into multi-line households\n\n2) How to get a 4x return on the leads you are already buying - without increasing your lead spend\n\n3) How to stop being the one driving every sale - and build a team that produces multi-line without you\n\nFree for Agency Network members. Hosted live on Microsoft Teams.\n\nJoin via Microsoft Teams:\nhttps://teams.microsoft.com/meet/219631138177283?p=Zp1TnG8PYkiBHysI19\n\nMeeting ID: 219 631 138 177 283\nPasscode: vT7zH3Fz\n\nConnecting Agents - Inspiring Greatness\nAgency Network
+LOCATION:Microsoft Teams - https://teams.microsoft.com/meet/219631138177283?p=Zp1TnG8PYkiBHysI19
+STATUS:CONFIRMED
+SEQUENCE:0
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Agency Solutions LIVE starts in 30 minutes
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Agency Solutions LIVE with George Elossias is tomorrow at 1:00 PM Eastern
+END:VALARM
+END:VEVENT
+END:VCALENDAR
