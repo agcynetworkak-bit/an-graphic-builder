@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agency Network//Agency Solutions LIVE//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART:20260811T170000Z
+DTEND:20260811T183000Z
+DTSTAMP:20260810T180000Z
+UID:asl-mike-laskin-ilp-budget-20260811@agcynetwork.com
+ORGANIZER;CN=Agency Network:mailto:agcynetworkak@gmail.com
+SUMMARY:Agency Solutions LIVE - Write More Households W/O Increasing Your ILP Budget (Mike Laskin)
+DESCRIPTION:WRITE MORE HOUSEHOLDS WITHOUT INCREASING YOUR ILP BUDGET with Mike Laskin\n\nAgency Solutions LIVE | Tuesday\, August 11\, 2026 | 1:00 PM Eastern\n\nWant to write more auto insurance? Not sure which leads are best\, how to max the leads you get\, or what adjustments to make to your campaigns? Hear from Mike Laskin on how to write more households without increasing your ILP budget.\n\nMike is a top 50 auto agent in the company and will share how to overcome "garbage" internet leads. With the new auto gain contract\, let's learn from one of the best.\n\nWhat we'll cover:\n\n1) The shift from writing more at "any cost" to writing more at the right cost\n\n2) Why agents obsess over the wrong metrics (CPL and close %)\n\n3) How to scale profitably with internet leads\n\nFree for Agency Network members. Hosted live on Microsoft Teams.\n\nJoin via Microsoft Teams:\nhttps://teams.microsoft.com/meet/234576015422764?p=u2fFU5rF4sQp7evhPT\n\nMeeting ID: 234 576 015 422 764\nPasscode: vz6G4ho2\n\nConnecting Agents - Inspiring Greatness\nAgency Network
+LOCATION:Microsoft Teams - https://teams.microsoft.com/meet/234576015422764?p=u2fFU5rF4sQp7evhPT
+STATUS:CONFIRMED
+SEQUENCE:0
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Agency Solutions LIVE starts in 30 minutes
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Agency Solutions LIVE with Mike Laskin is tomorrow at 1:00 PM Eastern
+END:VALARM
+END:VEVENT
+END:VCALENDAR
