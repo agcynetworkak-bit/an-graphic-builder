@@ -1001,15 +1001,15 @@ async function handleSubmit(e) {
 
   status.textContent = 'PDF downloaded. Sending email...';
 
-  // Create smaller JPEG version of graphic for email (540x540, quality 0.6)
+  // Full-resolution image for email so the emailed graphic matches the crisp
+  // desktop download instead of a pixelated thumbnail. `canvas` is the same
+  // full-res 1080x1080 html2canvas output used for the PNG download above.
+  // High-quality JPEG (0.95) keeps text + photo sharp while staying small
+  // enough for the GAS POST + email size limits. (This used to be a 540x540
+  // quality-0.6 thumbnail — that was the source of the pixelation.)
   var emailImageData = '';
   try {
-    var emailCanvas = document.createElement('canvas');
-    emailCanvas.width = 540;
-    emailCanvas.height = 540;
-    var emailCtx = emailCanvas.getContext('2d');
-    emailCtx.drawImage(canvas, 0, 0, 540, 540);
-    emailImageData = emailCanvas.toDataURL('image/jpeg', 0.6);
+    emailImageData = canvas.toDataURL('image/jpeg', 0.95);
   } catch (imgErr) {
     console.log('Could not create email image:', imgErr);
   }
@@ -1034,19 +1034,31 @@ async function handleSubmit(e) {
       emailData.graphic_image = emailImageData;
     }
 
-    // Method 1: sendBeacon (fire-and-forget, works on all modern browsers)
-    var beaconSent = false;
-    if (navigator.sendBeacon) {
-      var formData = new FormData();
-      for (var key in emailData) {
-        formData.append(key, emailData[key]);
-      }
-      beaconSent = navigator.sendBeacon(GAS_URL, formData);
-      console.log('sendBeacon result:', beaconSent);
+    // Build the multipart body once.
+    var formData = new FormData();
+    for (var key in emailData) {
+      formData.append(key, emailData[key]);
     }
 
-    // Method 2: hidden form + static iframe (backup, uses pre-existing iframe)
-    if (!beaconSent) {
+    // Method 1: fetch POST (fire-and-forget). We switched off
+    // navigator.sendBeacon here because Chrome caps a beacon payload at ~64KB,
+    // which silently dropped the full-resolution image (that cap is exactly why
+    // the email image used to be shrunk to a pixelated 540px thumbnail). fetch
+    // has no small payload limit, so the crisp full-res graphic gets through.
+    // mode:'no-cors' = we don't need to read the GAS response.
+    var sent = false;
+    if (window.fetch) {
+      try {
+        fetch(GAS_URL, { method: 'POST', mode: 'no-cors', body: formData });
+        sent = true;
+      } catch (fetchErr) {
+        console.log('fetch send failed, falling back to form POST:', fetchErr);
+      }
+    }
+
+    // Method 2: hidden form + static iframe (fallback, uses pre-existing
+    // iframe). Also handles large bodies fine -- only sendBeacon had the cap.
+    if (!sent) {
       var form = document.createElement('form');
       form.method = 'POST';
       form.action = GAS_URL;
