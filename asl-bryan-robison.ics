@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agency Network//Agency Solutions LIVE//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART:20260817T200000Z
+DTEND:20260817T213000Z
+DTSTAMP:20260817T184822Z
+UID:asl-bryan-robison-20260817@agcynetwork.com
+ORGANIZER;CN=Agency Network:mailto:agcynetworkak@gmail.com
+SUMMARY:Agency Solutions LIVE - The Importance of Wearing Your Hat Backwards: Featuring Bryan Robison
+DESCRIPTION:THE IMPORTANCE OF WEARING YOUR HAT BACKWARDS: Featuring Bryan Robison\n\nAgency Solutions LIVE | Monday, August 17, 2026 | 4:00 PM Eastern\n\nBryan joins Agency Solutions LIVE for a practical\, live session on The Importance of Wearing Your Hat Backwards - the kind of call you leave with something you can use the same week.\n\nWe'll get into Why I am not wearing my hat backwards in this photo?\, Best kinds of hats to buy\, How many hats is to many hats?\, and Favorite colors - plus a live Q&A at the end.\n\nFree to attend and live on Zoom. Bring your questions for Bryan.\n\nJoin via Zoom:\nhttps://us06web.zoom.us/j/83265414523?pwd=Sgk6RfpMJpYwZbNryS0lqqUysWNFui.1\n\nMeeting ID: 832 6541 4523\nPasscode: Not required\n\nConnecting Agents - Inspiring Greatness\nAgency Network
+LOCATION:Zoom - https://us06web.zoom.us/j/83265414523?pwd=Sgk6RfpMJpYwZbNryS0lqqUysWNFui.1
+STATUS:CONFIRMED
+SEQUENCE:0
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Agency Solutions LIVE starts in 30 minutes
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Agency Solutions LIVE is tomorrow at 4:00 PM Eastern EDT
+END:VALARM
+END:VEVENT
+END:VCALENDAR
