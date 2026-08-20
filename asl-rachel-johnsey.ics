@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Agency Network//Agency Solutions LIVE//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART:20260825T170000Z
+DTEND:20260825T183000Z
+DTSTAMP:20260820T192040Z
+UID:asl-rachel-johnsey-20260825@agcynetwork.com
+ORGANIZER;CN=Agency Network:mailto:agcynetworkak@gmail.com
+SUMMARY:Agency Solutions LIVE - Make Your Lead Buying Smarter: Featuring Rachel Johnsey
+DESCRIPTION:MAKE YOUR LEAD BUYING SMARTER: Featuring Rachel Johnsey\n\nAgency Solutions LIVE | Tuesday, August 25, 2026 | 1:00 PM Eastern\n\nRachel joins Agency Solutions LIVE for a practical\, live session on Make Your Lead Buying Smarter - the kind of call you leave with something you can use the same week.\n\nWe'll get into How to make sure your lead dollars are working for you\, How often you should be following up with each lead\, How to decide what types of leads work best for your agency\, and How to let data guide your lead buying decisions - plus a live Q&A at the end.\n\nFree to attend and live on Zoom. Bring your questions for Rachel.\n\nJoin via Zoom:\nhttps://us06web.zoom.us/j/84517353481\n\nMeeting ID: 845 1735 3481\nPasscode: Not required\n\nConnecting Agents - Inspiring Greatness\nAgency Network
+LOCATION:Zoom - https://us06web.zoom.us/j/84517353481
+STATUS:CONFIRMED
+SEQUENCE:0
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Agency Solutions LIVE starts in 30 minutes
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Agency Solutions LIVE is tomorrow at 1:00 PM Eastern EDT
+END:VALARM
+END:VEVENT
+END:VCALENDAR
