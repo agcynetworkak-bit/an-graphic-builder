@@ -1148,16 +1148,12 @@ document.getElementById('gfxPhotoImg').addEventListener('load', function() {
     var q = new URLSearchParams(location.search || '');
     window.__aslCallId = q.get('id') || '';
     window.__aslConfirmToken = q.get('t') || '';
-    if (!q.get('date') && !q.get('time') && !q.get('speaker') && !q.get('topic') && !q.get('first') && !q.get('last') && !q.get('role')) return;
+    // Prefill ONLY the date and time (we already know those). The speaker fills in
+    // their own name, topic, bullets, and photo.
+    if (!q.get('date') && !q.get('time')) return;
     function set(id, val) { if (val != null && val !== '') { var el = document.getElementById(id); if (el) el.value = val; } }
     set('callDate', q.get('date'));
     set('callTime', q.get('time'));
-    set('topicTitle', q.get('topic'));
-    set('speakerRole', q.get('role'));
-    var sp = q.get('speaker');
-    if (sp) { var parts = sp.trim().split(/\s+/); set('speakerFirst', parts.shift() || ''); set('speakerLast', parts.join(' ')); }
-    if (q.get('first')) set('speakerFirst', q.get('first'));
-    if (q.get('last')) set('speakerLast', q.get('last'));
     if (typeof updatePreview === 'function') updatePreview();
     if (typeof checkFormReady === 'function') checkFormReady();
   } catch (e) {}
