@@ -94,7 +94,27 @@
     white-space: nowrap;
     padding-left: 0.6em;
   }
-  .hdr-divider { width: 2px; height: 56px; background: var(--red); flex-shrink: 0; }
+  /* Ampersand joining the two logos */
+  .hdr-amp {
+    font-family: 'Bodoni Moda', 'Didot', Georgia, serif;
+    font-weight: 700;
+    font-size: 46px;
+    line-height: 1;
+    color: var(--red);
+    flex-shrink: 0;
+    padding-bottom: 4px;
+  }
+
+  /* Joint "Better Together" mark for the two groups */
+  .together { display: flex; align-items: center; gap: 16px; margin-left: 34px; flex-shrink: 0; }
+  .together .rule { width: 26px; height: 3px; background: var(--red); border-radius: 2px; flex-shrink: 0; }
+  .together .words {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900; font-size: 21px; line-height: 1;
+    letter-spacing: 0.085em; text-transform: uppercase;
+    color: var(--white); white-space: nowrap;
+  }
+  .together .words span { color: var(--red-bright); }
 
   /* NASFA partner mark. To use NASFA's own artwork, drop the file in the repo
      and swap .nasfa-type below for:  <img class="nasfa-img" src="nasfa-logo.png" alt="NASFA"> */
@@ -285,12 +305,16 @@
       <span class="logo-an">AN</span>
       <span class="logo-network">AGENCY NETWORK</span>
     </div>
-    <div class="hdr-divider"></div>
+    <div class="hdr-amp">&amp;</div>
     <div class="nasfa-logo">
       <div class="nasfa-type">
         <span class="mark">NASFA</span>
         <span class="sub">National Association of State Farm Agents</span>
       </div>
+    </div>
+    <div class="together">
+      <span class="rule"></span>
+      <span class="words">Better <span>Together</span></span>
     </div>
     <div class="hdr-year">2026&ndash;2027</div>
   </header>
