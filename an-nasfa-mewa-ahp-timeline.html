@@ -95,15 +95,21 @@
     padding-left: 0.6em;
   }
   .hdr-divider { width: 2px; height: 56px; background: var(--red); flex-shrink: 0; }
-  .hdr-kicker { display: flex; flex-direction: column; gap: 3px; }
-  .hdr-kicker .k1 {
-    font-weight: 600; font-size: 11px; color: #8C8C8C;
-    letter-spacing: 0.32em; text-transform: uppercase;
-  }
-  .hdr-kicker .k2 {
+
+  /* NASFA partner mark. To use NASFA's own artwork, drop the file in the repo
+     and swap .nasfa-type below for:  <img class="nasfa-img" src="nasfa-logo.png" alt="NASFA"> */
+  .nasfa-logo { display: flex; align-items: center; flex-shrink: 0; }
+  .nasfa-img { height: 58px; width: auto; display: block; }
+  .nasfa-type { display: flex; flex-direction: column; gap: 4px; }
+  .nasfa-type .mark {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 800; font-size: 19px; color: var(--white);
-    letter-spacing: 0.02em; text-transform: uppercase;
+    font-weight: 900; font-size: 38px; line-height: 1;
+    color: var(--white); letter-spacing: 0.015em;
+  }
+  .nasfa-type .sub {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600; font-size: 8.5px; color: #9A9A9A;
+    letter-spacing: 0.155em; text-transform: uppercase; white-space: nowrap;
   }
   .hdr-year {
     margin-left: auto;
@@ -280,9 +286,11 @@
       <span class="logo-network">AGENCY NETWORK</span>
     </div>
     <div class="hdr-divider"></div>
-    <div class="hdr-kicker">
-      <div class="k1">Group Health Program</div>
-      <div class="k2">Agency Network &amp; NASFA</div>
+    <div class="nasfa-logo">
+      <div class="nasfa-type">
+        <span class="mark">NASFA</span>
+        <span class="sub">National Association of State Farm Agents</span>
+      </div>
     </div>
     <div class="hdr-year">2026&ndash;2027</div>
   </header>
