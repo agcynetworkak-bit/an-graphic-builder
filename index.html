@@ -3,1169 +3,602 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agency Solutions LIVE — Graphic Builder</title>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700;800;900&family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script type="module">
-import { removeBackground } from 'https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/+esm';
-window.imglyRemoveBackground = removeBackground;
-console.log('Background removal library loaded, type:', typeof removeBackground);
-</script>
+<title>Agency Solutions LIVE — Write More Households W/O Increasing Your ILP Budget | August 11</title>
+<meta name="description" content="Add to your calendar: Write More Households W/O Increasing Your ILP Budget with Mike Laskin, Presidents Club Agent & Founder of Horus — Agency Solutions LIVE, Tuesday August 11 at 1:00 PM ET. Members only.">
+<meta property="og:title" content="Agency Solutions LIVE — Write More Households W/O Increasing Your ILP Budget">
+<meta property="og:description" content="Tuesday, August 11, 2026 · 1:00 PM Eastern · featuring Mike Laskin, Presidents Club Agent & Founder of Horus. Add to your calendar.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700;800;900&family=Montserrat:wght@600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --red: #B0251E;
-  --dark-red: #8F1E18;
-  --black: #111111;
-  --soft-black: #1A1A1A;
-  --white: #FFFFFF;
-  --off-white: #F7F7F7;
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: 'Open Sans', sans-serif;
-  background: linear-gradient(135deg, #0D0D0D 0%, #1A1A1A 60%, #2A0A08 100%);
-  min-height: 100vh;
-  color: var(--white);
-}
+  :root {
+    --red: #B0251E;
+    --dark-red: #8F1E18;
+    --black: #111111;
+    --soft-black: #1A1A1A;
+    --hero-bg: #0D0D0D;
+    --hero-glow-end: #2A0A08;
+    --white: #FFFFFF;
+    --off-white: #F7F7F7;
+    --gray: #E8E8E8;
+    --body-gray: #555555;
+    --line: rgba(255,255,255,0.08);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'Open Sans', system-ui, sans-serif;
+    background: var(--off-white);
+    color: var(--black);
+    line-height: 1.55;
+    min-height: 100vh;
+  }
 
-/* App Header */
-.app-header {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 28px;
-  background: var(--soft-black);
-  border-bottom: 3px solid var(--red);
-}
-.app-header h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
-  font-size: 20px;
-  color: var(--white);
-  min-width: 0;
-}
-.app-header h1 span { color: var(--red); }
+  /* Top red accent bar */
+  .accent-bar {
+    height: 4px;
+    background: linear-gradient(to right, var(--dark-red), var(--red), var(--dark-red));
+  }
 
-/* Layout */
-.main-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 420px) 1fr;
-  gap: 32px;
-  padding: 32px;
-  max-width: 1600px;
-  margin: 0 auto;
-  width: 100%;
-}
-@media (max-width: 900px) {
-  .main-grid {
+  /* App header — matches ASL graphic builder banner style */
+  .app-header {
+    background: var(--soft-black);
+    border-bottom: 3px solid var(--red);
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    min-height: 96px;
+  }
+  .banner-logo {
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .banner-an {
+    font-family: 'Bodoni Moda', serif;
+    font-weight: 900;
+    font-size: 64px;
+    color: var(--red);
+    line-height: 1;
+    letter-spacing: -0.08em;
+  }
+  .banner-network {
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 8px;
+    color: #ccc;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-align: center;
+    padding-left: 0.6em;
+  }
+  .banner-divider {
+    width: 2px;
+    height: 52px;
+    background: var(--red);
+    flex-shrink: 0;
+  }
+  .banner-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+  .banner-agency {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: #999;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+  .banner-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 30px;
+    color: var(--white);
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .banner-title span { color: var(--red); }
+  @media (max-width: 480px) {
+    .app-header { padding: 14px 18px; gap: 16px; min-height: 80px; }
+    .banner-an { font-size: 50px; }
+    .banner-network { font-size: 7px; }
+    .banner-divider { height: 44px; }
+    .banner-agency { font-size: 10px; letter-spacing: 0.25em; }
+    .banner-title { font-size: 22px; }
+  }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 85% 15%, rgba(176,37,30,0.28), transparent 55%),
+      linear-gradient(135deg, var(--hero-bg) 0%, var(--soft-black) 55%, var(--hero-glow-end) 100%);
+    color: var(--white);
+    padding: 56px 24px 48px;
+  }
+  .hero-inner { max-width: 760px; margin: 0 auto; }
+  .series-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .series-label span { color: var(--white); margin: 0 6px; opacity: 0.4; }
+  .hero h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(28px, 5.5vw, 44px);
+    line-height: 1.08;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+  .hero h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: clamp(16px, 2.4vw, 20px);
+    color: var(--gray);
+    margin-bottom: 28px;
+  }
+  .date-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border: 1px solid rgba(176,37,30,0.55);
+    border-radius: 999px;
+    background: rgba(176,37,30,0.10);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .date-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
+
+  /* Main */
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 24px 24px;
+  }
+  .description {
+    font-size: 17px;
+    color: var(--black);
+    margin-bottom: 24px;
+  }
+  .description p + p { margin-top: 14px; }
+
+  .panel-card {
+    background: var(--white);
+    border: 1px solid var(--gray);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 24px;
+    margin: 24px 0 32px;
+  }
+  .panel-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .panel-list {
+    list-style: none;
+    display: grid;
     grid-template-columns: 1fr;
-    padding: 12px;
-    gap: 20px;
-    max-width: 100vw;
+    gap: 14px;
   }
-  .form-panel {
-    padding: 16px;
+  .panel-list li {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--black);
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.5;
   }
-  .form-row {
+  .panel-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    background: var(--red);
+    border-radius: 50%;
+  }
+
+  /* Calendar section */
+  .cal-section {
+    background: var(--white);
+    border: 1px solid var(--gray);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 28px 24px;
+    margin-bottom: 32px;
+  }
+  .cal-section h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--black);
+    margin-bottom: 6px;
+    text-align: center;
+  }
+  .cal-section .sub {
+    text-align: center;
+    color: var(--body-gray);
+    font-size: 14px;
+    margin-bottom: 22px;
+  }
+  /* Primary "Add to Calendar" button — works inside Facebook in-app browser */
+  .cal-primary {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: var(--red);
+    color: var(--white);
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    padding: 20px 24px;
+    border-radius: 8px;
+    border: 1px solid var(--dark-red);
+    box-shadow: 0 4px 14px rgba(176,37,30,0.25);
+    transition: transform 0.12s ease, background 0.12s ease;
+  }
+  .cal-primary:hover, .cal-primary:focus { background: var(--dark-red); transform: translateY(-1px); }
+  .cal-primary-note {
+    text-align: center;
+    color: var(--body-gray);
+    font-size: 13px;
+    margin-top: 10px;
+  }
+  /* Expandable "other calendar" options */
+  details.cal-alt {
+    margin-top: 22px;
+    border-top: 1px solid var(--gray);
+    padding-top: 16px;
+  }
+  details.cal-alt summary {
+    cursor: pointer;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--body-gray);
+    list-style: none;
+    padding: 6px;
+  }
+  details.cal-alt summary::-webkit-details-marker { display: none; }
+  details.cal-alt summary::after { content: " ▾"; color: var(--red); }
+  details.cal-alt[open] summary::after { content: " ▴"; }
+  .cal-alt-grid {
+    display: grid;
     grid-template-columns: 1fr;
     gap: 8px;
+    margin-top: 14px;
   }
-  .preview-wrapper {
-    max-width: 100%;
+  @media (min-width: 480px) {
+    .cal-alt-grid { grid-template-columns: 1fr 1fr; }
   }
-  .approve-row {
-    padding: 10px 12px;
+  .cal-alt-grid a, .cal-alt-grid button {
+    display: block;
+    text-align: center;
+    background: var(--white);
+    color: var(--black);
+    border: 1px solid var(--gray);
+    border-radius: 6px;
+    padding: 12px 14px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    transition: border-color 0.12s ease;
   }
-}
+  .cal-alt-grid a:hover, .cal-alt-grid button:hover { border-color: var(--red); color: var(--red); }
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--soft-black);
+    color: var(--white);
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 100;
+  }
+  .toast.show { opacity: 1; }
 
-/* Form Panel */
-.form-panel {
-  background: rgba(26,26,26,0.95);
-  border: 1px solid rgba(176,37,30,0.25);
-  border-radius: 12px;
-  padding: 28px;
-  height: fit-content;
-  width: 100%;
-  min-width: 0;
-  overflow: hidden;
-}
-.form-panel h2 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
-  font-size: 18px;
-  margin-bottom: 20px;
-  color: var(--off-white);
-}
-.form-section { margin-bottom: 16px; }
-.form-section label {
-  display: block;
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #888;
-  margin-bottom: 5px;
-}
-.form-section input[type="text"],
-.form-section input[type="date"],
-.form-section input[type="time"],
-.form-section input[type="file"] {
-  width: 100%;
-  padding: 10px 14px;
-  background: var(--black);
-  border: 1px solid #333;
-  border-radius: 6px;
-  color: var(--white);
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
-  transition: border-color 0.2s;
-}
-.form-section input[type="text"]:focus,
-.form-section input[type="date"]:focus,
-.form-section input[type="time"]:focus {
-  outline: none;
-  border-color: var(--red);
-}
-.form-section input[type="date"],
-.form-section input[type="time"] {
-  color-scheme: dark;
-}
-.form-section input[type="file"] {
-  padding: 8px;
-  cursor: pointer;
-}
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-.form-divider {
-  border: none;
-  border-top: 1px solid #333;
-  margin: 18px 0;
-}
-.btn-submit {
-  width: 100%;
-  padding: 14px;
-  background: var(--red);
-  color: var(--white);
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
-  font-size: 16px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.btn-submit:hover { background: var(--dark-red); }
-.btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
-.status-msg {
-  margin-top: 12px;
-  font-size: 13px;
-  text-align: center;
-  min-height: 20px;
-}
-.status-msg.success { color: #4caf50; }
-.status-msg.error { color: #ff5252; }
+  /* Join section */
+  .join-section {
+    background: var(--soft-black);
+    color: var(--white);
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .join-section .label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .join-section a.join-link {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--white);
+    background: var(--red);
+    border: 1px solid var(--dark-red);
+    border-radius: 6px;
+    padding: 12px 22px;
+    text-decoration: none;
+    transition: background 0.12s ease;
+  }
+  .join-section a.join-link:hover { background: var(--dark-red); }
+  .meeting-meta {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+  .meeting-meta span { color: rgba(255,255,255,0.5); margin-right: 4px; }
 
-/* Preview Panel */
-.preview-panel { position: relative; }
-.preview-panel h2 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
-  font-size: 18px;
-  margin-bottom: 16px;
-  color: var(--off-white);
-}
-.preview-wrapper {
-  width: 100%;
-  max-width: 540px;
-  aspect-ratio: 1/1;
-  overflow: hidden;
-  border-radius: 8px;
-  border: 1px solid rgba(176,37,30,0.2);
-  position: relative;
-}
-#graphic-preview {
-  width: 1080px;
-  height: 1080px;
-  transform: scale(0.5);
-  transform-origin: top left;
-  background: linear-gradient(135deg, #0D0D0D 0%, #1A1A1A 60%, #2A0A08 100%);
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  font-family: 'Open Sans', sans-serif;
-}
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 32px 24px 48px;
+    border-top: 1px solid var(--gray);
+    background: var(--white);
+  }
+  .tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--red);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .footer-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    color: var(--body-gray);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
 
-/* Graphic: Red glow overlay */
-#graphic-preview::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at top right, rgba(176,37,30,0.22) 0%, transparent 65%);
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Section A: Banner */
-.gfx-banner {
-  position: absolute;
-  top: 35px; left: 0; right: 0;
-  height: 110px;
-  background: var(--soft-black);
-  border-bottom: 3px solid var(--red);
-  display: flex;
-  align-items: center;
-  padding: 0 32px;
-  gap: 22px;
-  z-index: 10;
-}
-.gfx-banner-logo {
-  position: relative;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.gfx-banner-an {
-  font-family: 'Bodoni Moda', serif;
-  font-weight: 900;
-  font-size: 82px;
-  color: var(--red);
-  line-height: 1;
-  letter-spacing: -0.08em;
-}
-.gfx-banner-network {
-  position: absolute;
-  left: 50%;
-  top: 55%;
-  transform: translate(-50%, -50%);
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 600;
-  font-size: 10px;
-  color: #ccc;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  text-align: center;
-  padding-left: 0.6em;
-}
-.gfx-banner-divider {
-  width: 2px;
-  height: 60px;
-  background: var(--red);
-  flex-shrink: 0;
-}
-.gfx-banner-text {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-.gfx-banner-agency {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  color: #999;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-}
-.gfx-banner-title {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
-  font-size: 42px;
-  color: var(--white);
-  line-height: 1;
-  text-transform: uppercase;
-}
-.gfx-banner-title span { color: var(--red); }
-
-/* Section F: Date badge */
-.gfx-date-badge {
-  position: absolute;
-  top: 180px;
-  right: 65px;
-  background: var(--red);
-  padding: 12px 20px;
-  border-radius: 6px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
-  font-size: 18px;
-  color: var(--white);
-  text-transform: uppercase;
-  white-space: pre-line;
-  text-align: center;
-  z-index: 10;
-  display: none;
-}
-
-/* Section B: Speaker Name */
-.gfx-speaker-name {
-  position: absolute;
-  top: 295px;
-  left: 48px;
-  right: 500px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
-  font-size: 80px;
-  color: var(--white);
-  text-transform: uppercase;
-  line-height: 0.9;
-  z-index: 10;
-  white-space: nowrap;
-}
-
-/* Section C: Role */
-.gfx-speaker-role {
-  position: absolute;
-  top: 515px;
-  left: 48px;
-  right: 500px;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 400;
-  font-size: 22px;
-  color: #888;
-  z-index: 10;
-}
-
-/* Red rule */
-#gfxRedRule {
-  position: absolute;
-  top: 565px;
-  left: 48px;
-  height: 3px;
-  background: var(--red);
-  z-index: 10;
-  transition: width 0.2s;
-}
-
-/* Section D: Topic */
-.gfx-topic {
-  position: absolute;
-  top: 590px;
-  left: 48px;
-  right: 500px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 30px;
-  font-style: italic;
-  color: var(--red);
-  z-index: 10;
-}
-
-/* Section E: Bullets */
-.gfx-bullets {
-  position: absolute;
-  top: 685px;
-  left: 48px;
-  right: 500px;
-  list-style: none;
-  z-index: 10;
-}
-.gfx-bullets li {
-  display: none;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 10px;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  color: var(--white);
-}
-.gfx-bullets li.visible { display: flex; }
-.gfx-bullets li::before {
-  content: '';
-  flex-shrink: 0;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--red);
-}
-
-/* Section G: Photo */
-.gfx-photo {
-  position: absolute;
-  left: 610px;
-  top: 330px;
-  width: 440px;
-  z-index: 5; /* stays BEHIND the text (text is z-index 10) */
-  display: none;
-}
-.gfx-photo img {
-  width: 100%;
-  height: auto;
-  display: block;
-  -webkit-user-drag: none;
-  user-select: none;
-  pointer-events: none;
-}
-/* Interactive edit overlay — rendered ABOVE everything so it is always grabbable,
-   even when the photo sits behind the text. Hidden during export. */
-.gfx-photo-edit {
-  position: absolute;
-  z-index: 30;
-  display: none;
-  border: 3px dashed rgba(255,255,255,0.95);
-  cursor: move;
-  touch-action: none;
-}
-.gfx-photo-edit .ph-handle {
-  position: absolute;
-  right: -24px;
-  bottom: -24px;
-  width: 48px;
-  height: 48px;
-  background: var(--red);
-  border: 4px solid #fff;
-  border-radius: 50%;
-  cursor: nwse-resize;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-  touch-action: none;
-}
-.gfx-photo-edit .ph-hint {
-  position: absolute;
-  left: 0;
-  top: -46px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 26px;
-  font-weight: 600;
-  color: #fff;
-  background: rgba(176,37,30,0.95);
-  padding: 6px 14px;
-  border-radius: 6px;
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-/* Footer */
-.gfx-footer {
-  position: absolute;
-  bottom: 24px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  color: #444;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  z-index: 10;
-}
-
-/* Form notice */
-.form-notice {
-  background: rgba(176,37,30,0.12);
-  border: 1px solid rgba(176,37,30,0.35);
-  border-radius: 8px;
-  padding: 12px 14px;
-  margin-bottom: 20px;
-  font-size: 13px;
-  color: #ccc;
-  line-height: 1.5;
-}
-.form-notice strong { color: var(--red); }
-
-/* BG removal loading overlay */
-.bg-loading-overlay {
-  display: none;
-  background: rgba(176,37,30,0.15);
-  border: 2px solid var(--red);
-  border-radius: 8px;
-  padding: 16px;
-  margin-top: 10px;
-  text-align: center;
-}
-.bg-loading-overlay.active { display: block; }
-.bg-loading-overlay .spinner {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  border: 3px solid rgba(176,37,30,0.3);
-  border-top-color: var(--red);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-  vertical-align: middle;
-  margin-right: 10px;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-.bg-loading-overlay .loading-text {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: var(--white);
-}
-.bg-loading-overlay .loading-sub {
-  font-size: 12px;
-  color: #aaa;
-  margin-top: 6px;
-}
-
-/* Preview approval */
-.approve-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 16px;
-  padding: 12px 14px;
-  background: rgba(26,26,26,0.95);
-  border: 1px solid #333;
-  border-radius: 8px;
-  cursor: pointer;
-}
-.approve-row input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  accent-color: var(--red);
-  cursor: pointer;
-}
-.approve-row span {
-  font-size: 13px;
-  font-weight: 600;
-  color: #ccc;
-}
-
-/* Submit area below preview */
-.submit-area {
-  margin-top: 16px;
-}
-.btn-submit:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-  background: #555;
-}
+  @media (max-width: 480px) {
+    .hero { padding: 40px 20px 36px; }
+    main { padding: 28px 18px 18px; }
+    .cal-section, .panel-card, .join-section { padding: 20px 16px; }
+  }
 </style>
 </head>
 <body>
+  <div class="accent-bar"></div>
 
-<!-- App Header -->
-<header class="app-header">
-  <div style="position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-    <span style="font-family:'Bodoni Moda',serif;font-weight:900;font-size:42px;color:#B0251E;line-height:1;letter-spacing:-0.08em;">AN</span>
-    <span style="position:absolute;left:50%;top:55%;transform:translate(-50%,-50%);font-family:'Open Sans',sans-serif;font-weight:600;font-size:5.5px;color:#ccc;letter-spacing:0.22em;text-transform:uppercase;white-space:nowrap;padding-left:0.6em;">AGENCY NETWORK</span>
-  </div>
-  <h1>Agency <span>Solutions</span> LIVE &mdash; Graphic Builder</h1>
-</header>
-
-<div class="main-grid">
-  <!-- Form Panel -->
-  <div class="form-panel">
-    <h2>Speaker Details</h2>
-    <div class="form-notice">
-      <strong>Important:</strong> Fill in all fields below, then check the <strong>Live Preview</strong> to make sure the graphic looks exactly how you want it before clicking Generate &amp; Send.
+  <header class="app-header">
+    <div class="banner-logo">
+      <span class="banner-an">AN</span>
+      <span class="banner-network">AGENCY NETWORK</span>
     </div>
-    <form id="speakerForm">
+    <div class="banner-divider"></div>
+    <div class="banner-text">
+      <div class="banner-agency">AGENCY</div>
+      <div class="banner-title">SOLUTIONS <span>LIVE</span></div>
+    </div>
+  </header>
 
-      <div class="form-section">
-        <label for="speakerPhoto">Speaker Photo <span style="font-weight:400;color:#666;text-transform:none;letter-spacing:0;">(upload first)</span></label>
-        <input type="file" id="speakerPhoto" accept="image/*" onchange="handlePhoto(this)">
-        <div style="display:flex;gap:16px;margin-top:8px;">
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:#aaa;cursor:pointer;text-transform:none;letter-spacing:0;">
-            <input type="checkbox" id="removeBg" checked> Remove Background
-          </label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;color:#aaa;cursor:pointer;text-transform:none;letter-spacing:0;">
-            <input type="checkbox" id="flipPhoto" onchange="toggleFlip()"> Flip Image
-          </label>
-        </div>
-        <div style="font-size:11px;color:#777;margin-top:6px;">Allow 30–60 seconds for the image to process and appear in the preview.</div>
-        <div class="bg-loading-overlay" id="bgLoadingOverlay">
-          <div><span class="spinner"></span><span class="loading-text">Removing Background...</span></div>
-          <div class="loading-sub">This may take 30–60 seconds on first use while the AI model downloads.</div>
-        </div>
-      </div>
-
-      <hr class="form-divider">
-
-      <div class="form-row">
-        <div class="form-section">
-          <label for="speakerFirst">First Name</label>
-          <input type="text" id="speakerFirst" autocomplete="off" oninput="updatePreview(); checkFormReady();">
-        </div>
-        <div class="form-section">
-          <label for="speakerLast">Last Name</label>
-          <input type="text" id="speakerLast" autocomplete="off" oninput="updatePreview(); checkFormReady();">
-        </div>
-      </div>
-
-      <div class="form-section">
-        <label for="speakerRole">Role / Subtitle</label>
-        <input type="text" id="speakerRole" autocomplete="off" oninput="updatePreview(); checkFormReady();">
-      </div>
-
-      <hr class="form-divider">
-
-      <div class="form-section">
-        <label for="topicTitle">Topic Title</label>
-        <input type="text" id="topicTitle" autocomplete="off" oninput="updatePreview(); checkFormReady();">
-      </div>
-
-      <div class="form-section">
-        <label>Bullet Points <span style="font-weight:400;color:#666;text-transform:none;letter-spacing:0;">(at least 1 required)</span></label>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <input type="text" id="bullet1" autocomplete="off" placeholder="Bullet 1" oninput="updatePreview(); checkFormReady();">
-          <input type="text" id="bullet2" autocomplete="off" placeholder="Bullet 2" oninput="updatePreview()">
-          <input type="text" id="bullet3" autocomplete="off" placeholder="Bullet 3" oninput="updatePreview()">
-          <input type="text" id="bullet4" autocomplete="off" placeholder="Bullet 4" oninput="updatePreview()">
-          <input type="text" id="bullet5" autocomplete="off" placeholder="Bullet 5" oninput="updatePreview()">
-          <input type="text" id="bullet6" autocomplete="off" placeholder="Bullet 6" oninput="updatePreview()">
-        </div>
-      </div>
-
-      <hr class="form-divider">
-
-      <div class="form-row">
-        <div class="form-section">
-          <label for="callDate">Date</label>
-          <input type="date" id="callDate" autocomplete="off" onchange="updatePreview(); checkFormReady();">
-        </div>
-        <div class="form-section">
-          <label for="callTime">Time <span style="font-weight:400;color:#666;text-transform:none;letter-spacing:0;">(will display as EST)</span></label>
-          <input type="time" id="callTime" autocomplete="off" onchange="updatePreview(); checkFormReady();">
-        </div>
-      </div>
-    </form>
-  </div>
-
-  <!-- Preview Panel -->
-  <div class="preview-panel">
-    <h2>Live Preview</h2>
-    <div class="preview-wrapper" style="margin-bottom:0;">
-      <div id="graphic-preview">
-        <!-- A: Banner -->
-        <div class="gfx-banner">
-          <div class="gfx-banner-logo">
-            <span class="gfx-banner-an">AN</span>
-            <span class="gfx-banner-network">AGENCY NETWORK</span>
-          </div>
-          <div class="gfx-banner-divider"></div>
-          <div class="gfx-banner-text">
-            <div class="gfx-banner-agency">AGENCY</div>
-            <div class="gfx-banner-title">SOLUTIONS <span>LIVE</span></div>
-          </div>
-        </div>
-
-        <!-- F: Date Badge -->
-        <div class="gfx-date-badge" id="gfxDateBadge"></div>
-
-        <!-- B: Speaker Name -->
-        <div class="gfx-speaker-name" id="gfxSpeakerName"></div>
-
-        <!-- C: Speaker Role -->
-        <div class="gfx-speaker-role" id="gfxSpeakerRole"></div>
-
-        <!-- Red Rule -->
-        <div id="gfxRedRule" style="width:80px;"></div>
-
-        <!-- D: Topic -->
-        <div class="gfx-topic" id="gfxTopic"></div>
-
-        <!-- E: Bullets -->
-        <ul class="gfx-bullets" id="gfxBullets">
-          <li id="gfxB1"></li>
-          <li id="gfxB2"></li>
-          <li id="gfxB3"></li>
-          <li id="gfxB4"></li>
-          <li id="gfxB5"></li>
-          <li id="gfxB6"></li>
-        </ul>
-
-        <!-- G: Photo -->
-        <div class="gfx-photo" id="gfxPhoto">
-          <img id="gfxPhotoImg" src="" alt="">
-        </div>
-        <div class="gfx-photo-edit" id="gfxPhotoEdit">
-          <div class="ph-hint">Drag to move &bull; drag the red dot to resize</div>
-          <div class="ph-handle" id="gfxPhotoHandle"></div>
-        </div>
-
-        <!-- Footer -->
-        <div class="gfx-footer">Connecting Agents &ndash; Inspiring Greatness</div>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="series-label">Agency Solutions LIVE <span>·</span> Live-Only Event</div>
+      <h2>Write More Households W/O Increasing Your ILP Budget</h2>
+      <h3>With Mike Laskin — Presidents Club Agent &amp; Founder of Horus</h3>
+      <div class="date-pill">
+        <span class="dot"></span>
+        Tue · August 11 · 1:00–2:30 PM Eastern
       </div>
     </div>
+  </section>
 
-    <label class="approve-row" for="approvePreview">
-      <input type="checkbox" id="approvePreview" onchange="checkFormReady()">
-      <span>I have reviewed the preview and it looks correct</span>
-    </label>
-
-    <div class="submit-area">
-      <button type="button" class="btn-submit" id="submitBtn" disabled onclick="handleSubmit(event)">Generate &amp; Send</button>
-      <div class="status-msg" id="statusMsg"></div>
+  <main>
+    <div class="description">
+      <!-- DESC FILLED — Mike Laskin, August 11, 2026 -->
+      <p>Want to write more auto insurance? Not sure which leads are best, how to max the leads you get, or what adjustments to make to your campaigns? Join us to hear from <strong>Mike Laskin</strong> on how to write more households <strong>without increasing your ILP budget</strong>.</p>
+      <p>There's no question the new contract is an auto gain contract — so let's learn from one of the best. Mike is a <strong>top 50 auto agent in the company</strong> and will share how to overcome "garbage" internet leads.</p>
+      <p><strong>Free for Agency Network members. Hosted live on Microsoft Teams.</strong></p>
+      <!-- DESC END -->
     </div>
-  </div>
-</div>
+
+    <div class="panel-card">
+      <div class="panel-label">What We'll Cover</div>
+      <ul class="panel-list">
+        <!-- PANEL FILLED -->
+        <li>The shift from writing more at "any cost" to writing more at the right cost</li>
+        <li>Why agents obsess over the wrong metrics (CPL and close %)</li>
+        <li>How to scale profitably with internet leads</li>
+        <!-- /PANEL -->
+      </ul>
+    </div>
+
+    <div class="cal-section">
+      <h4>Add to your calendar</h4>
+      <div class="sub">Pick whichever calendar you use.</div>
+      <a id="cal-primary" class="cal-primary" href="#" target="_blank" rel="noopener noreferrer">
+        📅 Add to Calendar
+      </a>
+      <p class="cal-primary-note">One tap — works inside the Facebook app. Opens Google Calendar with the event filled in.</p>
+
+      <details class="cal-alt">
+        <summary>Don't use Google Calendar? Other options</summary>
+        <div class="cal-alt-grid">
+          <a id="cal-outlook-personal" target="_blank" rel="noopener noreferrer" href="#">Outlook (Hotmail / Personal)</a>
+          <a id="cal-outlook-work" target="_blank" rel="noopener noreferrer" href="#">Outlook (Work / Office 365)</a>
+          <a id="cal-apple" href="webcal://agencysolutionslive.agcynetwork.com/agencysolutionslive.ics">Apple Calendar (Subscribe)</a>
+          <a id="cal-ics-download" href="agencysolutionslive.ics" download>Download .ics File</a>
+          <a id="cal-email" href="#">Email the Invite to Myself</a>
+          <button id="cal-copy" type="button">Copy Meeting Details</button>
+        </div>
+      </details>
+    </div>
+
+    <div class="join-section">
+      <div class="label">Day Of · Join Directly</div>
+      <a class="join-link" href="https://teams.microsoft.com/meet/234576015422764?p=u2fFU5rF4sQp7evhPT" target="_blank" rel="noopener noreferrer">Join Microsoft Teams Call</a>
+      <div class="meeting-meta">
+        <div><span>Meeting ID:</span> 234 576 015 422 764</div>
+        <div><span>Passcode:</span> vz6G4ho2</div>
+      </div>
+    </div>
+  </main>
+
+  <div id="toast" class="toast">Copied!</div>
+
+  <footer>
+    <div class="tagline">Connecting Agents – Inspiring Greatness</div>
+    <div class="footer-name">Agency Network</div>
+  </footer>
 
 <script>
-// Google Apps Script Web App URL for email
-var GAS_URL = 'https://script.google.com/macros/s/AKfycbyohJrvsw5REXixZbzSuCoSk1aEb5S1zPJylmWFoX9UgQXZ2X1D-oHYxghjoy-assuWyg/exec';
+(function () {
+  // Meeting config — single source of truth for every button URL on this page.
+  var cfg = {
+    title: "Agency Solutions LIVE - Write More Households W/O Increasing Your ILP Budget",
+    startUTC: "20260811T170000Z",
+    endUTC:   "20260811T183000Z",
+    startISO: "2026-08-11T17:00:00+00:00",
+    endISO:   "2026-08-11T18:30:00+00:00",
+    teamsURL: "https://teams.microsoft.com/meet/234576015422764?p=u2fFU5rF4sQp7evhPT",
+    meetingID: "234 576 015 422 764",
+    passcode: "vz6G4ho2",
+    location: "Microsoft Teams - https://teams.microsoft.com/meet/234576015422764?p=u2fFU5rF4sQp7evhPT"
+  };
 
-function formatDate(val) {
-  if (!val) return '';
-  const [y, m, d] = val.split('-').map(Number);
-  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  return months[m - 1] + ' ' + d + ', ' + y;
-}
+  // Compact body — short enough to survive any URL length limit in any in-app browser.
+  cfg.body = [
+    "Agency Solutions LIVE | Tuesday, August 11, 2026 | 1:00 PM ET",
+    "",
+    "Featured Speaker: Mike Laskin - Presidents Club Agent & Founder of Horus",
+    "Topic: Write More Households W/O Increasing Your ILP Budget",
+    "- Writing more at the right cost, not at 'any cost'",
+    "- The wrong metrics agents obsess over (CPL and close %)",
+    "- How to scale profitably with internet leads",
+    "",
+    "Free for Agency Network members. Hosted live on Microsoft Teams.",
+    "",
+    "Join Teams: " + cfg.teamsURL,
+    "Meeting ID: " + cfg.meetingID,
+    "Passcode: " + cfg.passcode
+  ].join("\n");
 
-function formatTime(val) {
-  if (!val) return '';
-  let [h, m] = val.split(':').map(Number);
-  const ampm = h >= 12 ? 'PM' : 'AM';
-  h = h % 12 || 12;
-  return h + ':' + String(m).padStart(2, '0') + ' ' + ampm + ' EST';
-}
+  var e = encodeURIComponent;
 
-function titleCase(str) {
-  if (!str) return '';
-  const lower = ['of','the','and','in','on','at','to','for','a','an','by','with','from','as','or','nor','but','is'];
-  return str.split(' ').map(function(word, i) {
-    if (i > 0 && lower.indexOf(word.toLowerCase()) !== -1) return word.toLowerCase();
-    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-  }).join(' ');
-}
+  // PRIMARY: Google Calendar render URL — works in Facebook in-app browser,
+  // works on every device, works for everyone with a Google account.
+  var google =
+    "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+    "&text=" + e(cfg.title) +
+    "&dates=" + cfg.startUTC + "/" + cfg.endUTC +
+    "&details=" + e(cfg.body) +
+    "&location=" + e(cfg.location);
 
-function checkFormReady() {
-  var btn = document.getElementById('submitBtn');
-  var first = document.getElementById('speakerFirst').value.trim();
-  var last = document.getElementById('speakerLast').value.trim();
-  var role = document.getElementById('speakerRole').value.trim();
-  var topic = document.getElementById('topicTitle').value.trim();
-  var bullet1 = document.getElementById('bullet1').value.trim();
-  var date = document.getElementById('callDate').value;
-  var time = document.getElementById('callTime').value;
-  var photo = document.getElementById('gfxPhoto').style.display === 'block';
-  var approved = document.getElementById('approvePreview').checked;
-
-  var allFilled = first && last && role && topic && bullet1 && date && time && photo && approved;
-  btn.disabled = !allFilled;
-}
-
-function updatePreview() {
-  const first = document.getElementById('speakerFirst').value.trim();
-  const last = document.getElementById('speakerLast').value.trim();
-  const role = document.getElementById('speakerRole').value.trim();
-  const topic = document.getElementById('topicTitle').value.trim();
-  const dateRaw = document.getElementById('callDate').value;
-  const timeRaw = document.getElementById('callTime').value;
-  const date = formatDate(dateRaw);
-  const time = formatTime(timeRaw);
-
-  // B: Speaker name — first name on its own line, last name stacked below.
-  // Each line stays intact (no word break); auto-shrink so the widest line fits.
-  const nameEl = document.getElementById('gfxSpeakerName');
-  nameEl.innerHTML = '';
-  if (first) nameEl.appendChild(document.createTextNode(first));
-  if (first && last) nameEl.appendChild(document.createElement('br'));
-  if (last) nameEl.appendChild(document.createTextNode(last));
-  let nameSize = 80;
-  nameEl.style.fontSize = nameSize + 'px';
-  while (nameEl.scrollWidth > nameEl.clientWidth && nameSize > 20) {
-    nameSize -= 2;
-    nameEl.style.fontSize = nameSize + 'px';
+  // SECONDARY: Outlook deep links — two flavors because work and personal
+  // Microsoft accounts use different hosts.
+  function outlookURL(host) {
+    return "https://" + host + "/calendar/0/deeplink/compose?path=%2Fcalendar%2Faction%2Fcompose&rru=addevent" +
+      "&subject=" + e(cfg.title) +
+      "&startdt=" + e(cfg.startISO) +
+      "&enddt=" + e(cfg.endISO) +
+      "&location=" + e(cfg.location) +
+      "&body=" + e(cfg.body);
   }
 
-  // Red rule matches speaker name width
-  const rule = document.getElementById('gfxRedRule');
-  if (nameEl.textContent) {
-    rule.style.width = Math.min(nameEl.scrollWidth, 580) + 'px';
-  } else {
-    rule.style.width = '80px';
+  // SECONDARY: mailto: — opens the user's default email app OUTSIDE Facebook IAB,
+  // breaking them out of the in-app browser trap. Self-email with all the details.
+  var mailto = "mailto:?subject=" + e("Add to calendar: " + cfg.title) +
+    "&body=" + e(cfg.body +
+      "\n\nAdd to your calendar in one tap:\n" + window.location.href);
+
+  // Wire everything up.
+  function setHref(id, url) {
+    var el = document.getElementById(id);
+    if (el) el.setAttribute("href", url);
   }
+  setHref("cal-primary",          google);
+  setHref("cal-outlook-personal", outlookURL("outlook.live.com"));
+  setHref("cal-outlook-work",     outlookURL("outlook.office.com"));
+  setHref("cal-email",            mailto);
 
-  // C: Role (title case)
-  document.getElementById('gfxSpeakerRole').textContent = titleCase(role);
-
-  // D: Topic (ALL CAPS)
-  document.getElementById('gfxTopic').textContent = topic.toUpperCase();
-
-  // F: Date badge
-  const badge = document.getElementById('gfxDateBadge');
-  if (date || time) {
-    badge.textContent = [date, time].filter(Boolean).join('\n');
-    badge.style.display = 'block';
-  } else {
-    badge.style.display = 'none';
+  // Copy-to-clipboard fallback for users with none of the above (works everywhere).
+  var copyText = cfg.title + "\n" + cfg.body;
+  var copyBtn = document.getElementById("cal-copy");
+  var toast = document.getElementById("toast");
+  function showToast(msg) {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add("show");
+    setTimeout(function () { toast.classList.remove("show"); }, 1800);
   }
-
-  // E: Bullets
-  for (let i = 1; i <= 6; i++) {
-    const val = document.getElementById('bullet' + i).value.trim();
-    const li = document.getElementById('gfxB' + i);
-    if (val) {
-      li.textContent = val;
-      li.classList.add('visible');
-    } else {
-      li.textContent = '';
-      li.classList.remove('visible');
-    }
-  }
-}
-
-async function handlePhoto(input) {
-  const file = input.files[0];
-  if (!file) return;
-  const status = document.getElementById('statusMsg');
-  const shouldRemoveBg = document.getElementById('removeBg').checked;
-
-  function showPhoto(src) {
-    const img = document.getElementById('gfxPhotoImg');
-    pendingPlace = true; // re-center & show edit handles once this new image loads
-    img.src = src;
-    document.getElementById('gfxPhoto').style.display = 'block';
-  }
-
-  // Helper: resize image to max dimension before bg removal to save memory
-  function resizeForProcessing(file, maxSize) {
-    return new Promise(function(resolve) {
-      var img = new Image();
-      img.onload = function() {
-        var w = img.width, h = img.height;
-        if (w <= maxSize && h <= maxSize) { resolve(file); return; }
-        var scale = maxSize / Math.max(w, h);
-        var c = document.createElement('canvas');
-        c.width = Math.round(w * scale);
-        c.height = Math.round(h * scale);
-        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
-        c.toBlob(function(blob) { resolve(blob); }, 'image/png');
-      };
-      img.src = URL.createObjectURL(file);
+  if (copyBtn) {
+    copyBtn.addEventListener("click", function () {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(copyText).then(
+          function () { showToast("Copied to clipboard"); },
+          function () { fallbackCopy(); }
+        );
+      } else { fallbackCopy(); }
     });
   }
-
-  var overlay = document.getElementById('bgLoadingOverlay');
-
-  if (shouldRemoveBg) {
-    if (!window.imglyRemoveBackground) {
-      overlay.classList.add('active');
-      overlay.querySelector('.loading-text').textContent = 'Loading AI Model...';
-      for (let i = 0; i < 60; i++) {
-        await new Promise(r => setTimeout(r, 500));
-        if (window.imglyRemoveBackground) break;
-      }
-    }
-    if (window.imglyRemoveBackground) {
-      overlay.classList.add('active');
-      overlay.querySelector('.loading-text').textContent = 'Removing Background...';
-      try {
-        var resized = await resizeForProcessing(file, 1024);
-        const blob = await window.imglyRemoveBackground(resized, {
-          model: 'small',
-          output: { format: 'image/png', quality: 0.8 }
-        });
-        showPhoto(URL.createObjectURL(blob));
-        overlay.classList.remove('active');
-        status.className = 'status-msg success';
-        status.textContent = 'Background removed!';
-        checkFormReady();
-        setTimeout(() => { status.textContent = ''; status.className = 'status-msg'; }, 4000);
-      } catch (err) {
-        console.error('BG removal error:', err);
-        overlay.classList.remove('active');
-        var reader = new FileReader();
-        reader.onload = function(e) { showPhoto(e.target.result); checkFormReady(); };
-        reader.readAsDataURL(file);
-        status.className = 'status-msg error';
-        status.textContent = 'Background removal failed: ' + err.message;
-        setTimeout(() => { status.textContent = ''; status.className = 'status-msg'; }, 5000);
-      }
-    } else {
-      overlay.classList.remove('active');
-      var reader = new FileReader();
-      reader.onload = function(e) { showPhoto(e.target.result); checkFormReady(); };
-      reader.readAsDataURL(file);
-      status.className = 'status-msg error';
-      status.textContent = 'Background removal library failed to load. Photo loaded as-is.';
-      setTimeout(() => { status.textContent = ''; status.className = 'status-msg'; }, 5000);
-    }
-  } else {
-    var reader = new FileReader();
-    reader.onload = function(e) { showPhoto(e.target.result); checkFormReady(); };
-    reader.readAsDataURL(file);
+  function fallbackCopy() {
+    var ta = document.createElement("textarea");
+    ta.value = copyText;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    try { document.execCommand("copy"); showToast("Copied to clipboard"); }
+    catch (err) { showToast("Press and hold to copy"); }
+    document.body.removeChild(ta);
   }
-}
-
-function toggleFlip() {
-  const img = document.getElementById('gfxPhotoImg');
-  if (document.getElementById('flipPhoto').checked) {
-    img.style.transform = 'scaleX(-1)';
-  } else {
-    img.style.transform = 'none';
-  }
-}
-
-function setMobileScale() {
-  const wrapper = document.querySelector('.preview-wrapper');
-  if (!wrapper) return;
-  const size = wrapper.offsetWidth;
-  document.getElementById('graphic-preview').style.transform = 'scale(' + (size / 1080) + ')';
-}
-
-function checkMobile() {
-  if (window.innerWidth <= 900) {
-    setMobileScale();
-  } else {
-    document.getElementById('graphic-preview').style.transform = 'scale(0.5)';
-  }
-}
-
-window.addEventListener('resize', checkMobile);
-window.addEventListener('load', checkMobile);
-
-// Convert any blob/object URL image to data URL so canvas won't be tainted
-function ensureDataUrl(imgEl) {
-  return new Promise(function(resolve) {
-    if (!imgEl.src || imgEl.src.startsWith('data:')) { resolve(); return; }
-    var c = document.createElement('canvas');
-    c.width = imgEl.naturalWidth || imgEl.width;
-    c.height = imgEl.naturalHeight || imgEl.height;
-    c.getContext('2d').drawImage(imgEl, 0, 0);
-    try {
-      imgEl.src = c.toDataURL('image/png');
-    } catch(e) { /* if it fails, continue anyway */ }
-    resolve();
-  });
-}
-
-async function handleSubmit(e) {
-  if (e) e.preventDefault();
-  const btn = document.getElementById('submitBtn');
-  const status = document.getElementById('statusMsg');
-  btn.disabled = true;
-  status.className = 'status-msg';
-  status.textContent = 'Preparing graphic...';
-
-  const graphic = document.getElementById('graphic-preview');
-  const origTransform = graphic.style.transform;
-
-  // Convert photo to data URL first to avoid tainted canvas
-  var photoImg = document.getElementById('gfxPhotoImg');
-  if (photoImg.src && !photoImg.src.startsWith('data:')) {
-    await ensureDataUrl(photoImg);
-    await new Promise(r => setTimeout(r, 200));
-  }
-
-  // Hide the interactive edit overlay so it isn't baked into the export
-  var editOverlay = document.getElementById('gfxPhotoEdit');
-  var editOverlayDisplay = editOverlay.style.display;
-  editOverlay.style.display = 'none';
-
-  var pngDataUrl, canvas;
-  try {
-    graphic.style.transform = 'none';
-    canvas = await html2canvas(graphic, {
-      width: 1080,
-      height: 1080,
-      scale: 1,
-      useCORS: true,
-      allowTaint: false,
-      backgroundColor: null
-    });
-    graphic.style.transform = origTransform;
-    editOverlay.style.display = editOverlayDisplay;
-    checkMobile();
-    pngDataUrl = canvas.toDataURL('image/png');
-  } catch (err) {
-    graphic.style.transform = origTransform;
-    editOverlay.style.display = editOverlayDisplay;
-    checkMobile();
-    status.className = 'status-msg error';
-    status.textContent = 'Error generating graphic: ' + err.message;
-    btn.disabled = false;
-    return;
-  }
-
-  // Download PNG
-  var firstName = document.getElementById('speakerFirst').value.trim() || 'speaker';
-  var lastName = document.getElementById('speakerLast').value.trim() || 'graphic';
-  var filename = firstName + '_' + lastName + '_AgencySolutionsLive';
-  var pngLink = document.createElement('a');
-  pngLink.download = filename + '.png';
-  pngLink.href = pngDataUrl;
-  pngLink.click();
-  status.textContent = 'PNG downloaded. Generating PDF...';
-
-  await new Promise(r => setTimeout(r, 500));
-
-  // Generate PDF
-  try {
-    var { jsPDF } = window.jspdf;
-    var pdf = new jsPDF({ orientation: 'portrait', unit: 'px', format: [1080, 1080] });
-    pdf.addImage(pngDataUrl, 'PNG', 0, 0, 1080, 1080);
-    pdf.save(filename + '.pdf');
-  } catch (err) {
-    console.error('PDF error:', err);
-  }
-
-  status.textContent = 'PDF downloaded. Sending email...';
-
-  // Create smaller JPEG version of graphic for email (540x540, quality 0.6)
-  var emailImageData = '';
-  try {
-    var emailCanvas = document.createElement('canvas');
-    emailCanvas.width = 540;
-    emailCanvas.height = 540;
-    var emailCtx = emailCanvas.getContext('2d');
-    emailCtx.drawImage(canvas, 0, 0, 540, 540);
-    emailImageData = emailCanvas.toDataURL('image/jpeg', 0.6);
-  } catch (imgErr) {
-    console.log('Could not create email image:', imgErr);
-  }
-
-  // Send email via Google Apps Script
-  try {
-    var emailData = {
-      speakerFirst: document.getElementById('speakerFirst').value,
-      speakerLast: document.getElementById('speakerLast').value,
-      speakerRole: document.getElementById('speakerRole').value,
-      topicTitle: document.getElementById('topicTitle').value,
-      bullet1: document.getElementById('bullet1').value,
-      bullet2: document.getElementById('bullet2').value,
-      bullet3: document.getElementById('bullet3').value,
-      bullet4: document.getElementById('bullet4').value,
-      bullet5: document.getElementById('bullet5').value,
-      bullet6: document.getElementById('bullet6').value,
-      callDate: formatDate(document.getElementById('callDate').value),
-      callTime: formatTime(document.getElementById('callTime').value)
-    };
-    if (emailImageData) {
-      emailData.graphic_image = emailImageData;
-    }
-
-    // Method 1: sendBeacon (fire-and-forget, works on all modern browsers)
-    var beaconSent = false;
-    if (navigator.sendBeacon) {
-      var formData = new FormData();
-      for (var key in emailData) {
-        formData.append(key, emailData[key]);
-      }
-      beaconSent = navigator.sendBeacon(GAS_URL, formData);
-      console.log('sendBeacon result:', beaconSent);
-    }
-
-    // Method 2: hidden form + static iframe (backup, uses pre-existing iframe)
-    if (!beaconSent) {
-      var form = document.createElement('form');
-      form.method = 'POST';
-      form.action = GAS_URL;
-      form.target = 'gas-email-frame';
-      form.style.display = 'none';
-
-      for (var key in emailData) {
-        var input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = key;
-        input.value = emailData[key];
-        form.appendChild(input);
-      }
-
-      document.body.appendChild(form);
-      form.submit();
-      setTimeout(function() { form.remove(); }, 5000);
-    }
-
-    status.className = 'status-msg success';
-    status.textContent = 'Done! PNG + PDF downloaded and email sent to andrew@agcynetwork.com';
-  } catch (err) {
-    console.error('Email error:', err);
-    status.className = 'status-msg error';
-    status.textContent = 'PNG + PDF downloaded but email failed: ' + err.message;
-  }
-  // Reset approval so user must re-approve for next submission
-  document.getElementById('approvePreview').checked = false;
-  checkFormReady();
-}
-
-/* ---- Manual speaker-photo positioning & resizing (drag + resize handle) ---- */
-var pendingPlace = false;
-var photoState = { left: 610, top: 330, width: 440 };
-
-function applyPhotoState() {
-  var p = document.getElementById('gfxPhoto');
-  p.style.left = photoState.left + 'px';
-  p.style.top = photoState.top + 'px';
-  p.style.width = photoState.width + 'px';
-}
-
-function syncEditOverlay() {
-  var p = document.getElementById('gfxPhoto');
-  var e = document.getElementById('gfxPhotoEdit');
-  e.style.left = p.offsetLeft + 'px';
-  e.style.top = p.offsetTop + 'px';
-  e.style.width = p.offsetWidth + 'px';
-  e.style.height = p.offsetHeight + 'px';
-}
-
-// On a freshly loaded image: give it a sensible default size/position (bottom-right)
-function initPhotoPlacement() {
-  var img = document.getElementById('gfxPhotoImg');
-  var nw = img.naturalWidth || 1, nh = img.naturalHeight || 1;
-  var ar = nh / nw;
-  var w = 440, h = w * ar;
-  var maxH = 860;
-  if (h > maxH) { h = maxH; w = h / ar; }
-  photoState.width = Math.round(w);
-  photoState.left = Math.max(0, Math.round(1080 - 30 - w));
-  photoState.top = Math.max(0, Math.round(1080 - 30 - h));
-  applyPhotoState();
-  document.getElementById('gfxPhotoEdit').style.display = 'block';
-  syncEditOverlay();
-}
-
-document.getElementById('gfxPhotoImg').addEventListener('load', function() {
-  if (pendingPlace) { pendingPlace = false; initPhotoPlacement(); }
-});
-
-(function setupPhotoEditing() {
-  var edit = document.getElementById('gfxPhotoEdit');
-  var handle = document.getElementById('gfxPhotoHandle');
-  var preview = document.getElementById('graphic-preview');
-  var mode = null, sx = 0, sy = 0, sLeft = 0, sTop = 0, sWidth = 0;
-
-  function scaleFactor() {
-    var r = preview.getBoundingClientRect();
-    return (r.width / 1080) || 0.5;
-  }
-  function onMove(ev) {
-    if (!mode) return;
-    var s = scaleFactor();
-    if (mode === 'move') {
-      photoState.left = Math.round(sLeft + (ev.clientX - sx) / s);
-      photoState.top = Math.round(sTop + (ev.clientY - sy) / s);
-    } else {
-      var nw = Math.round(sWidth + (ev.clientX - sx) / s);
-      photoState.width = Math.max(80, Math.min(1080, nw));
-    }
-    applyPhotoState();
-    syncEditOverlay();
-    ev.preventDefault();
-  }
-  function end() { mode = null; }
-
-  edit.addEventListener('pointerdown', function(ev) {
-    if (ev.target === handle) return;
-    mode = 'move'; sx = ev.clientX; sy = ev.clientY;
-    sLeft = photoState.left; sTop = photoState.top;
-    edit.setPointerCapture(ev.pointerId); ev.preventDefault();
-  });
-  handle.addEventListener('pointerdown', function(ev) {
-    mode = 'resize'; sx = ev.clientX; sWidth = photoState.width;
-    handle.setPointerCapture(ev.pointerId);
-    ev.preventDefault(); ev.stopPropagation();
-  });
-  edit.addEventListener('pointermove', onMove);
-  handle.addEventListener('pointermove', onMove);
-  edit.addEventListener('pointerup', end);
-  handle.addEventListener('pointerup', end);
-  edit.addEventListener('pointercancel', end);
-  handle.addEventListener('pointercancel', end);
-  window.addEventListener('resize', function() {
-    if (document.getElementById('gfxPhoto').style.display === 'block') syncEditOverlay();
-  });
 })();
 </script>
-<iframe name="gas-email-frame" id="gas-email-frame" style="display:none" src="about:blank"></iframe>
 </body>
 </html>
