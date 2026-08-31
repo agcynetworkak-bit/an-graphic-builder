@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agency Network &amp; NASFA — MEWA/AHP Implementation Timeline</title>
+<meta name="description" content="Agency Network &amp; NASFA MEWA/AHP Implementation Timeline — from strategic partnership through plan launch, 2026-2027.">
+<meta property="og:title" content="Agency Network &amp; NASFA MEWA/AHP Implementation Timeline">
+<meta property="og:description" content="From strategic partnership through plan launch &middot; 2026-2027">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://agcynetworkak-bit.github.io/an-graphic-builder/an-nasfa-mewa-ahp-timeline.png">
+<meta property="og:image:width" content="3200">
+<meta property="og:image:height" content="1800">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700;800;900&family=Montserrat:wght@600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #B0251E;
+    --dark-red: #8F1E18;
+    --red-bright: #E0413A;
+    --black: #111111;
+    --soft-black: #1A1A1A;
+    --white: #FFFFFF;
+    --off-white: #F7F7F7;
+    --body-gray: #555555;
+    --line: rgba(255,255,255,0.10);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'Open Sans', system-ui, sans-serif;
+    background: #050505;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  /* ============ Fixed 1600 x 900 graphic canvas ============ */
+  .canvas {
+    width: 1600px;
+    height: 900px;
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(1150px 600px at 86% -12%, #2C0B09 0%, rgba(44,11,9,0) 60%),
+      linear-gradient(160deg, #0D0D0D 0%, #151515 55%, #0A0A0A 100%);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Top red accent bar */
+  .accent-bar {
+    height: 6px;
+    flex: 0 0 auto;
+    background: linear-gradient(to right, var(--dark-red), var(--red) 45%, var(--red-bright) 70%, var(--dark-red));
+  }
+
+  /* ---------- Header band ---------- */
+  .hdr {
+    flex: 0 0 auto;
+    height: 104px;
+    background: var(--soft-black);
+    border-bottom: 3px solid var(--red);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 0 56px;
+  }
+  .logo { position: relative; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .logo-an {
+    font-family: 'Bodoni Moda', 'Didot', Georgia, serif;
+    font-weight: 900;
+    font-size: 66px;
+    color: var(--red);
+    line-height: 1;
+    letter-spacing: -0.08em;
+  }
+  .logo-network {
+    position: absolute;
+    left: 50%; top: 55%;
+    transform: translate(-50%, -50%);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 8.5px;
+    color: #ccc;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding-left: 0.6em;
+  }
+  .hdr-divider { width: 2px; height: 56px; background: var(--red); flex-shrink: 0; }
+  .hdr-kicker { display: flex; flex-direction: column; gap: 3px; }
+  .hdr-kicker .k1 {
+    font-weight: 600; font-size: 11px; color: #8C8C8C;
+    letter-spacing: 0.32em; text-transform: uppercase;
+  }
+  .hdr-kicker .k2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800; font-size: 19px; color: var(--white);
+    letter-spacing: 0.02em; text-transform: uppercase;
+  }
+  .hdr-year {
+    margin-left: auto;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800; font-size: 20px;
+    letter-spacing: 0.14em;
+    color: var(--white);
+    border: 2px solid var(--red);
+    border-radius: 4px;
+    padding: 9px 18px;
+    background: rgba(176,37,30,0.16);
+  }
+
+  /* ---------- Title block ---------- */
+  .titleblock { flex: 0 0 auto; padding: 30px 56px 0; }
+  .titleblock h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 46px;
+    line-height: 1.08;
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  .titleblock h1 .amp { color: var(--red-bright); }
+  .titleblock h1 .l2 { color: var(--white); }
+  .title-rule { width: 92px; height: 4px; background: var(--red); margin: 16px 0 12px; border-radius: 2px; }
+  .titleblock .sub {
+    font-size: 17px; font-weight: 500; color: #A8A8A8; letter-spacing: 0.01em;
+  }
+
+  /* ---------- Phase sections ---------- */
+  .phases { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; padding: 18px 56px 0; gap: 30px; }
+  .phase { display: flex; flex-direction: column; }
+
+  .phase-label { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+  .phase-tag {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--white);
+    background: var(--red);
+    padding: 6px 14px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .phase-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: #B9B9B9;
+    white-space: nowrap;
+  }
+  .phase-label .fill { flex: 1 1 auto; height: 1px; background: linear-gradient(to right, rgba(176,37,30,0.55), rgba(255,255,255,0.06)); }
+
+  /* Rail + nodes */
+  .rail { position: relative; }
+  .rail.flagged { margin-top: 26px; }
+  .rail::before {
+    content: "";
+    position: absolute;
+    left: 28px; right: 28px; top: 17px;
+    height: 2px;
+    background: linear-gradient(to right, rgba(176,37,30,0.15), rgba(176,37,30,0.85) 12%, rgba(176,37,30,0.85) 88%, rgba(176,37,30,0.15));
+  }
+  .nodes { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+  .node { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+  .dot {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: #141414;
+    border: 2px solid var(--red);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800; font-size: 14px; color: var(--red-bright);
+    box-shadow: 0 0 0 6px #101010;
+    flex-shrink: 0;
+  }
+  .node .stem { width: 2px; height: 16px; background: rgba(176,37,30,0.55); }
+  .node .date {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800; font-size: 13.5px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--red-bright);
+    margin-bottom: 9px;
+    white-space: nowrap;
+  }
+  .card {
+    width: 100%;
+    background: var(--off-white);
+    border-radius: 8px;
+    border-top: 3px solid var(--red);
+    padding: 13px 15px;
+    min-height: 76px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.34;
+    color: #23272E;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+  }
+
+  /* Highlighted (red) nodes */
+  .node.hot .dot { background: var(--red); border-color: var(--red-bright); color: var(--white); }
+  .node.hot .date { color: var(--white); }
+  .card.hot {
+    background: linear-gradient(150deg, var(--red) 0%, var(--dark-red) 100%);
+    border-top-color: var(--red-bright);
+    color: var(--white);
+    flex-direction: column;
+    gap: 5px;
+    box-shadow: 0 10px 24px rgba(176,37,30,0.32);
+  }
+  .card.hot .big {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900; font-size: 19px; letter-spacing: 0.03em; text-transform: uppercase;
+    line-height: 1.12;
+  }
+  .card.hot .small {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(255,255,255,0.88);
+  }
+
+  /* "Critical period" flag above a node */
+  .flag {
+    position: absolute;
+    top: -33px; left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--red-bright);
+    border: 1px solid rgba(224,65,58,0.55);
+    background: rgba(176,37,30,0.16);
+    border-radius: 3px;
+    padding: 4px 11px;
+    white-space: nowrap;
+  }
+
+  /* ---------- Footer ---------- */
+  .foot {
+    flex: 0 0 auto;
+    height: 62px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 56px;
+    border-top: 1px solid var(--line);
+    margin-top: auto;
+  }
+  .foot .partners {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: #8C8C8C;
+  }
+  .foot .partners b { color: var(--red-bright); font-weight: 800; }
+  .foot .mark { display: flex; align-items: center; gap: 10px; }
+  .foot .mark .bar { width: 42px; height: 3px; background: var(--red); border-radius: 2px; }
+  .foot .mark .txt {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #6E6E6E;
+  }
+
+  /* ---------- Scale the fixed canvas down on smaller screens ---------- */
+  @media (max-width: 1600px) {
+    body { align-items: flex-start; }
+    .canvas { transform-origin: top left; }
+  }
+</style>
+</head>
+<body>
+<div class="canvas" id="canvas">
+
+  <div class="accent-bar"></div>
+
+  <header class="hdr">
+    <div class="logo">
+      <span class="logo-an">AN</span>
+      <span class="logo-network">AGENCY NETWORK</span>
+    </div>
+    <div class="hdr-divider"></div>
+    <div class="hdr-kicker">
+      <div class="k1">Group Health Program</div>
+      <div class="k2">Agency Network &amp; NASFA</div>
+    </div>
+    <div class="hdr-year">2026&ndash;2027</div>
+  </header>
+
+  <div class="titleblock">
+    <h1>Agency Network <span class="amp">&amp;</span> NASFA<br><span class="l2">MEWA/AHP Implementation Timeline</span></h1>
+    <div class="title-rule"></div>
+    <p class="sub">From strategic partnership through plan launch</p>
+  </div>
+
+  <div class="phases">
+
+    <!-- ============ PHASE 1 ============ -->
+    <section class="phase">
+      <div class="phase-label">
+        <span class="phase-tag">Phase 1</span>
+        <span class="phase-name">Formation &amp; Approval</span>
+        <span class="fill"></span>
+      </div>
+      <div class="rail">
+        <div class="nodes">
+
+          <div class="node">
+            <div class="dot">1</div><div class="stem"></div>
+            <div class="date">June &ndash; July</div>
+            <div class="card">Agency Network &amp; NASFA Come Together</div>
+          </div>
+
+          <div class="node">
+            <div class="dot">2</div><div class="stem"></div>
+            <div class="date">July</div>
+            <div class="card">Agency Network &amp; NASFA Choose Brown &amp; Brown as Broker Partner</div>
+          </div>
+
+          <div class="node">
+            <div class="dot">3</div><div class="stem"></div>
+            <div class="date">August 10</div>
+            <div class="card">MEWA/AHP Filed with State of Illinois Department of Insurance</div>
+          </div>
+
+          <div class="node">
+            <div class="dot">4</div><div class="stem"></div>
+            <div class="date">August 11</div>
+            <div class="card">Presented MEWA to BCBS of Illinois</div>
+          </div>
+
+          <div class="node">
+            <div class="dot">5</div><div class="stem"></div>
+            <div class="date">August 17</div>
+            <div class="card">MEWA Approved by BCBSIL</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PHASE 2 ============ -->
+    <section class="phase">
+      <div class="phase-label">
+        <span class="phase-tag">Phase 2</span>
+        <span class="phase-name">Plan Development &amp; Launch</span>
+        <span class="fill"></span>
+      </div>
+      <div class="rail flagged">
+        <div class="nodes">
+
+          <div class="node hot">
+            <div class="flag">Critical Period</div>
+            <div class="dot">6</div><div class="stem"></div>
+            <div class="date">Sept. 1&ndash;15</div>
+            <div class="card hot">
+              <span class="big">Data Collection</span>
+              <span class="small">Action Required</span>
+            </div>
+          </div>
+
+          <div class="node">
+            <div class="dot">7</div><div class="stem"></div>
+            <div class="date">Sept. 15&ndash;30</div>
+            <div class="card">Plan Refinement &amp; Pricing</div>
+          </div>
+
+          <div class="node">
+            <div class="dot">8</div><div class="stem"></div>
+            <div class="date">October</div>
+            <div class="card">Plan Decisions</div>
+          </div>
+
+          <div class="node">
+            <div class="dot">9</div><div class="stem"></div>
+            <div class="date">November</div>
+            <div class="card">Open Enrollment</div>
+          </div>
+
+          <div class="node hot">
+            <div class="dot">10</div><div class="stem"></div>
+            <div class="date">January 1, 2027</div>
+            <div class="card hot">
+              <span class="big">New Plan Starts</span>
+              <span class="small">Coverage Begins</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="foot">
+    <div class="partners"><b>Agency Network</b> &middot; NASFA &middot; Brown &amp; Brown</div>
+    <div class="mark">
+      <span class="bar"></span>
+      <span class="txt">Agency Network</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Scale the fixed 1600x900 canvas to fit narrower screens (phones, in-app browsers)
+  (function () {
+    var canvas = document.getElementById('canvas');
+    function fit() {
+      var scale = Math.min(1, window.innerWidth / 1600);
+      canvas.style.transform = scale < 1 ? 'scale(' + scale + ')' : '';
+      document.body.style.height = scale < 1 ? (900 * scale) + 'px' : '';
+    }
+    fit();
+    window.addEventListener('resize', fit);
+  })();
+</script>
+</body>
+</html>
