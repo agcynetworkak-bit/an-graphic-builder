@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Group Health Plan — Official FAQ | Agency Network &amp; NASFA</title>
+<meta name="description" content="Official FAQ from the September 1, 2026 Agency Solutions LIVE call. The MEWA is approved. Complete the census by September 15 to lock in pricing for a January 1, 2027 start.">
+<meta property="og:title" content="Our Group Health Plan — Official FAQ">
+<meta property="og:description" content="The MEWA is approved. Census closes September 15. Everything you asked on the call, answered.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700;800;900&family=Montserrat:wght@600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #B0251E;
+    --dark-red: #8F1E18;
+    --red-bright: #E0413A;
+    --black: #111111;
+    --soft-black: #1A1A1A;
+    --white: #FFFFFF;
+    --off-white: #F7F7F7;
+    --body-gray: #555555;
+    --muted: #7A7A7A;
+    --line: #E4E4E4;
+    --green: #1F7A44;
+    --amber: #9A6B00;
+    --amber-bg: #FFF8E8;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
+    background: var(--off-white);
+    color: var(--black);
+    line-height: 1.62;
+    font-size: 16px;
+  }
+  .accent-bar { height: 4px; background: linear-gradient(to right, var(--dark-red), var(--red) 45%, var(--red-bright) 70%, var(--dark-red)); }
+
+  /* ---------- Header ---------- */
+  .app-header {
+    background: var(--soft-black);
+    border-bottom: 3px solid var(--red);
+    padding: 14px 24px;
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  /* --- AN mark --- */
+  .banner-logo { position: relative; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+  .banner-an { font-family: 'Bodoni Moda', Georgia, serif; font-weight: 900; font-size: 52px; color: var(--red); line-height: 1; letter-spacing: -0.08em; }
+  .banner-network {
+    position: absolute; left: 50%; top: 55%; transform: translate(-50%,-50%);
+    font-weight: 600; font-size: 7px; color: #ccc; letter-spacing: 0.22em;
+    text-transform: uppercase; white-space: nowrap; padding-left: 0.6em;
+  }
+  /* --- Ampersand joining the two marks --- */
+  .hdr-amp {
+    font-family: 'Bodoni Moda', 'Didot', Georgia, serif;
+    font-weight: 700; font-size: 34px; line-height: 1;
+    color: var(--red); flex-shrink: 0; padding-bottom: 4px;
+  }
+  /* --- NASFA partner mark. To use NASFA's own artwork, drop the file in the repo
+         and swap .nasfa-type for: <img class="nasfa-img" src="nasfa-logo.png" alt="NASFA"> --- */
+  .nasfa-logo { display: flex; align-items: center; flex-shrink: 0; }
+  .nasfa-img { height: 44px; width: auto; display: block; }
+  .nasfa-type { display: flex; flex-direction: column; gap: 3px; }
+  .nasfa-type .mark {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900; font-size: 30px; line-height: 1;
+    color: var(--white); letter-spacing: 0.015em;
+  }
+  /* --- Joint "Better Together" mark for the two groups --- */
+  .together { display: flex; align-items: center; gap: 12px; margin-left: 12px; flex-shrink: 0; }
+  .together .rule { width: 22px; height: 3px; background: var(--red); border-radius: 2px; flex-shrink: 0; }
+  .together .words {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900; font-size: 15px; line-height: 1;
+    letter-spacing: 0.085em; text-transform: uppercase;
+    color: var(--white); white-space: nowrap;
+  }
+  .together .words span { color: var(--red-bright); }
+
+  .banner-divider { width: 2px; height: 44px; background: var(--red); flex-shrink: 0; }
+  .banner-text { display: flex; flex-direction: column; min-width: 0; }
+  .banner-kicker { font-weight: 600; font-size: 11px; color: #999; letter-spacing: 0.16em; text-transform: uppercase; }
+  .banner-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15px; color: var(--white); letter-spacing: 0.01em; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background:
+      radial-gradient(760px 380px at 82% -20%, #3A0E0B 0%, rgba(58,14,11,0) 62%),
+      linear-gradient(160deg, #0D0D0D 0%, #151515 55%, #0A0A0A 100%);
+    color: var(--white);
+    padding: 46px 24px 40px;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 700;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: #F0B3AF; border: 1px solid rgba(224,65,58,0.45);
+    background: rgba(176,37,30,0.16); padding: 6px 14px; border-radius: 999px; margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 38px;
+    line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 14px;
+  }
+  .hero h1 em { font-style: normal; color: var(--red-bright); }
+  .hero-sub { font-size: 16px; color: #C9C9C9; max-width: 620px; margin: 0 auto 22px; }
+  .hero-meta {
+    border-top: 1px solid rgba(255,255,255,0.12); padding-top: 18px;
+    max-width: 620px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 7px;
+  }
+  .hero-meta .hm-lead {
+    font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--white);
+  }
+  .hero-meta .hm-rest {
+    font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 11.5px;
+    letter-spacing: 0.06em; text-transform: uppercase; color: #8E8E8E;
+  }
+
+  /* ---------- Layout ---------- */
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+  .section { padding: 40px 0 8px; }
+  h2.sec {
+    font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--red);
+    padding-bottom: 10px; border-bottom: 2px solid var(--red); margin-bottom: 22px;
+  }
+
+  /* ---------- Action card ---------- */
+  .action-card {
+    background: var(--white); border: 2px solid var(--red);
+    border-radius: 10px; box-shadow: 0 4px 18px rgba(0,0,0,0.09);
+    padding: 26px 24px; margin: -26px 0 8px; position: relative;
+  }
+  .action-card h2 {
+    font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 19px;
+    margin-bottom: 6px; letter-spacing: -0.01em;
+  }
+  .action-card .lede { color: var(--body-gray); font-size: 14.5px; margin-bottom: 18px; }
+  ol.steps { list-style: none; counter-reset: s; }
+  ol.steps li {
+    counter-increment: s; position: relative; padding: 0 0 16px 44px; margin-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  ol.steps li:last-child { border-bottom: 0; padding-bottom: 0; margin-bottom: 0; }
+  ol.steps li::before {
+    content: counter(s); position: absolute; left: 0; top: 1px;
+    width: 30px; height: 30px; border-radius: 8px;
+    background: linear-gradient(140deg, var(--red), var(--dark-red)); color: #fff;
+    font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  ol.steps strong { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15.5px; display: block; margin-bottom: 2px; }
+  ol.steps span { font-size: 14.5px; color: var(--body-gray); }
+
+  .btn {
+    display: block; text-align: center; background: linear-gradient(140deg, var(--red), var(--dark-red));
+    color: #fff; text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 800;
+    font-size: 16px; padding: 15px 20px; border-radius: 9px; margin-top: 20px;
+    box-shadow: 0 3px 12px rgba(176,37,30,0.32); letter-spacing: 0.01em;
+  }
+  .btn small { display: block; font-weight: 600; font-size: 11.5px; opacity: 0.85; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 3px; }
+
+  /* ---------- FAQ ---------- */
+  details {
+    background: var(--white); border: 1px solid var(--line); border-radius: 9px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05); margin-bottom: 10px; overflow: hidden;
+  }
+  details[open] { box-shadow: 0 3px 14px rgba(0,0,0,0.08); border-color: #D6D6D6; }
+  summary {
+    cursor: pointer; list-style: none; padding: 16px 46px 16px 18px; position: relative;
+    font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15.5px; line-height: 1.4;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: ""; position: absolute; right: 18px; top: 22px;
+    width: 9px; height: 9px; border-right: 2.5px solid var(--red); border-bottom: 2.5px solid var(--red);
+    transform: rotate(45deg); transition: transform .18s ease;
+  }
+  details[open] summary::after { transform: rotate(-135deg); top: 25px; }
+  summary:hover { color: var(--red); }
+  .answer { padding: 0 18px 18px; border-top: 1px solid var(--line); padding-top: 14px; }
+  .answer p + p { margin-top: 11px; }
+  .answer ul, .answer ol { margin: 10px 0 0 20px; }
+  .answer li { margin-bottom: 7px; }
+  .answer a { color: var(--red); font-weight: 600; word-break: break-word; }
+
+  .verdict {
+    display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 800;
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 6px; margin-bottom: 10px;
+  }
+  .v-yes { background: #E8F5ED; color: var(--green); }
+  .v-no  { background: #FDEBEA; color: var(--dark-red); }
+  .v-tbd { background: var(--amber-bg); color: var(--amber); }
+
+  blockquote {
+    border-left: 4px solid var(--red); background: #FCF6F5; padding: 13px 16px;
+    margin: 13px 0 0; border-radius: 0 8px 8px 0; font-style: italic; font-size: 15px;
+  }
+
+  /* ---------- Tables ---------- */
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 4px; }
+  table { border-collapse: collapse; width: 100%; background: var(--white); font-size: 14.5px; min-width: 460px; }
+  th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  thead th {
+    background: var(--soft-black); color: #fff; font-family: 'Montserrat', sans-serif;
+    font-weight: 700; font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  tbody tr:last-child td { border-bottom: 0; }
+  tr.now { background: #FCF1F0; }
+  tr.now td { font-weight: 700; }
+  .tbl-card { border: 1px solid var(--line); border-radius: 9px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
+
+  /* ---------- Open items ---------- */
+  .open-note {
+    background: var(--amber-bg); border: 1px solid #F0DCAE; border-left: 4px solid #D9A227;
+    border-radius: 0 9px 9px 0; padding: 16px 18px; margin-bottom: 16px; font-size: 15px;
+  }
+  .open-note strong { font-family: 'Montserrat', sans-serif; }
+
+  /* ---------- Bottom line ---------- */
+  .bottom {
+    background:
+      radial-gradient(620px 320px at 78% -30%, #3A0E0B 0%, rgba(58,14,11,0) 62%),
+      linear-gradient(160deg, #0D0D0D 0%, #151515 55%, #0A0A0A 100%);
+    color: #fff; padding: 42px 24px; margin-top: 46px; text-align: center;
+  }
+  .bottom h2 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 26px; margin-bottom: 12px; letter-spacing: -0.01em; }
+  .bottom p { color: #C4C4C4; max-width: 600px; margin: 0 auto 22px; font-size: 15.5px; }
+  .bottom .btn { max-width: 460px; margin-left: auto; margin-right: auto; }
+  .bottom-links { max-width: 460px; margin: 14px auto 0; font-size: 14.5px; color: #B8B8B8; }
+  .bottom-links a { color: #F0B3AF; font-weight: 600; }
+
+  footer { background: var(--soft-black); border-top: 3px solid var(--red); padding: 28px 24px; text-align: center; }
+  .footer-marks {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    margin-bottom: 16px; flex-wrap: wrap;
+  }
+  .footer-marks .fm-an {
+    font-family: 'Bodoni Moda', Georgia, serif; font-weight: 900; font-size: 34px;
+    color: var(--red); line-height: 1; letter-spacing: -0.08em;
+  }
+  .footer-marks .fm-amp {
+    font-family: 'Bodoni Moda', Georgia, serif; font-weight: 700; font-size: 22px;
+    color: var(--red); line-height: 1;
+  }
+  .footer-marks .fm-nasfa {
+    font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 22px;
+    color: var(--white); line-height: 1; letter-spacing: 0.015em;
+  }
+  .tagline { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; color: var(--white); letter-spacing: 0.04em; }
+  .footer-name { font-size: 11.5px; color: #8A8A8A; letter-spacing: 0.16em; text-transform: uppercase; margin-top: 8px; line-height: 1.7; }
+
+  @media (max-width: 700px) {
+    .app-header { gap: 12px; padding: 14px 18px; }
+    .together { margin-left: 0; }
+    .hdr-sep { display: none; }
+    .banner-text { flex-basis: 100%; }
+  }
+  @media (max-width: 560px) {
+    .hero { padding: 34px 18px 32px; }
+    .hero h1 { font-size: 28px; }
+    .hero-sub { font-size: 15px; }
+    .banner-an { font-size: 42px; }
+    .banner-network { font-size: 6px; letter-spacing: 0.13em; }
+    .hdr-amp { font-size: 27px; }
+    .nasfa-type .mark { font-size: 24px; }
+    .together .words { font-size: 13px; }
+    .together .rule { width: 16px; }
+    .banner-divider { height: 36px; }
+    .banner-title { font-size: 13px; }
+    .action-card { padding: 22px 18px; }
+    summary { font-size: 15px; padding: 15px 40px 15px 15px; }
+    .answer { padding: 14px 15px 16px; }
+    .bottom h2 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="accent-bar"></div>
+
+<header class="app-header">
+  <div class="banner-logo">
+    <span class="banner-an">AN</span>
+    <span class="banner-network">Agency Network</span>
+  </div>
+  <div class="hdr-amp">&amp;</div>
+  <div class="nasfa-logo">
+    <div class="nasfa-type">
+      <span class="mark">NASFA</span>
+    </div>
+  </div>
+  <div class="together">
+    <span class="rule"></span>
+    <span class="words">Better <span>Together</span></span>
+  </div>
+  <div class="banner-divider hdr-sep"></div>
+  <div class="banner-text">
+    <span class="banner-kicker">Agency Solutions LIVE</span>
+    <span class="banner-title">Group Health Plan — Official FAQ</span>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="hero-eyebrow">Approved · August 17, 2026</span>
+  <h1>Our Group Health Plan<br>is <em>Moving Forward</em></h1>
+  <p class="hero-sub">
+    Everything you asked on the September 1 call — answered. Including the things
+    we don't have answers to yet.
+  </p>
+  <div class="hero-meta">
+    <span class="hm-lead">Agency Network &amp; NASFA</span>
+    <span class="hm-rest">Brokered by Brown &amp; Brown · Insured by Blue Cross Blue Shield of Illinois</span>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <div class="action-card">
+    <h2>Do these three things this week</h2>
+    <p class="lede">Everything below is detail. This is the assignment.</p>
+    <ol class="steps">
+      <li>
+        <strong>Complete the new census by September 15</strong>
+        <span>Yes — even if you filled one out before. Previous responses do not carry over.</span>
+      </li>
+      <li>
+        <strong>Join NASFA at nasfa.com</strong>
+        <span>Membership is a hard eligibility requirement, not a suggestion.</span>
+      </li>
+      <li>
+        <strong>Give us a personal email address</strong>
+        <span>Work-domain emails are frequently blocked. If that's all we have, you may never
+        receive pricing or enrollment instructions.</span>
+      </li>
+    </ol>
+    <a class="btn" href="https://survey.alchemer.com/s3/8959701/SF-Employee-Benefits">
+      Complete the Census
+      <small>Closes September 15</small>
+    </a>
+  </div>
+
+  <!-- ============ THE ANNOUNCEMENT ============ -->
+  <div class="section">
+    <h2 class="sec">What Was Announced</h2>
+
+    <details open>
+      <summary>What actually happened on this call?</summary>
+      <div class="answer">
+        <p>We confirmed that our group health plan is real, approved, and moving.</p>
+        <p><strong>Tyrone Jordan ("TJ") of Brown &amp; Brown</strong>, our broker, walked through
+        the structure, eligibility rules, and timeline. <strong>Clint and Andrew from NASFA</strong>
+        covered membership requirements and the association's history and mission. The rest of the
+        call was live Q&amp;A.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>How official is this? Is it really approved?</summary>
+      <div class="answer">
+        <span class="verdict v-yes">Approved</span>
+        <p>Here is the paper trail:</p>
+        <div class="table-scroll"><div class="tbl-card"><table>
+          <thead><tr><th>Date</th><th>Milestone</th></tr></thead>
+          <tbody>
+            <tr><td>June – July 2026</td><td>Agency Network and NASFA partner up</td></tr>
+            <tr><td>July 2026</td><td>Brown &amp; Brown selected as broker</td></tr>
+            <tr><td><strong>August 10</strong></td><td>MEWA/AHP <strong>filed</strong> with the Illinois Department of Insurance</td></tr>
+            <tr><td><strong>August 11</strong></td><td>MEWA <strong>presented</strong> to Blue Cross Blue Shield of Illinois</td></tr>
+            <tr class="now"><td><strong>August 17</strong></td><td><strong>MEWA APPROVED</strong></td></tr>
+          </tbody>
+        </table></div></div>
+        <p style="margin-top:13px">This is no longer a proposal. It is an approved arrangement
+        waiting on data.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Who are the players, and what does each one actually do?</summary>
+      <div class="answer">
+        <ul>
+          <li><strong>NASFA</strong> — the association that sponsors the plan. Its long standing
+          as a bona fide association is what makes the arrangement legally possible. You cannot
+          build a MEWA/AHP without one.</li>
+          <li><strong>Agency Network</strong> — partner on the association side, bringing the
+          member pool and handling communication to agents.</li>
+          <li><strong>Brown &amp; Brown (TJ)</strong> — our broker. Built and filed the MEWA,
+          negotiates with the carrier, manages underwriting.</li>
+          <li><strong>Blue Cross Blue Shield of Illinois</strong> — the carrier that insures the
+          plan and pays the claims.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>What is a MEWA / AHP in plain English?</summary>
+      <div class="answer">
+        <p>It's a legal structure that lets many separate small employers — independent agency
+        owners in the same profession — buy health coverage <strong>as one large group</strong>
+        instead of as hundreds of tiny ones.</p>
+        <p>Large groups get large-group pricing, large-group underwriting rules, and plan designs
+        that no single agency could access alone. That's the entire thesis:
+        <strong>scale buys leverage.</strong></p>
+      </div>
+    </details>
+  </div>
+
+  <!-- ============ THE PLAN ============ -->
+  <div class="section">
+    <h2 class="sec">The Plan Itself</h2>
+
+    <details>
+      <summary>Is the plan fully insured or self-funded?</summary>
+      <div class="answer">
+        <span class="verdict v-yes">Fully Insured</span>
+        <p>This was asked directly and answered directly. The plan is <strong>fully insured</strong>
+        — it is <em>not</em> self-funded.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Then who carries the risk if claims run high?</summary>
+      <div class="answer">
+        <p>Because the plan is fully insured, <strong>the carrier carries the claims risk</strong>
+        — not NASFA, not Agency Network, and not you as an individual agency owner.</p>
+        <p>That was a deliberate design choice, and it's the answer to nearly every
+        "what if it goes badly" question.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>What plan designs will be offered?</summary>
+      <div class="answer">
+        <p>We are working to <strong>mirror what you have today</strong>:
+        <strong>two PPO plans and one HSA plan.</strong></p>
+        <p>The goal is that this feels familiar, not foreign.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Is the plan ACA compliant?</summary>
+      <div class="answer">
+        <span class="verdict v-yes">Yes</span>
+        <p>And that has a direct consequence worth understanding: because the plan is ACA
+        compliant, there are <strong>no medical questions and no pre-existing condition
+        exclusions.</strong></p>
+      </div>
+    </details>
+
+    <details>
+      <summary>So there's no medical underwriting at all?</summary>
+      <div class="answer">
+        <span class="verdict v-yes">Correct — none</span>
+        <p><strong>No medical underwriting. No pre-existing condition exclusions.</strong>
+        Your health history — or a team member's — does not affect eligibility.</p>
+        <p>This was the single most-asked question going into the call, and the answer is clean.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Will dental and vision be available?</summary>
+      <div class="answer">
+        <span class="verdict v-yes">Yes — both</span>
+        <p>Dental and vision options will be provided through Blue Cross Blue Shield.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- ============ ELIGIBILITY ============ -->
+  <div class="section">
+    <h2 class="sec">Who Is Eligible</h2>
+
+    <details open>
+      <summary>What are the eligibility requirements, plainly?</summary>
+      <div class="answer">
+        <p>Two hard requirements:</p>
+        <ol>
+          <li><strong>You must be a NASFA member.</strong> Join at
+          <a href="https://nasfa.com">nasfa.com</a>.</li>
+          <li><strong>You must have at least one full-time W-2 employee — 30+ hours per week.</strong>
+          This is what legally qualifies you as an "employer group."</li>
+        </ol>
+      </div>
+    </details>
+
+    <details>
+      <summary>I'm a sole proprietor with no employees. Can I join?</summary>
+      <div class="answer">
+        <span class="verdict v-no">Not currently eligible</span>
+        <p>If you have no full-time W-2 employee, you do not qualify as an employer group, and
+        you are <strong>ineligible</strong> under the current structure.</p>
+        <p>We know this affects agents who are between hires or intentionally running lean, and we
+        know it's disappointing. If you are actively hiring, fill the position and you're in.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Do I have to offer the plan to my whole team?</summary>
+      <div class="answer">
+        <span class="verdict v-yes">Yes</span>
+        <p>The plan <strong>must be offered to all full-time team members.</strong></p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Do I have to pay for my team's coverage?</summary>
+      <div class="answer">
+        <span class="verdict v-no">No</span>
+        <p>You must <em>offer</em> the plan — you are <strong>not required to subsidize the
+        cost.</strong> Whether you contribute, and how much, remains your decision as the
+        employer.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Can I offer it to part-time employees (under 30 hours)?</summary>
+      <div class="answer">
+        <span class="verdict v-tbd">Being confirmed</span>
+        <p>Whether an agent may optionally extend the plan to employees working fewer than 30 hours
+        is still being worked out, and the answer <strong>may differ by state.</strong> We'll
+        publish it as soon as it's settled.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Can retired agents participate? What if I retire while on the plan?</summary>
+      <div class="answer">
+        <span class="verdict v-tbd">Under legal review</span>
+        <p>Eligibility for retired agents, and for agents who leave the business, is
+        <strong>genuinely undecided right now</strong> and sits with the attorneys.</p>
+        <p>This was one of the most-asked questions before and during the call, and it deserves a
+        straight answer rather than a comfortable one: <strong>we don't know yet, and we won't
+        guess.</strong> The moment legal comes back, it goes in this FAQ.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>What about members 65+, and dependents aging out at 26?</summary>
+      <div class="answer">
+        <span class="verdict v-tbd">Being finalized</span>
+        <p>Both age cut-off questions — Medicare age (65+) and the 26-year-old dependent rule —
+        are actively being worked through.</p>
+        <p>If you are making a decision that depends on Medicare interaction, particularly anything
+        involving <strong>Part B timing</strong>, do not act on assumptions. Wait for the confirmed
+        answer, or contact us directly at
+        <a href="mailto:health@agcynetwork.com">health@agcynetwork.com</a>.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Is NASFA membership really required?</summary>
+      <div class="answer">
+        <span class="verdict v-yes">Yes — required</span>
+        <p>Membership is an eligibility requirement, not a suggestion. The plan exists
+        <em>because</em> NASFA is a long-standing bona fide association — that status is the legal
+        foundation of the whole arrangement.</p>
+        <p>Join at <a href="https://nasfa.com">nasfa.com</a>.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- ============ CENSUS ============ -->
+  <div class="section">
+    <h2 class="sec">The Census — The Part That Matters</h2>
+
+    <details open>
+      <summary>What is the single most important thing I can do right now?</summary>
+      <div class="answer">
+        <p><strong>Complete the census — thoroughly and accurately — by September 15.</strong></p>
+        <p>Nothing else moves until this does. Pricing cannot be produced without it.</p>
+        <a class="btn" href="https://survey.alchemer.com/s3/8959701/SF-Employee-Benefits">
+          Complete the Census
+          <small>This is the only correct link</small>
+        </a>
+      </div>
+    </details>
+
+    <details>
+      <summary>I already filled out a census months ago. Do I have to do it again?</summary>
+      <div class="answer">
+        <span class="verdict v-yes">Yes — everyone re-submits</span>
+        <p>The earlier survey did its job. Thousands of agents responded, and that response is a
+        large part of why the carrier said yes.</p>
+        <p>But this is a <strong>new, BCBS-specific census</strong> collecting the exact data
+        underwriting requires. <strong>Previous responses do not carry over.</strong></p>
+      </div>
+    </details>
+
+    <details>
+      <summary>What information do I need to have ready?</summary>
+      <div class="answer">
+        <p>For <strong>yourself and every full-time team member</strong>:</p>
+        <ul>
+          <li><strong>Name</strong></li>
+          <li><strong>Date of birth</strong> — accurate</li>
+          <li><strong>ZIP code</strong></li>
+          <li><strong>Household count</strong> — who would be covered</li>
+        </ul>
+        <p>Set aside real time and do it properly. Accuracy matters more than speed, because this
+        exact data is what the carrier prices against. <strong>A sloppy census produces a worse
+        number for everyone.</strong></p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Why does my participation change <em>my</em> price?</summary>
+      <div class="answer">
+        <p>Because this is a pooled arrangement — the size and demographic quality of the group is
+        exactly what the carrier prices against.</p>
+        <blockquote>"The bigger our pool, the more confidence Blue Cross Blue Shield can have in
+        their pricing model, which means all of us will pay less for the coverage."</blockquote>
+        <blockquote>"Be a team player here. I'm asking you personally, be a team player. If you can
+        get you and your team members on this plan, get them on there."</blockquote>
+      </div>
+    </details>
+
+    <details>
+      <summary>What else should I do before September 15?</summary>
+      <div class="answer">
+        <ol>
+          <li><strong>Complete the census</strong> — you and every full-time W-2 team member.</li>
+          <li><strong>Hold a team meeting</strong> before September 15. Walk your W-2 employees
+          through what's coming and find out who wants coverage.</li>
+          <li><strong>Join NASFA</strong> at <a href="https://nasfa.com">nasfa.com</a> so your
+          eligibility is locked in.</li>
+          <li><strong>Send the census link to five agent peers</strong> who haven't done it. Every
+          agency added to the pool improves the number that comes back for all of us.</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+
+  <!-- ============ PRICING & TIMELINE ============ -->
+  <div class="section">
+    <h2 class="sec">Pricing &amp; Timeline</h2>
+
+    <details>
+      <summary>What will it cost?</summary>
+      <div class="answer">
+        <p><strong>We don't know yet — and anyone quoting you a number today is guessing.</strong></p>
+        <p>Pricing is a direct output of the census. That isn't a stall; it's how large-group
+        underwriting works. The data goes in, the rates come out.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>When will we know pricing?</summary>
+      <div class="answer">
+        <p><strong>October.</strong> Plan refinement and initial pricing communication follow the
+        September 15 census close and underwriting review.</p>
+      </div>
+    </details>
+
+    <details open>
+      <summary>What's the full timeline from here?</summary>
+      <div class="answer">
+        <div class="table-scroll"><div class="tbl-card"><table>
+          <thead><tr><th>When</th><th>What happens</th><th>Your move</th></tr></thead>
+          <tbody>
+            <tr class="now">
+              <td><strong>Sept 1 – 15</strong></td>
+              <td><strong>Data collection</strong></td>
+              <td>← You are here. Complete the census.</td>
+            </tr>
+            <tr><td>Sept 15 – 30</td><td>Underwriting review</td><td>Nothing — we work</td></tr>
+            <tr><td><strong>October</strong></td><td>Plan refinement + initial pricing</td><td>Watch for the pricing announcement</td></tr>
+            <tr><td><strong>November</strong></td><td><strong>Open enrollment</strong></td><td>Enroll yourself and your team</td></tr>
+            <tr><td><strong>January 1, 2027</strong></td><td><strong>Coverage begins</strong></td><td>New plan starts</td></tr>
+          </tbody>
+        </table></div></div>
+      </div>
+    </details>
+
+    <details>
+      <summary>When exactly is open enrollment?</summary>
+      <div class="answer">
+        <p><strong>November</strong> — aligned with the enrollment dates you're already accustomed
+        to. You will not have to learn a new rhythm.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- ============ STAYING INFORMED ============ -->
+  <div class="section">
+    <h2 class="sec">Staying Informed</h2>
+
+    <details open>
+      <summary>Why do you keep insisting on a personal email address?</summary>
+      <div class="answer">
+        <p>Because <strong>emails sent to work-domain addresses are frequently blocked or never
+        delivered.</strong> This is a known, documented problem — not a theory.</p>
+        <p>If the only address we have for you is your work email, there is a real chance you
+        <strong>will not receive</strong> pricing, enrollment instructions, or deadline reminders.
+        That is how someone misses open enrollment entirely.</p>
+        <p>Sign up with a personal email at
+        <a href="https://www.agcynetwork.com">www.agcynetwork.com</a>. Today.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Was the call recorded? Can I still watch it?</summary>
+      <div class="answer">
+        <span class="verdict v-yes">Yes — recorded</span>
+        <p>The full call was recorded. Sign up at
+        <a href="https://www.agcynetwork.com">www.agcynetwork.com</a> with your personal email and
+        you'll get access to the recording along with everything that follows.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>How will updates be distributed from here?</summary>
+      <div class="answer">
+        <p>This FAQ will be <strong>updated weekly</strong> and distributed by Brown &amp; Brown,
+        NASFA, and Agency Network across their websites and Facebook. Bookmark it and check back.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Who do I contact with a question this FAQ doesn't answer?</summary>
+      <div class="answer">
+        <p><a href="mailto:health@agcynetwork.com">health@agcynetwork.com</a> — that inbox exists
+        specifically for this plan.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- ============ OPEN ITEMS ============ -->
+  <div class="section">
+    <h2 class="sec">Still Being Finalized — An Honest List</h2>
+
+    <div class="open-note">
+      <strong>We would rather tell you what we don't know than let you plan around a guess.</strong>
+      These are the genuinely open items as of today.
+    </div>
+
+    <div class="table-scroll"><div class="tbl-card"><table>
+      <thead><tr><th>Open item</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Retired agents</strong> / agents leaving the business</td><td>Under legal review — unresolved</td></tr>
+        <tr><td><strong>Medicare age (65+)</strong> interaction</td><td>Being finalized</td></tr>
+        <tr><td><strong>Dependents aging out at 26</strong></td><td>Being finalized</td></tr>
+        <tr><td><strong>Part-time employees</strong> (under 30 hrs)</td><td>Being confirmed state by state</td></tr>
+      </tbody>
+    </table></div></div>
+
+    <p style="margin-top:16px;font-size:15px;color:var(--body-gray)">
+      Each of these gets answered here the moment we have it in writing. If your decision depends
+      on one of them, email <a href="mailto:health@agcynetwork.com" style="color:var(--red);font-weight:600">health@agcynetwork.com</a>
+      and we'll flag you personally when it lands.
+    </p>
+  </div>
+
+</div>
+
+<section class="bottom">
+  <h2>The hard part is behind us.</h2>
+  <p>
+    The MEWA is filed, approved, and has a national carrier behind it. Pricing is the next
+    domino — and the census is the only thing that knocks it over.
+  </p>
+  <a class="btn" href="https://survey.alchemer.com/s3/8959701/SF-Employee-Benefits">
+    Complete the Census
+    <small>Closes September 15</small>
+  </a>
+  <div class="bottom-links">
+    Then: join NASFA at <a href="https://nasfa.com">nasfa.com</a> ·
+    personal email on file at <a href="https://www.agcynetwork.com">agcynetwork.com</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-marks">
+    <span class="fm-an">AN</span>
+    <span class="fm-amp">&amp;</span>
+    <span class="fm-nasfa">NASFA</span>
+  </div>
+  <div class="tagline">Connecting Agents – Inspiring Greatness</div>
+  <div class="footer-name">
+    Agency Network &amp; NASFA<br>
+    In partnership with Brown &amp; Brown · Blue Cross Blue Shield of Illinois
+  </div>
+</footer>
+
+</body>
+</html>
