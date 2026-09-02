@@ -160,6 +160,13 @@
   }
   ol.steps strong { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15.5px; display: block; margin-bottom: 2px; }
   ol.steps span { font-size: 14.5px; color: var(--body-gray); }
+  ol.steps .copy-link {
+    display: block; margin-top: 9px; font-size: 13.5px; color: var(--body-gray);
+    background: #FCF6F5; border: 1px solid #F0DAD8; border-radius: 7px;
+    padding: 9px 11px; word-break: break-all; line-height: 1.45;
+  }
+  ol.steps .copy-link a { color: var(--red); font-weight: 600; text-decoration: underline; }
+  ol.steps .copy-link em { font-style: normal; display: block; font-weight: 600; color: var(--black); margin-bottom: 3px; font-size: 12.5px; }
 
   .btn {
     display: block; text-align: center; background: linear-gradient(140deg, var(--red), var(--dark-red));
@@ -334,15 +341,20 @@
       <li>
         <strong>Complete the new census by September 15</strong>
         <span>Yes — even if you filled one out before. Previous responses do not carry over.</span>
+        <span class="copy-link">
+          <em>Census link — copy and share this with any agent:</em>
+          <a href="https://survey.alchemer.com/s3/8959701/SF-Employee-Benefits">https://survey.alchemer.com/s3/8959701/SF-Employee-Benefits</a>
+        </span>
       </li>
       <li>
-        <strong>Join NASFA at nasfa.com</strong>
-        <span>Membership is a hard eligibility requirement, not a suggestion.</span>
+        <strong>You don't need to be a member yet to complete the census</strong>
+        <span>Membership of both NASFA and AN will be required prior to open enrollment, details
+        on how this will work though are still being worked out.</span>
       </li>
       <li>
         <strong>Give us a personal email address</strong>
-        <span>Work-domain emails are frequently blocked. If that's all we have, you may never
-        receive pricing or enrollment instructions.</span>
+        <span>StateFarm.com emails and redirects to your work email are frequently blocked. If
+        that's all we have, you may never receive pricing or enrollment instructions.</span>
       </li>
     </ol>
     <a class="btn" href="https://survey.alchemer.com/s3/8959701/SF-Employee-Benefits">
@@ -452,7 +464,7 @@
       <summary>Is the plan ACA compliant?</summary>
       <div class="answer">
         <span class="verdict v-yes">Yes</span>
-        <p>And that has a direct consequence worth understanding: because the plan is ACA
+        <p>And that has a direct implication worth understanding: because the plan is ACA
         compliant, there are <strong>no medical questions and no pre-existing condition
         exclusions.</strong></p>
       </div>
@@ -484,11 +496,13 @@
     <details open>
       <summary>What are the eligibility requirements, plainly?</summary>
       <div class="answer">
-        <p>Two hard requirements:</p>
+        <p><strong>To complete the census right now: nothing.</strong> You don't need to be a
+        member yet. Fill it out today regardless of where you stand.</p>
+        <p><strong>To enroll when the time comes:</strong></p>
         <ol>
-          <li><strong>You must be a NASFA member.</strong> Join at
-          <a href="https://nasfa.com">nasfa.com</a>.</li>
-          <li><strong>You must have at least one full-time W-2 employee — 30+ hours per week.</strong>
+          <li><strong>Membership of both NASFA and AN will be required prior to open
+          enrollment.</strong> Details on how this will work though are still being worked out.</li>
+          <li><strong>At least one full-time W-2 employee — 30+ hours per week.</strong>
           This is what legally qualifies you as an "employer group."</li>
         </ol>
       </div>
@@ -559,13 +573,17 @@
     </details>
 
     <details>
-      <summary>Is NASFA membership really required?</summary>
+      <summary>Is membership required? Do I need to join before the census?</summary>
       <div class="answer">
-        <span class="verdict v-yes">Yes — required</span>
-        <p>Membership is an eligibility requirement, not a suggestion. The plan exists
-        <em>because</em> NASFA is a long-standing bona fide association — that status is the legal
-        foundation of the whole arrangement.</p>
-        <p>Join at <a href="https://nasfa.com">nasfa.com</a>.</p>
+        <span class="verdict v-tbd">Not for the census — yes before enrollment</span>
+        <p><strong>You don't need to be a member yet to complete the census.</strong> Don't let
+        this hold you up — the census is the urgent part.</p>
+        <p><strong>Membership of both NASFA and AN will be required prior to open
+        enrollment.</strong> Details on how this will work though are still being worked out, and
+        we'll publish them here the moment they're settled.</p>
+        <p>Membership matters structurally: the plan exists <em>because</em> NASFA is a
+        long-standing bona fide association — that status is the legal foundation of the whole
+        arrangement.</p>
       </div>
     </details>
   </div>
@@ -632,8 +650,9 @@
           <li><strong>Complete the census</strong> — you and every full-time W-2 team member.</li>
           <li><strong>Hold a team meeting</strong> before September 15. Walk your W-2 employees
           through what's coming and find out who wants coverage.</li>
-          <li><strong>Join NASFA</strong> at <a href="https://nasfa.com">nasfa.com</a> so your
-          eligibility is locked in.</li>
+          <li><strong>Don't wait on membership.</strong> You don't need to be a member to
+          complete the census. Membership of both NASFA and AN will be required prior to open
+          enrollment — details are still being worked out.</li>
           <li><strong>Send the census link to five agent peers</strong> who haven't done it. Every
           agency added to the pool improves the number that comes back for all of us.</li>
         </ol>
@@ -698,11 +717,13 @@
     <details open>
       <summary>Why do you keep insisting on a personal email address?</summary>
       <div class="answer">
-        <p>Because <strong>emails sent to @statefarm.com addresses are frequently blocked or never
-        delivered.</strong> This is a known, documented problem — not a theory.</p>
-        <p>If the only address we have for you is your State Farm email, there is a real chance you
-        <strong>will not receive</strong> pricing, enrollment instructions, or deadline reminders.
-        That is how someone misses open enrollment entirely.</p>
+        <p>Because <strong>StateFarm.com emails — and redirects to your work email — are
+        frequently blocked or never delivered.</strong> This is a known, documented problem, not a
+        theory. Forwarding a personal address to your work inbox has the same problem: the message
+        still ends up at the address that blocks it.</p>
+        <p>If that's the only way to reach you, there is a real chance you <strong>will not
+        receive</strong> pricing, enrollment instructions, or deadline reminders. That is how
+        someone misses open enrollment entirely.</p>
         <p>Sign up with a personal email at
         <a href="https://www.agcynetwork.com">www.agcynetwork.com</a>. Today.</p>
       </div>
@@ -752,6 +773,7 @@
         <tr><td><strong>Medicare age (65+)</strong> interaction</td><td>Being finalized</td></tr>
         <tr><td><strong>Dependents aging out at 26</strong></td><td>Being finalized</td></tr>
         <tr><td><strong>Part-time employees</strong> (under 30 hrs)</td><td>Being confirmed state by state</td></tr>
+        <tr><td><strong>How NASFA + AN membership will work</strong> before open enrollment</td><td>Still being worked out</td></tr>
       </tbody>
     </table></div></div>
 
@@ -775,8 +797,8 @@
     <small>Closes September 15</small>
   </a>
   <div class="bottom-links">
-    Then: join NASFA at <a href="https://nasfa.com">nasfa.com</a> ·
-    personal email on file at <a href="https://www.agcynetwork.com">agcynetwork.com</a>
+    You don't need to be a member yet ·
+    get a personal email on file at <a href="https://www.agcynetwork.com">agcynetwork.com</a>
   </div>
 </section>
 

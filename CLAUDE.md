@@ -6,8 +6,12 @@ posted to Facebook. When someone taps the link, they get a branded page with an 
 Calendar"** button (Google Calendar, Outlook, Apple, `.ics` download, email-to-self, copy) and a
 **"Join Microsoft Teams"** button.
 
-The site is served by **GitHub Pages from the `main` branch**, at:
-`https://agcynetworkak-bit.github.io/an-graphic-builder/<file>.html`
+The site is served by **Netlify**, which auto-deploys from the `main` branch of this repo, at:
+`https://an-nasfa-group-health-plan-update.netlify.app/<file>.html`
+
+> **GitHub Pages is no longer used.** GitHub is source control only. Do not quote a
+> `agcynetworkak-bit.github.io` URL to the user and do not use the "pages build and deployment"
+> workflow as proof a page is live.
 
 ## How to build a new call's page
 
@@ -35,7 +39,7 @@ The site is served by **GitHub Pages from the `main` branch**, at:
 
 ## Publish flow (branch → main → live)
 
-Develop on the feature branch, then merge to `main` so Pages publishes it:
+Develop on the feature branch, then merge to `main` — Netlify builds on every push to `main`:
 ```
 git add <files> && git commit -m "..."
 git push -u origin <feature-branch>
@@ -47,26 +51,32 @@ git checkout <feature-branch>
 
 ## ⚠️ MANDATORY: verify the link is LIVE before telling the user it's done
 
-GitHub Pages runs a **"pages build and deployment"** workflow after every push to `main`, and it
-takes ~60 seconds. During that window the new URL returns **404** even though the file is correct.
-Do **not** report the page as ready until the deploy has finished. Every time:
+Netlify builds after every push to `main` and takes roughly a minute. During that window the new
+URL 404s even though the file is correct. Do **not** report a page as ready until you have
+actually confirmed it — and if you cannot confirm it, say so plainly instead of implying you did.
 
-1. After pushing to `main`, **wait for the Pages deploy to complete successfully.** Check the
-   latest `pages build and deployment` run via the GitHub Actions API and confirm
-   `status: completed` / `conclusion: success` (it started at/after your push time):
+1. **Push to `main`**, then give Netlify ~60 seconds.
+2. **Verify the URL loads (HTTP 200, not 404):**
    ```
-   mcp__github__actions_list  method=list_workflow_runs branch=main event=dynamic
+   curl -sS -o /dev/null -w "%{http_code}" https://an-nasfa-group-health-plan-update.netlify.app/<file>.html
    ```
-   (Outputs are large — parse the saved JSON for the top run's status/conclusion/created_at.)
-2. **Then verify the URL actually loads (HTTP 200, not 404).** Try:
+   Expect `200`.
+3. **If a `NETLIFY_AUTH_TOKEN` is available**, confirm the deploy state instead:
    ```
-   curl -sS -o /dev/null -w "%{http_code}" https://agcynetworkak-bit.github.io/an-graphic-builder/<file>.html
+   curl -sS -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
+     "https://api.netlify.com/api/v1/sites/<site-id>/deploys?per_page=1"
    ```
-   Expect `200`. If the environment blocks the fetch, rely on the successful Pages deploy as
-   confirmation and say so.
-3. **Only after the deploy is green (and ideally a 200) do you tell the user the link is ready.**
-   Never hand over a link while the build is still `in_progress`.
+   Look for `"state":"ready"` on a deploy whose `commit_ref` matches your push.
 
-If you must report before the build finishes, say explicitly that Pages is still deploying and to
-wait ~1–2 minutes (and that a 404 during that window is expected — reload, or add `?v=1` to bust
-the phone/Facebook in-app-browser cache).
+### When you cannot verify (common in the sandbox)
+
+The agent proxy currently **blocks `netlify.app` and `agcynetwork.com`** (`CONNECT tunnel failed,
+403`), and there is no Netlify CLI or token in the environment. When that is the case there is no
+way to confirm the page is live from here.
+
+Say exactly that. Tell the user the file is pushed and Netlify should publish within a minute, and
+ask them to confirm. **Never state or imply a link is verified live when the check was blocked**,
+and never substitute a GitHub signal as proof — GitHub knows nothing about the Netlify deploy.
+
+A 404 right after a push is expected — reload after a minute, or add `?v=1` to bust the phone /
+Facebook in-app-browser cache.
