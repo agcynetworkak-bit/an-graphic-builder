@@ -166,15 +166,22 @@
     padding: 9px 11px; word-break: break-all; line-height: 1.45;
   }
   ol.steps .copy-link a { color: var(--red); font-weight: 600; text-decoration: underline; }
+  .link-panel {
+    display: block; margin: 13px 0 0; font-size: 14px; color: var(--body-gray);
+    background: #FCF6F5; border: 1px solid #F0DAD8; border-radius: 7px;
+    padding: 11px 13px; word-break: break-all; line-height: 1.5;
+  }
+  .link-panel em { font-style: normal; display: block; font-weight: 700; color: var(--black); margin-bottom: 4px; font-size: 13px; }
+  .link-panel a { color: var(--red); font-weight: 600; text-decoration: underline; }
   ol.steps .copy-link em { font-style: normal; display: block; font-weight: 600; color: var(--black); margin-bottom: 3px; font-size: 12.5px; }
 
   .btn {
     display: block; text-align: center; background: linear-gradient(140deg, var(--red), var(--dark-red));
-    color: #fff; text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 800;
+    color: var(--black); text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 800;
     font-size: 16px; padding: 15px 20px; border-radius: 9px; margin-top: 20px;
     box-shadow: 0 3px 12px rgba(176,37,30,0.32); letter-spacing: 0.01em;
   }
-  .btn small { display: block; font-weight: 600; font-size: 11.5px; opacity: 0.85; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 3px; }
+  .btn small { display: block; font-weight: 700; font-size: 11.5px; color: var(--black); opacity: 0.78; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 3px; }
 
   /* ---------- FAQ ---------- */
   details {
@@ -496,14 +503,13 @@
     <details open>
       <summary>What are the eligibility requirements, plainly?</summary>
       <div class="answer">
-        <p><strong>To complete the census right now: nothing.</strong> You don't need to be a
-        member yet. Fill it out today regardless of where you stand.</p>
-        <p><strong>To enroll when the time comes:</strong></p>
+        <p>Two hard requirements:</p>
         <ol>
-          <li><strong>Membership of both NASFA and AN will be required prior to open
-          enrollment.</strong> Details on how this will work though are still being worked out.</li>
-          <li><strong>At least one full-time W-2 employee — 30+ hours per week.</strong>
-          This is what legally qualifies you as an "employer group."</li>
+          <li><strong>You must be a NASFA &amp; AN member.</strong> Details on how this will work
+          and when you need to do this by are still being worked on. Our goal is to make this as
+          easy and as affordable as possible.</li>
+          <li><strong>You must have at least one full-time W-2 employee — 30+ hours per
+          week.</strong> This is what legally qualifies you as an "employer group."</li>
         </ol>
       </div>
     </details>
@@ -596,6 +602,10 @@
       <summary>What is the single most important thing I can do right now?</summary>
       <div class="answer">
         <p><strong>Complete the census — thoroughly and accurately — by September 15.</strong></p>
+        <span class="link-panel">
+          <em>The census link — copy and share it:</em>
+          <a href="https://survey.alchemer.com/s3/8959701/SF-Employee-Benefits">https://survey.alchemer.com/s3/8959701/SF-Employee-Benefits</a>
+        </span>
         <p>Nothing else moves until this does. Pricing cannot be produced without it.</p>
         <a class="btn" href="https://survey.alchemer.com/s3/8959701/SF-Employee-Benefits">
           Complete the Census
@@ -607,11 +617,15 @@
     <details>
       <summary>I already filled out a census months ago. Do I have to do it again?</summary>
       <div class="answer">
-        <span class="verdict v-yes">Yes — everyone re-submits</span>
-        <p>The earlier survey did its job. Thousands of agents responded, and that response is a
-        large part of why the carrier said yes.</p>
+        <span class="verdict v-yes">Yes — everyone must submit the new census</span>
+        <p>The earlier survey/census did its job. Thousands of agents responded, and that response
+        is a large part of why the carrier said yes.</p>
         <p>But this is a <strong>new, BCBS-specific census</strong> collecting the exact data
         underwriting requires. <strong>Previous responses do not carry over.</strong></p>
+        <span class="link-panel">
+          <em>Here is the link for the new census:</em>
+          <a href="https://survey.alchemer.com/s3/8959701/SF-Employee-Benefits">https://survey.alchemer.com/s3/8959701/SF-Employee-Benefits</a>
+        </span>
       </div>
     </details>
 
@@ -650,9 +664,6 @@
           <li><strong>Complete the census</strong> — you and every full-time W-2 team member.</li>
           <li><strong>Hold a team meeting</strong> before September 15. Walk your W-2 employees
           through what's coming and find out who wants coverage.</li>
-          <li><strong>Don't wait on membership.</strong> You don't need to be a member to
-          complete the census. Membership of both NASFA and AN will be required prior to open
-          enrollment — details are still being worked out.</li>
           <li><strong>Send the census link to five agent peers</strong> who haven't done it. Every
           agency added to the pool improves the number that comes back for all of us.</li>
         </ol>
@@ -676,8 +687,9 @@
     <details>
       <summary>When will we know pricing?</summary>
       <div class="answer">
-        <p><strong>October.</strong> Plan refinement and initial pricing communication follow the
-        September 15 census close and underwriting review.</p>
+        <p><strong>By the end of September is the goal — early October at the latest.</strong>
+        Plan refinement and initial pricing communication follow the September 15 census close and
+        underwriting review.</p>
       </div>
     </details>
 
@@ -692,8 +704,8 @@
               <td><strong>Data collection</strong></td>
               <td>← You are here. Complete the census.</td>
             </tr>
-            <tr><td>Sept 15 – 30</td><td>Underwriting review</td><td>Nothing — we work</td></tr>
-            <tr><td><strong>October</strong></td><td>Plan refinement + initial pricing</td><td>Watch for the pricing announcement</td></tr>
+            <tr><td><strong>Sept 15 – 30</strong></td><td><strong>Underwriting review, plan refinement &amp; pricing</strong></td><td>Watch for the pricing announcement</td></tr>
+            <tr><td><strong>October</strong></td><td>Plan decisions</td><td>Pricing by early October at the latest</td></tr>
             <tr><td><strong>November</strong></td><td><strong>Open enrollment</strong></td><td>Enroll yourself and your team</td></tr>
             <tr><td><strong>January 1, 2027</strong></td><td><strong>Coverage begins</strong></td><td>New plan starts</td></tr>
           </tbody>
